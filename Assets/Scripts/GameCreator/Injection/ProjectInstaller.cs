@@ -1,3 +1,4 @@
+using GameCreator.SceneManagement;
 using UnityEngine;
 using Zenject;
 
@@ -8,6 +9,7 @@ namespace GameCreator.Injection
         public override void InstallBindings()
         {
             Debug.Log("[ProjectInstaller] Installing bindings");
+            Container.Bind<SceneLoader>().AsSingle();
         }
     }
 }
