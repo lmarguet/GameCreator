@@ -7,7 +7,7 @@ namespace GameCreator.Injection
     {
         public override void InstallBindings()
         {
-            Debug.Log("Installing project bindings");
+            Debug.Log("[ProjectInstaller] Installing bindings");
         }
     }
 }
