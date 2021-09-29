@@ -10,6 +10,13 @@ namespace GameCreator.Injection
         {
             Debug.Log("[ProjectInstaller] Installing bindings");
             Container.Bind<SceneLoader>().AsSingle();
+
+            BindCommands();
+        }
+
+        private void BindCommands()
+        {
+            Container.Bind<LoadSceneCommand>().AsSingle();
         }
     }
 }
