@@ -15,6 +15,11 @@ namespace GameCreator.Features.SettingsPopup
         {
             closeButton.onClick.AddListener(HandleCloseClick);
         }
+        
+        void Start()
+        {
+            Debug.Log("[SettingsPopupRoot] Start");
+        }
 
         void HandleCloseClick()
         {

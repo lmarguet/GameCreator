@@ -1,4 +1,5 @@
 using GameCreator.Framework;
+using UnityEngine;
 using Zenject;
 
 namespace GameCreator.SceneManagement
@@ -9,6 +10,7 @@ namespace GameCreator.SceneManagement
 
         public override void Execute(SceneId sceneId)
         {
+            Debug.Log($"[CloseSceneCommand] {sceneId}");
             sceneLoader.Unload(sceneId);
         }
     }

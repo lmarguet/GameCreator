@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using GameCreator.Framework;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
@@ -17,6 +18,8 @@ namespace GameCreator.SceneManagement
 
         protected override async Task<Scene> DoRun(Data data)
         {
+            Debug.Log($"[LoadSceneCommand] {data.SceneId}");
+
             var sceneIndex = GetNewSceneIndex(data);
 
             await sceneLoader.LoadSceneAsync(data.SceneId, data.LoadMode);

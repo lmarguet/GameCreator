@@ -18,6 +18,11 @@ namespace GameCreator.Features.PlayMode
             editModeButton.onClick.AddListener(HandlePlaysButtonClick);
         }
 
+        void Start()
+        {
+            Debug.Log("[PlayModeUiRoot] Start");
+        }
+
         async void HandlePlaysButtonClick()
         {
             await loadEditModeUiCommand.Run();
