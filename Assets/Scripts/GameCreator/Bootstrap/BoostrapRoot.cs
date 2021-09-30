@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
-using Scene = GameCreator.SceneManagement.Scene;
 
 namespace GameCreator.Bootstrap
 {
@@ -15,7 +14,7 @@ namespace GameCreator.Bootstrap
             Debug.Log("[BoostrapRoot] Start");
             await loadSceneCommand.Run(new LoadSceneCommand.Data
             {
-                Scene = Scene.Start,
+                SceneId = SceneId.Start,
                 LoadMode = LoadSceneMode.Single
             });
         }
