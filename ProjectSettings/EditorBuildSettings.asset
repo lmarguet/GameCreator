@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartScreen.unity
     guid: 28329afd8b3504b8288da38a12fe3a28
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: fb147810059f54cf7a4dcf640108e78d
+  - enabled: 1
+    path: Assets/Scenes/EditModeUI.unity
+    guid: bd5b1d9ee9b734960b2b6eba10cee272
+  - enabled: 1
+    path: Assets/Scenes/PlayModeUI.unity
+    guid: 6e95f8e9fe5a34af189b698c204a062a
+  - enabled: 1
+    path: Assets/Scenes/SettingsPopup.unity
+    guid: e79b6e7eb0923402884538545a51d1ce
   m_configObjects: {}

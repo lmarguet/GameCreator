@@ -21,3 +21,19 @@ MonoBehaviour:
     scene:
       sceneAsset: {fileID: 102900000, guid: 28329afd8b3504b8288da38a12fe3a28, type: 3}
       scenePath: Assets/Scenes/StartScreen.unity
+  - sceneID: 2
+    scene:
+      sceneAsset: {fileID: 102900000, guid: fb147810059f54cf7a4dcf640108e78d, type: 3}
+      scenePath: Assets/Scenes/Game.unity
+  - sceneID: 3
+    scene:
+      sceneAsset: {fileID: 102900000, guid: bd5b1d9ee9b734960b2b6eba10cee272, type: 3}
+      scenePath: Assets/Scenes/EditModeUI.unity
+  - sceneID: 4
+    scene:
+      sceneAsset: {fileID: 102900000, guid: 6e95f8e9fe5a34af189b698c204a062a, type: 3}
+      scenePath: Assets/Scenes/PlayModeUI.unity
+  - sceneID: 5
+    scene:
+      sceneAsset: {fileID: 102900000, guid: e79b6e7eb0923402884538545a51d1ce, type: 3}
+      scenePath: Assets/Scenes/SettingsPopup.unity
