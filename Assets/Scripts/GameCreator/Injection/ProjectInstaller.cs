@@ -14,7 +14,7 @@ namespace GameCreator.Injection
             BindCommands();
         }
 
-        private void BindCommands()
+        void BindCommands()
         {
             Container.Bind<LoadSceneCommand>().AsSingle();
         }

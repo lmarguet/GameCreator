@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
-namespace DiabloMenthe.Editor
+namespace GameCreator.Editor
 {
 	public class EditorSceneShortcuts
 	{
-		const string GAME_SCENE_PATH = "Assets/Scenes/00_Splash.unity";
-		const string PATH_TO_PREVIOUSLY_CLOSED_SCENE_KEY = "PATH_TO_PREVIOUSLY_CLOSED_SCENE_KEY";
+		const string GameScenePath = "Assets/Scenes/Bootstrap.unity";
+		const string PathToPreviouslyClosedSceneKey = "PATH_TO_PREVIOUSLY_CLOSED_SCENE_KEY";
 
-		[MenuItem("Tools/Run Splash Scene %l", false, 10)]
+		[MenuItem("Tools/Run Boostrap Scene %l", false, 10)]
 		public static void RunGame()
 		{
 			if (EditorApplication.isPlaying) {
@@ -20,18 +21,18 @@ namespace DiabloMenthe.Editor
 				return;
 			}
 
-			var currentScenePath = EditorSceneManager.GetActiveScene().path;
-			if (currentScenePath != GAME_SCENE_PATH) {
-				EditorPrefs.SetString(PATH_TO_PREVIOUSLY_CLOSED_SCENE_KEY, currentScenePath);
+			var currentScenePath = SceneManager.GetActiveScene().path;
+			if (currentScenePath != GameScenePath) {
+				EditorPrefs.SetString(PathToPreviouslyClosedSceneKey, currentScenePath);
 			}
-			EditorSceneManager.OpenScene(GAME_SCENE_PATH);
+			EditorSceneManager.OpenScene(GameScenePath);
 			EditorApplication.isPlaying = true;
 		}
 
 		[MenuItem ("Tools/Back to previously opened scene %#l", false, 11)]
 		public static void OpenPrevious ()
 		{
-			var pathToPrevious = EditorPrefs.GetString(PATH_TO_PREVIOUSLY_CLOSED_SCENE_KEY);
+			var pathToPrevious = EditorPrefs.GetString(PathToPreviouslyClosedSceneKey);
 			if (string.IsNullOrEmpty(pathToPrevious)) {
 				return;
 			}
