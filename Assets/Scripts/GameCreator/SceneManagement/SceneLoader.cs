@@ -10,9 +10,9 @@ namespace GameCreator.SceneManagement
         [Inject] ZenjectSceneLoader zenjectSceneLoader;
         [Inject] ScenesConfig scenesConfig;
 
-        public void LoadScene(Scene sceneID, LoadSceneMode loadMode = LoadSceneMode.Single)
+        public void LoadScene(SceneId sceneId, LoadSceneMode loadMode = LoadSceneMode.Single)
         {
-            var sceneName = scenesConfig.GetSceneName(sceneID);
+            var sceneName = scenesConfig.GetSceneName(sceneId);
             LoadScene(sceneName, loadMode);
         }
 
@@ -21,10 +21,10 @@ namespace GameCreator.SceneManagement
             zenjectSceneLoader.LoadScene(name, loadMode);
         }
 
-        public async Task LoadSceneAsync(Scene sceneID, LoadSceneMode loadMode = LoadSceneMode.Single,
+        public async Task LoadSceneAsync(SceneId sceneId, LoadSceneMode loadMode = LoadSceneMode.Single,
             bool allowActivation = true)
         {
-            var sceneName = scenesConfig.GetSceneName(sceneID);
+            var sceneName = scenesConfig.GetSceneName(sceneId);
             await LoadSceneAsync(sceneName, loadMode, allowActivation);
         }
 
@@ -40,9 +40,9 @@ namespace GameCreator.SceneManagement
             }
         }
 
-        public void Unload(Scene sceneID)
+        public void Unload(SceneId sceneId)
         {
-            var sceneName = scenesConfig.GetSceneName(sceneID);
+            var sceneName = scenesConfig.GetSceneName(sceneId);
             SceneManager.UnloadSceneAsync(sceneName);
         }
     }

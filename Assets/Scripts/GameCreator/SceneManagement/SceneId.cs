@@ -1,6 +1,6 @@
 namespace GameCreator.SceneManagement
 {
-    public enum Scene
+    public enum SceneId
     {
         Bootstrap = 0,
         Start = 1,

@@ -5,21 +5,21 @@ using Zenject;
 
 namespace GameCreator.SceneManagement
 {
-    public class LoadSceneCommand : AAsyncCommand<LoadSceneCommand.Data, UnityEngine.SceneManagement.Scene>
+    public class LoadSceneCommand : AAsyncCommand<LoadSceneCommand.Data, Scene>
     {
         public struct Data
         {
-            public Scene Scene;
+            public SceneId SceneId;
             public LoadSceneMode LoadMode;
         }
 
         [Inject] SceneLoader sceneLoader;
 
-        protected override async Task<UnityEngine.SceneManagement.Scene> DoRun(Data data)
+        protected override async Task<Scene> DoRun(Data data)
         {
             var sceneIndex = GetNewSceneIndex(data);
 
-            await sceneLoader.LoadSceneAsync(data.Scene, data.LoadMode);
+            await sceneLoader.LoadSceneAsync(data.SceneId, data.LoadMode);
 
             return SceneManager.GetSceneAt(sceneIndex);
         }

@@ -7,10 +7,10 @@ namespace GameCreator.Config
     [Serializable]
     public class GameSceneConfig
     {
-        [SerializeField] Scene sceneID;
+        [SerializeField] SceneId sceneIdID;
         [SerializeField] SceneReference scene;
 
-        public Scene SceneID => sceneID;
+        public SceneId SceneIdID => sceneIdID;
         public string Name => scene.ScenePath;
     }
 
@@ -19,9 +19,9 @@ namespace GameCreator.Config
     {
         [SerializeField] GameSceneConfig[] scenes;
 
-        public string GetSceneName(Scene scene)
+        public string GetSceneName(SceneId sceneId)
         {
-            return scenes.First(x => x.SceneID == scene).Name;
+            return scenes.First(x => x.SceneIdID == sceneId).Name;
         }
     }
 }
