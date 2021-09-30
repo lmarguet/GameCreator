@@ -8,9 +8,9 @@ namespace GameCreator.Bootstrap
 {
     public class BoostrapRoot : ASceneRoot
     {
-        [Inject] private LoadSceneCommand loadSceneCommand;
+        [Inject] LoadSceneCommand loadSceneCommand;
 
-        private async void Start()
+        async void Start()
         {
             Debug.Log("[BoostrapRoot] Start");
             await loadSceneCommand.Run(new LoadSceneCommand.Data

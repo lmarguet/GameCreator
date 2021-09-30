@@ -7,8 +7,8 @@ namespace GameCreator.SceneManagement
 {
     public class SceneLoader
     {
-        [Inject] private ZenjectSceneLoader zenjectSceneLoader;
-        [Inject] private ScenesConfig scenesConfig;
+        [Inject] ZenjectSceneLoader zenjectSceneLoader;
+        [Inject] ScenesConfig scenesConfig;
 
         public void LoadScene(Scene sceneID, LoadSceneMode loadMode = LoadSceneMode.Single)
         {

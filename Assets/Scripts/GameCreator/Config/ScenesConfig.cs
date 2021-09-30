@@ -7,8 +7,8 @@ namespace GameCreator.Config
     [Serializable]
     public class GameSceneConfig
     {
-        [SerializeField] private Scene sceneID;
-        [SerializeField] private SceneReference scene;
+        [SerializeField] Scene sceneID;
+        [SerializeField] SceneReference scene;
 
         public Scene SceneID => sceneID;
         public string Name => scene.ScenePath;
@@ -17,7 +17,7 @@ namespace GameCreator.Config
     [CreateAssetMenu(fileName = "ScenesConfig", menuName = "Config/ScenesConfig")]
     public class ScenesConfig : ScriptableObject
     {
-        [SerializeField] private GameSceneConfig[] scenes;
+        [SerializeField] GameSceneConfig[] scenes;
 
         public string GetSceneName(Scene scene)
         {

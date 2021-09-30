@@ -13,7 +13,7 @@ namespace GameCreator.SceneManagement
             public LoadSceneMode LoadMode;
         }
 
-        [Inject] private SceneLoader sceneLoader;
+        [Inject] SceneLoader sceneLoader;
 
         protected override async Task<UnityEngine.SceneManagement.Scene> DoRun(Data data)
         {
@@ -24,7 +24,7 @@ namespace GameCreator.SceneManagement
             return SceneManager.GetSceneAt(sceneIndex);
         }
 
-        private static int GetNewSceneIndex(Data data)
+        static int GetNewSceneIndex(Data data)
         {
             return data.LoadMode == LoadSceneMode.Additive
                 ? SceneManager.sceneCount
