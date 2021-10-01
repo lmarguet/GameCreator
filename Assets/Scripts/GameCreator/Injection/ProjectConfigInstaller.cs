@@ -7,15 +7,17 @@ namespace GameCreator.Injection
     [CreateAssetMenu(fileName = "ConfigInstaller", menuName = "Installers/ProjectConfigInstaller")]
     public class ProjectConfigInstaller : ScriptableObjectInstaller<ProjectConfigInstaller>
     {
-        [SerializeField] private GlobalConfig globalConfig;
-        [SerializeField] private ScenesConfig scenesConfig;
+        [SerializeField] GlobalConfig globalConfig;
+        [SerializeField] ScenesConfig scenesConfig;
+        [SerializeField] CharactersConfig charactersConfig;
 
         public override void InstallBindings()
         {
             Debug.Log("[ProjectConfigInstaller] Installing bindings");
-            
+
             Container.BindInstance(globalConfig);
             Container.BindInstance(scenesConfig);
+            Container.BindInstance(charactersConfig);
         }
     }
 }
