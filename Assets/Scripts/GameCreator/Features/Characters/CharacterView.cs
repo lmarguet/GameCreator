@@ -10,9 +10,17 @@ namespace GameCreator.Features.Characters
         void Awake()
         {
             animator = GetComponent<Animator>();
+            StopAnimating();
+        }
+
+        public void StopAnimating()
+        {
             animator.enabled = false;
         }
-        
-        
+
+        public void StartAnimating()
+        {
+            animator.enabled = true;
+        }
     }
 }

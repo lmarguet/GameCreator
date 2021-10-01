@@ -5,7 +5,7 @@ using Zenject;
 
 namespace GameCreator.Features.GameScene
 {
-    public class GameSceneRoot : ASceneRoot
+    public partial class GameSceneRoot : ASceneRoot
     {
         [Inject] CharactersConfig charactersConfig;
         [Inject] DeselectCharacterCommand deselectCharacterCommand;
@@ -14,26 +14,14 @@ namespace GameCreator.Features.GameScene
         [SerializeField] LayerMask terrainLayer;
         [SerializeField] Transform charactersContainer;
 
-        string selectedCharacter;
+        static readonly Quaternion CharacterInitRotation = Quaternion.Euler(0, 180, 0);
+        
         bool isMousePressed;
-        bool isTerrainPressed;
 
         void Start()
         {
             Debug.Log("[GameSceneRoot] Start");
             isMousePressed = false;
-        }
-
-        public void SetSelectedCharacter(string characterId)
-        {
-            selectedCharacter = characterId;
-            Debug.Log(selectedCharacter);
-        }
-
-        public void DeselectCharacter()
-        {
-            selectedCharacter = null;
-            Debug.Log("deselect");
         }
 
         void Update()
@@ -66,32 +54,14 @@ namespace GameCreator.Features.GameScene
             }
         }
 
-        void OnTerrainPress(Vector3 hitPoint)
+        public void EnterEditMode()
         {
-            if (!isTerrainPressed)
-            {
-                OnTerrainMouseDown(hitPoint);
-            }
-
-            isTerrainPressed = true;
+            StopAllCharactersAnimations();
         }
 
-        void OnTerrainMouseDown(Vector3 hitPoint)
+        public void EnterPlayMode()
         {
-            if (!string.IsNullOrEmpty(selectedCharacter))
-            {
-                AddCharacter(selectedCharacter, hitPoint);
-                
-            }
-        }
-
-        void AddCharacter(string character, Vector3 hitPoint)
-        {
-            deselectCharacterCommand.Execute();
-            
-            var config = charactersConfig.GetCharacterConfig(character);
-            var characterView = Instantiate(config.Prefab, hitPoint, Quaternion.Euler(0, 180, 0));
-            characterView.transform.parent = charactersContainer;
+            StartAllCharactersAnimations();
         }
     }
 }

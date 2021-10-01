@@ -16,6 +16,9 @@ namespace GameCreator.Features.PlayMode
         {
             deselectCharacterCommand.Execute();
             await navigationManager.OpenScene<PlayModeUiRoot>(SceneId.PlayModeUi, LoadSceneMode.Additive);
+            
+            var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
+            gameSceneRoot.EnterPlayMode();
         }
     }
 }
