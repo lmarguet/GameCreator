@@ -12,6 +12,10 @@ namespace GameCreator.Config
             [SerializeField] string id;
             [SerializeField] GameObject prefab;
             [SerializeField] Sprite thumbNail;
+
+            public string Id => id;
+            public GameObject Prefab => prefab;
+            public Sprite ThumbNail => thumbNail;
         }
 
         [SerializeField] CharacterConfig[] characters;

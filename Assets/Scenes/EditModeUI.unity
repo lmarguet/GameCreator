@@ -315,6 +315,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LocationEditToolbar
       objectReference: {fileID: 0}
+    - target: {fileID: 1706208040154960942, guid: 81a248d43c05943868a830b91416d464,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960943, guid: 81a248d43c05943868a830b91416d464,
         type: 3}
       propertyPath: m_Pivot.x
@@ -674,8 +679,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1066761727}
   - {fileID: 1865444518}
+  - {fileID: 1066761727}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -932,7 +937,7 @@ RectTransform:
   m_Children:
   - {fileID: 937428868}
   m_Father: {fileID: 822683299}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1727,7 +1732,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 822683299}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1865444519
 MonoBehaviour:
@@ -1774,6 +1779,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TerrainEditToolbar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706208040154960942, guid: 4a4f99c243cbe4cd28e9f9d69c433499,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960943, guid: 4a4f99c243cbe4cd28e9f9d69c433499,
         type: 3}
@@ -1911,11 +1921,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CharatcersToolBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706208040154960942, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960943, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
         type: 3}
