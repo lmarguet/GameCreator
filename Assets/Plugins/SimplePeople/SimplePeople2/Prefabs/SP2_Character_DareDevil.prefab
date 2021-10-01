@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 471244}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperLeg_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 450442}
   - component: {fileID: 13786662}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_StripperGuy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 492378}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 460344}
   - component: {fileID: 13706614}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_DiscoGuy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 461074}
   - component: {fileID: 13795844}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_DareDevil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,8 @@ GameObject:
   - component: {fileID: 419226}
   - component: {fileID: 9588850}
   - component: {fileID: 4345681257054955602}
-  m_Layer: 0
+  - component: {fileID: 6688405455255207476}
+  m_Layer: 10
   m_Name: SP2_Character_DareDevil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,6 +450,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ffac12d7c044169b666259214fd3db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6688405455255207476
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114468}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3750794, y: 3.1986341, z: 1.1362703}
+  m_Center: {x: -0.047617674, y: 1.6615429, z: 0.0000783205}
 --- !u!1 &114716
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 438552}
   - component: {fileID: 13792960}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_Barista
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +577,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458870}
   - component: {fileID: 13774292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_MexicanGangster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 410474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chest_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 446074}
   - component: {fileID: 13711160}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_StripperWoman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -803,7 +817,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414554}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,7 +847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 414930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerLeg_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,7 +878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467438}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440724}
   - component: {fileID: 13758492}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_HippsterMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -999,7 +1013,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 468580}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Forearm_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,7 +1044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489110}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Neck_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1075,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 436846}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1092,7 +1106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 439778}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Forearm_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1124,7 +1138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 497442}
   - component: {fileID: 13714884}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_SurferDude
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1228,7 +1242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 442736}
   - component: {fileID: 13731944}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_Boxer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1331,7 +1345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 493360}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Toe_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1361,7 +1375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 448268}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arm_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1392,7 +1406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 413732}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Foot_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1423,7 +1437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 409388}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hips_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1456,7 +1470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 464878}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spine_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1488,7 +1502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 444746}
   - component: {fileID: 13732530}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_Rapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1591,7 +1605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 428538}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LowerLeg_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1622,7 +1636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 407124}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shoulder_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1653,7 +1667,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 494898}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1684,7 +1698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 473364}
   - component: {fileID: 13788882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_Diver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1787,7 +1801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 455708}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shoulder_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1819,7 +1833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 473606}
   - component: {fileID: 13760254}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SP2_Character_Reporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1922,7 +1936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 473122}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Toe_Left_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1952,7 +1966,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 454722}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spine_jnt 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1983,7 +1997,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 482354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UpperLeg_Right_jnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}

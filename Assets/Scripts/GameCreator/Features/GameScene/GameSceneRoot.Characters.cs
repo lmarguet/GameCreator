@@ -1,28 +1,34 @@
 using System.Collections.Generic;
 using GameCreator.Features.Characters;
 using UnityEngine;
+using Zenject;
 
 namespace GameCreator.Features.GameScene
 {
     public partial class GameSceneRoot
     {
+        [Inject] SelectCharacterCommand selectCharacterCommand;
+        [Inject] DeselectCharacterCommand deselectCharacterCommand;
+        
         readonly List<CharacterView> characterViews = new List<CharacterView>();
 
-        string selectedCharacter;
+        string characterCreationTargetId;
+        bool isCharacterPressed;
+        bool isCharacterSelected;
 
-        public void SetSelectedCharacter(string characterId)
+        public void SetCharacterCreationTarget(string characterId)
         {
-            selectedCharacter = characterId;
+            characterCreationTargetId = characterId;
         }
 
-        public void DeselectCharacter()
+        public void ClearCharacterCreationTarget()
         {
-            selectedCharacter = null;
+            characterCreationTargetId = null;
         }
 
         void AddCharacter(string character, Vector3 hitPoint)
         {
-            deselectCharacterCommand.Execute();
+            clearCharacterCreationSelection.Execute();
 
             var config = charactersConfig.GetCharacterConfig(character);
 
@@ -45,6 +51,32 @@ namespace GameCreator.Features.GameScene
             {
                 characterView.StartAnimating();
             }
+        }
+
+        void OnCharacterPress(RaycastHit hitInfo)
+        {
+            if (!isCharacterPressed)
+            {
+                OnCharacterMouseDown(hitInfo);
+            }
+
+            isCharacterPressed = true;
+        }
+
+        void OnCharacterMouseDown(RaycastHit hitInfo)
+        {
+            if (isCharacterSelected)
+            {
+                DeselectCharacter();
+            }
+            isCharacterSelected = true;
+            selectCharacterCommand.Execute();
+        }
+
+        void DeselectCharacter()
+        {
+            isCharacterSelected = false;
+            deselectCharacterCommand.Execute();
         }
     }
 }

@@ -281,6 +281,9 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  charactersLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   charactersContainer: {fileID: 628468863}
 --- !u!114 &666100489
 MonoBehaviour:

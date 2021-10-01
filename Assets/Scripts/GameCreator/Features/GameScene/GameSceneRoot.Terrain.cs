@@ -18,9 +18,14 @@ namespace GameCreator.Features.GameScene
 
         void OnTerrainMouseDown(Vector3 hitPoint)
         {
-            if (!string.IsNullOrEmpty(selectedCharacter))
+            if (!string.IsNullOrEmpty(characterCreationTargetId))
             {
-                AddCharacter(selectedCharacter, hitPoint);
+                AddCharacter(characterCreationTargetId, hitPoint);
+            }
+            
+            if (isCharacterSelected)
+            {
+                DeselectCharacter();
             }
         }
     }

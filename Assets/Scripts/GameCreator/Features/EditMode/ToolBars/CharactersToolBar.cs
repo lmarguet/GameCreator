@@ -1,4 +1,5 @@
 using GameCreator.Config;
+using GameCreator.Features.Characters;
 using GameCreator.Features.GameScene;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,8 @@ namespace GameCreator.Features.EditMode.ToolBars
     public class CharactersToolBar : AToolBarView
     {
         [Inject] CharactersConfig charactersConfig;
-        [Inject] SelectedCharacterCommand selectedCharacterCommand;
-        [Inject] DeselectCharacterCommand deselectCharacterCommand;
+        [Inject] SetCharacterCreationTarget setCharacterCreationTarget;
+        [Inject] ClearCharacterCreationSelection clearCharacterCreationSelection;
 
         [SerializeField] Transform buttonsContainer;
         [SerializeField] ToggleGroup toggleGroup;
@@ -38,12 +39,12 @@ namespace GameCreator.Features.EditMode.ToolBars
         
         void HandleCharacterSelect(string characterId)
         {
-            selectedCharacterCommand.Execute(characterId);
+            setCharacterCreationTarget.Execute(characterId);
         }
 
         void HandleCharacterDeselect(string characterId)
         {
-            deselectCharacterCommand.Execute();
+            clearCharacterCreationSelection.Execute();
         }
 
         protected override void DoCloseInternal()

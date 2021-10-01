@@ -1,3 +1,4 @@
+using GameCreator.Features.Characters;
 using GameCreator.Features.EditMode;
 using GameCreator.Features.GameScene;
 using GameCreator.Features.PlayMode;
@@ -27,7 +28,9 @@ namespace GameCreator.Injection
             Container.Bind<LoadEditModeUiCommand>().AsSingle();
             Container.Bind<LoadSettingsPopupCommand>().AsSingle();
             Container.Bind<LoadPlayModeUiCommand>().AsSingle();
-            Container.Bind<SelectedCharacterCommand>().AsSingle();
+            Container.Bind<SetCharacterCreationTarget>().AsSingle();
+            Container.Bind<ClearCharacterCreationSelection>().AsSingle();
+            Container.Bind<SelectCharacterCommand>().AsSingle();
             Container.Bind<DeselectCharacterCommand>().AsSingle();
         }
     }

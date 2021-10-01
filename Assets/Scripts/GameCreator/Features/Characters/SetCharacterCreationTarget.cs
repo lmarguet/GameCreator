@@ -1,17 +1,18 @@
+using GameCreator.Features.GameScene;
 using GameCreator.Framework;
 using GameCreator.SceneManagement;
 using Zenject;
 
-namespace GameCreator.Features.GameScene
+namespace GameCreator.Features.Characters
 {
-    public class SelectedCharacterCommand : ACommand<string>
+    public class SetCharacterCreationTarget : ACommand<string>
     {
         [Inject] NavigationManager navigationManager;
         
         public override void Execute(string characterId)
         {
             var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
-            gameSceneRoot.SetSelectedCharacter(characterId);
+            gameSceneRoot.SetCharacterCreationTarget(characterId);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using GameCreator.Features.Characters;
 using GameCreator.Features.GameScene;
 using GameCreator.Framework;
 using GameCreator.SceneManagement;
@@ -10,11 +11,11 @@ namespace GameCreator.Features.PlayMode
     public class LoadPlayModeUiCommand : AAsyncCommand
     {
         [Inject] NavigationManager navigationManager;
-        [Inject] DeselectCharacterCommand deselectCharacterCommand;
+        [Inject] ClearCharacterCreationSelection clearCharacterCreationSelection;
 
         protected override async Task DoRun()
         {
-            deselectCharacterCommand.Execute();
+            clearCharacterCreationSelection.Execute();
             await navigationManager.OpenScene<PlayModeUiRoot>(SceneId.PlayModeUi, LoadSceneMode.Additive);
             
             var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
