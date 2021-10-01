@@ -9,7 +9,7 @@ namespace GameCreator.Features.PlayMode
     public class PlayModeUiRoot : ASceneRoot
     {
         [Inject] LoadEditModeUiCommand loadEditModeUiCommand;
-        [Inject] CloseSceneCommand closeSceneCommand;
+        [Inject] NavigationManager navigationManager;
 
         [SerializeField] Button editModeButton;
 
@@ -26,7 +26,7 @@ namespace GameCreator.Features.PlayMode
         async void HandlePlaysButtonClick()
         {
             await loadEditModeUiCommand.Run();
-            closeSceneCommand.Execute(SceneId.PlayModeUi);
+            navigationManager.CloseScene(SceneId.PlayModeUi);
         }
     }
 }

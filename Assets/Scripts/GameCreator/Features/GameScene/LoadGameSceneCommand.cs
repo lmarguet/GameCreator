@@ -4,15 +4,15 @@ using GameCreator.SceneManagement;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace GameCreator.Features.EditMode
+namespace GameCreator.Features.GameScene
 {
-    public class LoadEditModeUiCommand : AAsyncCommand
+    public class LoadGameSceneCommand : AAsyncCommand
     {
         [Inject] NavigationManager navigationManager;
 
         protected override async Task DoRun()
         {
-            await navigationManager.OpenScene<EditModeUiRoot>(SceneId.EditModeUi, LoadSceneMode.Additive);
+            await navigationManager.OpenScene<GameSceneRoot>(SceneId.Game, LoadSceneMode.Single);
         }
     }
 }

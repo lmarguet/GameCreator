@@ -1,4 +1,5 @@
 using GameCreator.Features.EditMode;
+using GameCreator.Features.GameScene;
 using GameCreator.Features.PlayMode;
 using GameCreator.Features.SettingsPopup;
 using GameCreator.SceneManagement;
@@ -12,7 +13,9 @@ namespace GameCreator.Injection
         public override void InstallBindings()
         {
             Debug.Log("[ProjectInstaller] Installing bindings");
+            
             Container.Bind<SceneLoader>().AsSingle();
+            Container.Bind<NavigationManager>().AsSingle();
 
             BindCommands();
         }
@@ -20,8 +23,6 @@ namespace GameCreator.Injection
         void BindCommands()
         {
             // Scenes command
-            Container.Bind<LoadSceneCommand>().AsSingle();
-            Container.Bind<CloseSceneCommand>().AsSingle();
             Container.Bind<LoadGameSceneCommand>().AsSingle();
             Container.Bind<LoadEditModeUiCommand>().AsSingle();
             Container.Bind<LoadSettingsPopupCommand>().AsSingle();

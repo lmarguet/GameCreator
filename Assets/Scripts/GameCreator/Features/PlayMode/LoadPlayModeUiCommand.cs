@@ -8,15 +8,11 @@ namespace GameCreator.Features.PlayMode
 {
     public class LoadPlayModeUiCommand : AAsyncCommand
     {
-        [Inject] LoadSceneCommand loadSceneCommand;
+        [Inject] NavigationManager navigationManager;
 
         protected override async Task DoRun()
         {
-            await loadSceneCommand.Run(new LoadSceneCommand.Data
-            {
-                SceneId = SceneId.PlayModeUi,
-                LoadMode = LoadSceneMode.Additive
-            }); 
+            await navigationManager.OpenScene<PlayModeUiRoot>(SceneId.PlayModeUi, LoadSceneMode.Additive);
         }
     }
 }
