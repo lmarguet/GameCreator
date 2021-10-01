@@ -13,7 +13,7 @@ namespace GameCreator.Injection
         public override void InstallBindings()
         {
             Debug.Log("[ProjectInstaller] Installing bindings");
-            
+
             Container.Bind<SceneLoader>().AsSingle();
             Container.Bind<NavigationManager>().AsSingle();
 
@@ -27,6 +27,8 @@ namespace GameCreator.Injection
             Container.Bind<LoadEditModeUiCommand>().AsSingle();
             Container.Bind<LoadSettingsPopupCommand>().AsSingle();
             Container.Bind<LoadPlayModeUiCommand>().AsSingle();
+            Container.Bind<SelectedCharacterCommand>().AsSingle();
+            Container.Bind<DeselectCharacterCommand>().AsSingle();
         }
     }
 }
