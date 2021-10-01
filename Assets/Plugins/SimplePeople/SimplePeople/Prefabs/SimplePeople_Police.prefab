@@ -350,8 +350,9 @@ GameObject:
   m_Component:
   - component: {fileID: 400066}
   - component: {fileID: 9500000}
+  - component: {fileID: -6581057870140663341}
   m_Layer: 0
-  m_Name: SimplePeople_Police_Black
+  m_Name: SimplePeople_Police
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,6 +406,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6581057870140663341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ffac12d7c044169b666259214fd3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &117534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,7 +1683,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fbe960bc30150b14789f737d9e137d68, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

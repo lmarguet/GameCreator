@@ -1242,7 +1242,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81d89aa6e2aa7ca49b31cf2ac386738e, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1639,8 +1639,9 @@ GameObject:
   m_Component:
   - component: {fileID: 417456}
   - component: {fileID: 9596490}
+  - component: {fileID: -8597108594640621922}
   m_Layer: 0
-  m_Name: SP2_Character_DiscoGuy_Brown
+  m_Name: SP2_Character_DiscoGuy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1692,6 +1693,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8597108594640621922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ffac12d7c044169b666259214fd3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &179088
 GameObject:
   m_ObjectHideFlags: 0

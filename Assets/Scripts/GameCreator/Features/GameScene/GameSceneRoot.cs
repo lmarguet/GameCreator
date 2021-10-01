@@ -1,13 +1,19 @@
+using GameCreator.Config;
 using GameCreator.SceneManagement;
 using UnityEngine;
+using Zenject;
 
 namespace GameCreator.Features.GameScene
 {
     public class GameSceneRoot : ASceneRoot
     {
+        [Inject] CharactersConfig charactersConfig;
+        [Inject] DeselectCharacterCommand deselectCharacterCommand;
+        
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
-        
+        [SerializeField] Transform charactersContainer;
+
         string selectedCharacter;
         bool isMousePressed;
         bool isTerrainPressed;
@@ -43,16 +49,16 @@ namespace GameCreator.Features.GameScene
 
             if (isMousePressed)
             {
-                var ray = sceneCamera.ScreenPointToRay (Input.mousePosition);
+                var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast (ray, out var hit))
+                if (Physics.Raycast(ray, out var hit))
                 {
                     var layerMask = 1 << hit.transform.gameObject.layer;
                     if (layerMask == terrainLayer.value)
                     {
                         OnTerrainPress(hit.point);
                     }
-                }   
+                }
             }
             else
             {
@@ -66,12 +72,26 @@ namespace GameCreator.Features.GameScene
             {
                 OnTerrainMouseDown(hitPoint);
             }
+
             isTerrainPressed = true;
         }
 
         void OnTerrainMouseDown(Vector3 hitPoint)
         {
-            Debug.Log("Terrain mouse down");
+            if (!string.IsNullOrEmpty(selectedCharacter))
+            {
+                AddCharacter(selectedCharacter, hitPoint);
+                
+            }
+        }
+
+        void AddCharacter(string character, Vector3 hitPoint)
+        {
+            deselectCharacterCommand.Execute();
+            
+            var config = charactersConfig.GetCharacterConfig(character);
+            var characterView = Instantiate(config.Prefab, hitPoint, Quaternion.Euler(0, 180, 0));
+            characterView.transform.parent = charactersContainer;
         }
     }
 }
