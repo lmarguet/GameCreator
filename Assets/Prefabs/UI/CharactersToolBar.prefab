@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 1914306306443851340}
   - component: {fileID: 3281839623140795466}
   - component: {fileID: 1706208040223898688}
+  - component: {fileID: 8942241959150698311}
   m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
@@ -269,6 +270,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &8942241959150698311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372183335778893988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 1
 --- !u!1 &1021405696028262709
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +452,7 @@ MonoBehaviour:
   closeButton: {fileID: 1888105651}
   canvasGroup: {fileID: 7204124363709272420}
   buttonsContainer: {fileID: 1914306306443851340}
+  toggleGroup: {fileID: 8942241959150698311}
   characterButtonPrefab: {fileID: 6143241417325181215, guid: 0900b26a30dc34931981f7a0249d6c98,
     type: 3}
 --- !u!225 &7204124363709272420
