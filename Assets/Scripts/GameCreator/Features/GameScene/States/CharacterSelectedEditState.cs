@@ -1,5 +1,4 @@
 using GameCreator.Features.Characters;
-using UnityEngine;
 
 namespace GameCreator.Features.GameScene.States
 {
@@ -7,37 +6,40 @@ namespace GameCreator.Features.GameScene.States
     {
         CharacterView selectedCharacter;
 
-        public void Select(GameObject character)
+        public void Select(CharacterView character)
         {
-            selectedCharacter = character.GetComponent<CharacterView>();
+            selectedCharacter = character;
             gameSceneRoot.ShowCharacterUi(selectedCharacter);
+            selectedCharacter.IsSelected = true;
         }
 
         protected override void OnEnable()
         {
-            gameSceneRoot.OnTerrainMouseDown.AddListener(HandleTerrainMouseDown);
+            gameSceneRoot.TerrainView.MouseDown.AddListener(HandleTerrainMouseDown);
             gameSceneRoot.OnCharacterMouseDown.AddListener(HandleCharacterMouseDown);
+            gameSceneRoot.SetCameraControllsEnabled(false);
         }
 
         protected override void OnDisable()
         {
-            gameSceneRoot.OnTerrainMouseDown.RemoveListener(HandleTerrainMouseDown);
+            gameSceneRoot.TerrainView.MouseDown.RemoveListener(HandleTerrainMouseDown);
             gameSceneRoot.OnCharacterMouseDown.RemoveListener(HandleCharacterMouseDown);
+            selectedCharacter.IsSelected = false;
             selectedCharacter = null;
+            gameSceneRoot.SetCameraControllsEnabled(true);
         }
 
-        void HandleCharacterMouseDown(RaycastHit hit)
+        void HandleCharacterMouseDown(CharacterView characterView)
         {
-            var newSelectedCharacter = hit.transform.gameObject;
-            if (newSelectedCharacter.GetInstanceID() == selectedCharacter.GetInstanceID())
+            if (characterView == selectedCharacter)
             {
                 return;
             }
 
-            gameSceneRoot.SelectCharacter(newSelectedCharacter);
+            gameSceneRoot.SelectCharacter(characterView);
         }
 
-        void HandleTerrainMouseDown(Vector3 position)
+        void HandleTerrainMouseDown()
         {
             gameSceneRoot.SetDefaultEditState();
         }

@@ -1,4 +1,4 @@
-using UnityEngine;
+using GameCreator.Features.Characters;
 
 namespace GameCreator.Features.GameScene.States
 {
@@ -17,9 +17,9 @@ namespace GameCreator.Features.GameScene.States
             gameSceneRoot.OnCharacterMouseDown.RemoveListener(HandleCharacterMouseDown);
         }
 
-        void HandleCharacterMouseDown(RaycastHit hit)
+        void HandleCharacterMouseDown(CharacterView characterView)
         {
-            gameSceneRoot.SelectCharacter(hit.transform.gameObject);
+            gameSceneRoot.SelectCharacter(characterView);
         }
     }
 }

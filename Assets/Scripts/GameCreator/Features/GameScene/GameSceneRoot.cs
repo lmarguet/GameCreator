@@ -1,3 +1,4 @@
+using Exoa.Designer;
 using GameCreator.Config;
 using GameCreator.Features.Characters.Ui;
 using GameCreator.Features.GameScene.States;
@@ -22,12 +23,16 @@ namespace GameCreator.Features.GameScene
         [SerializeField] LayerMask charactersLayer;
         [SerializeField] Transform charactersContainer;
         [SerializeField] CharacterWolrdUi characterWorldUi;
+        [SerializeField] Inputs cameraInputs;
+        [SerializeField] TerrainView terrainView;
 
         static readonly Quaternion CharacterInitRotation = Quaternion.Euler(0, 180, 0);
 
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
         IGameSceneState state;
+
+        public TerrainView TerrainView => terrainView;
 
         void Awake()
         {
@@ -58,7 +63,7 @@ namespace GameCreator.Features.GameScene
             {
                 if (isMousePressed)
                 {
-                    MouseUpRaycast();
+                    RaycastMouseUp();
                 }
 
                 isMousePressed = false;
@@ -71,7 +76,6 @@ namespace GameCreator.Features.GameScene
             else
             {
                 isTerrainPressed = false;
-                isCharacterPressed = false;
             }
         }
 
@@ -82,8 +86,7 @@ namespace GameCreator.Features.GameScene
                 return;
             }
 
-            var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out var hit))
+            if (DoMouseRaycast(out var hit))
             {
                 var layerMask = 1 << hit.transform.gameObject.layer;
 
@@ -91,14 +94,16 @@ namespace GameCreator.Features.GameScene
                 {
                     HandleTerrainPress(hit.point);
                 }
-                else if (layerMask == charactersLayer)
-                {
-                    HandleCharacterPress(hit);
-                }
             }
         }
 
-        void MouseUpRaycast()
+        public bool DoMouseRaycast(out RaycastHit hit)
+        {
+            var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
+            return Physics.Raycast(ray, out hit);
+        }
+
+        void RaycastMouseUp()
         {
             if (LeanTouch.PointOverGui(Input.mousePosition))
             {
@@ -132,7 +137,7 @@ namespace GameCreator.Features.GameScene
             {
                 state.Disable();
             }
-            
+
             Debug.Log($"{state} -> {gameSceneState}");
             state = gameSceneState.Enable(this);
         }
