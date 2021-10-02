@@ -37,3 +37,7 @@ MonoBehaviour:
     scene:
       sceneAsset: {fileID: 102900000, guid: e79b6e7eb0923402884538545a51d1ce, type: 3}
       scenePath: Assets/Scenes/SettingsPopup.unity
+  - sceneIdID: 6
+    scene:
+      sceneAsset: {fileID: 102900000, guid: 4df55887c1d7d4f589d36e49deac2158, type: 3}
+      scenePath: Assets/Scenes/CharacterEditPopup.unity

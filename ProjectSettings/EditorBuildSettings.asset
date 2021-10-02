@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Bootstrap.unity
     guid: 8df36d3f48f78445eb7a173b637faa83
@@ -26,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SettingsPopup.unity
     guid: e79b6e7eb0923402884538545a51d1ce
+  - enabled: 1
+    path: Assets/Scenes/CharacterEditPopup.unity
+    guid: 4df55887c1d7d4f589d36e49deac2158
   m_configObjects: {}
