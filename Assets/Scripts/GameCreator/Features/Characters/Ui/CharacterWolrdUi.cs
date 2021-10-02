@@ -1,11 +1,28 @@
+using GameCreator.Features.Characters.EditPopup;
 using UnityEngine;
+using UnityEngine.UI;
+using Zenject;
 
 namespace GameCreator.Features.Characters.Ui
 {
     public class CharacterWolrdUi : MonoBehaviour
     {
+        [Inject] OpenEditCharacterPopupCommand openEditCharacterPopupCommand;
+
+        [SerializeField] Button openEditPopupButton;
+
         Transform cameraTransform;
         bool isVisible;
+
+        void Awake()
+        {
+            openEditPopupButton.onClick.AddListener(HandleOpenEditPopupClick);
+        }
+
+        async void HandleOpenEditPopupClick()
+        {
+            await openEditCharacterPopupCommand.Run();
+        }
 
         public void Show(GameObject character, Transform cameraTransform)
         {
@@ -27,7 +44,7 @@ namespace GameCreator.Features.Characters.Ui
         {
             if (isVisible)
             {
-                UpdateRotation();   
+                UpdateRotation();
             }
         }
 

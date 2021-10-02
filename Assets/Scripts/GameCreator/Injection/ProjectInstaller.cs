@@ -1,4 +1,5 @@
 using GameCreator.Features.Characters;
+using GameCreator.Features.Characters.EditPopup;
 using GameCreator.Features.EditMode;
 using GameCreator.Features.GameScene;
 using GameCreator.Features.GameScene.States;
@@ -29,11 +30,13 @@ namespace GameCreator.Injection
             Container.Bind<LoadEditModeUiCommand>().AsSingle();
             Container.Bind<LoadSettingsPopupCommand>().AsSingle();
             Container.Bind<LoadPlayModeUiCommand>().AsSingle();
-            
+
             Container.Bind<StartCharacterPlacementCommand>().AsSingle();
             Container.Bind<StopCharacterPlacementCommand>().AsSingle();
             Container.Bind<SelectCharacterCommand>().AsSingle();
             Container.Bind<DeselectCharacterCommand>().AsSingle();
+
+            Container.Bind<OpenEditCharacterPopupCommand>().AsSingle();
         }
 
         void BindGameSceneState()
