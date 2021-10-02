@@ -40,8 +40,8 @@ namespace GameCreator.Injection
         {
             Container.Bind<EditDefaultState>().AsSingle();
             Container.Bind<PlayDefaultState>().AsSingle();
-            Container.Bind<EditCharacterPlacementState>().AsSingle();
-            Container.Bind<EditCharacterSelectedState>().AsSingle();
+            Container.Bind<CharacterPlacementEditState>().AsSingle();
+            Container.Bind<CharacterSelectedEditState>().AsSingle();
         }
     }
 }

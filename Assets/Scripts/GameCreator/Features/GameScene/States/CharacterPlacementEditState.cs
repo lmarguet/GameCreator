@@ -4,7 +4,7 @@ using Zenject;
 
 namespace GameCreator.Features.GameScene.States
 {
-    public class EditCharacterPlacementState : AGameSceneState
+    public class CharacterPlacementEditState : AGameSceneState
     {
         [Inject] StopCharacterPlacementCommand stopCharacterPlacementCommand;
         

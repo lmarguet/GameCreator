@@ -2,13 +2,14 @@ using UnityEngine;
 
 namespace GameCreator.Features.GameScene.States
 {
-    public class EditCharacterSelectedState : AGameSceneState
+    public class CharacterSelectedEditState : AGameSceneState
     {
         GameObject selectedCharacter;
 
-        public void Init(GameObject character)
+        public void Select(GameObject character)
         {
             selectedCharacter = character;
+            gameSceneRoot.ShowCharacterUi(selectedCharacter);
         }
 
         protected override void OnEnable()
@@ -26,9 +27,13 @@ namespace GameCreator.Features.GameScene.States
 
         void HandleCharacterMouseDown(RaycastHit hit)
         {
-            // TODO check if same character
-            // TODO deselect current character
-            gameSceneRoot.SelectCharacter(hit.transform.gameObject);
+            var newSelectedCharacter = hit.transform.gameObject;
+            if (newSelectedCharacter.GetInstanceID() == selectedCharacter.GetInstanceID())
+            {
+                return;
+            }
+
+            gameSceneRoot.SelectCharacter(newSelectedCharacter);
         }
 
         void HandleTerrainMouseDown(Vector3 position)

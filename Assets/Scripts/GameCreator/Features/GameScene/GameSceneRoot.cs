@@ -1,5 +1,5 @@
 using GameCreator.Config;
-using GameCreator.Features.Characters;
+using GameCreator.Features.Characters.Ui;
 using GameCreator.Features.GameScene.States;
 using GameCreator.SceneManagement;
 using Lean.Touch;
@@ -11,17 +11,17 @@ namespace GameCreator.Features.GameScene
     public partial class GameSceneRoot : ASceneRoot
     {
         [Inject] CharactersConfig charactersConfig;
-        [Inject] StopCharacterPlacementCommand stopCharacterPlacementCommand;
 
         [Inject] EditDefaultState editDefaultState;
         [Inject] PlayDefaultState playDefaultState;
-        [Inject] EditCharacterPlacementState editCharacterPlacementState;
-        [Inject] EditCharacterSelectedState editCharacterSelectedState;
+        [Inject] CharacterPlacementEditState characterPlacementEditState;
+        [Inject] CharacterSelectedEditState characterSelectedEditState;
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
         [SerializeField] LayerMask charactersLayer;
         [SerializeField] Transform charactersContainer;
+        [SerializeField] CharacterWolrdUi characterWolrdUi;
 
         static readonly Quaternion CharacterInitRotation = Quaternion.Euler(0, 180, 0);
 
@@ -130,6 +130,11 @@ namespace GameCreator.Features.GameScene
             
             Debug.Log($"{state} -> {gameSceneState}");
             state = gameSceneState.Enable(this);
+        }
+
+        public void SetDefaultEditState()
+        {
+            SetState(editDefaultState);
         }
     }
 }

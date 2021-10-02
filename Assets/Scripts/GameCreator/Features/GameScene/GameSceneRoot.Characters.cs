@@ -27,8 +27,8 @@ namespace GameCreator.Features.GameScene
         
         public void StartPlacingCharacter(string characterId)
         {
-            SetState(editCharacterPlacementState);
-            editCharacterPlacementState.SetCharacterId(characterId);
+            SetState(characterPlacementEditState);
+            characterPlacementEditState.SetCharacterId(characterId);
         }
 
         public void AddCharacter(string character, Vector3 hitPoint)
@@ -38,6 +38,16 @@ namespace GameCreator.Features.GameScene
             var characterView = Instantiate(config.Prefab, hitPoint, CharacterInitRotation).GetComponent<CharacterView>();
             characterView.transform.parent = charactersContainer;
             characterViews.Add(characterView);
+        }
+
+        public void ShowCharacterUi(GameObject character)
+        {
+            characterWolrdUi.Show(character, sceneCamera.transform);
+        }
+
+        public void HideCharacterUi()
+        {
+            characterWolrdUi.Hide(charactersContainer);
         }
 
         public void StopAllCharactersAnimations()
@@ -56,15 +66,10 @@ namespace GameCreator.Features.GameScene
             }
         }
 
-        public void SetDefaultEditState()
-        {
-            SetState(editDefaultState);
-        }
-
         public void SelectCharacter(GameObject character)
         {
-            SetState(editCharacterSelectedState);
-            editCharacterSelectedState.Init(character);
+            SetState(characterSelectedEditState);
+            characterSelectedEditState.Select(character);
         }
     }
 }

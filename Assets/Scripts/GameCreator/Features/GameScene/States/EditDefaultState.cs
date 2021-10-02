@@ -7,6 +7,8 @@ namespace GameCreator.Features.GameScene.States
         protected override void OnEnable()
         {
             gameSceneRoot.StopAllCharactersAnimations();
+            gameSceneRoot.HideCharacterUi();
+            
             gameSceneRoot.OnCharacterMouseDown.AddListener(HandleCharacterMouseDown);
         }
 
