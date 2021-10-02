@@ -5,14 +5,14 @@ using Zenject;
 
 namespace GameCreator.Features.Characters
 {
-    public class SetCharacterCreationTarget : ACommand<string>
+    public class StartCharacterPlacementCommand : ACommand<string>
     {
         [Inject] NavigationManager navigationManager;
         
         public override void Execute(string characterId)
         {
             var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
-            gameSceneRoot.SetCharacterCreationTarget(characterId);
+            gameSceneRoot.StartPlacingCharacter(characterId);
         }
     }
 }

@@ -23,6 +23,8 @@ namespace GameCreator.Features.GameScene.States
         public void Disable()
         {
             isEnabled = false;
+            OnDisable();
+            gameSceneRoot = null;
         }
 
         protected virtual void OnDisable()

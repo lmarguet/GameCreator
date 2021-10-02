@@ -11,20 +11,20 @@ namespace GameCreator.Features.GameScene
     public partial class GameSceneRoot : ASceneRoot
     {
         [Inject] CharactersConfig charactersConfig;
-        [Inject] ClearCharacterCreationSelection clearCharacterCreationSelection;
+        [Inject] StopCharacterPlacementCommand stopCharacterPlacementCommand;
 
         [Inject] EditDefaultState editDefaultState;
         [Inject] PlayDefaultState playDefaultState;
         [Inject] EditCharacterPlacementState editCharacterPlacementState;
         [Inject] EditCharacterSelectedState editCharacterSelectedState;
-        
+
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
         [SerializeField] LayerMask charactersLayer;
         [SerializeField] Transform charactersContainer;
 
         static readonly Quaternion CharacterInitRotation = Quaternion.Euler(0, 180, 0);
-        
+
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
         IGameSceneState state;
@@ -39,7 +39,7 @@ namespace GameCreator.Features.GameScene
         {
             if (currentMode == GameSceneMode.EditMode)
             {
-                CheckMouseInteraction();   
+                CheckMouseInteraction();
             }
         }
 
@@ -51,21 +51,17 @@ namespace GameCreator.Features.GameScene
             }
             else if (Input.GetMouseButtonUp(0))
             {
+                if (isMousePressed)
+                {
+                    MouseUpRaycast();
+                }
+
                 isMousePressed = false;
             }
 
             if (isMousePressed)
             {
-                if (LeanTouch.PointOverGui(Input.mousePosition))
-                {
-                    return;
-                }
-
-                var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out var hit))
-                {
-                    OnMouseDownRaycast(hit);
-                }
+                RaycastMouseDown();
             }
             else
             {
@@ -74,17 +70,42 @@ namespace GameCreator.Features.GameScene
             }
         }
 
-        void OnMouseDownRaycast(RaycastHit hit)
+        void RaycastMouseDown()
         {
-            var layerMask = 1 << hit.transform.gameObject.layer;
-            if (layerMask == terrainLayer.value)
+            if (LeanTouch.PointOverGui(Input.mousePosition))
             {
-                OnTerrainPress(hit.point);
+                return;
             }
 
-            if (layerMask == charactersLayer)
+            var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out var hit))
             {
-                OnCharacterPress(hit);
+                var layerMask = 1 << hit.transform.gameObject.layer;
+
+                if (layerMask == terrainLayer.value)
+                {
+                    HandleTerrainPress(hit.point);
+                }
+                else if (layerMask == charactersLayer)
+                {
+                    OnCharacterPress(hit);
+                }
+            }
+        }
+
+        void MouseUpRaycast()
+        {
+            if (LeanTouch.PointOverGui(Input.mousePosition))
+            {
+                return;
+            }
+
+            var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out var hit))
+            {
+                var layerMask = 1 << hit.transform.gameObject.layer;
+
+                // TODO
             }
         }
 
@@ -106,6 +127,7 @@ namespace GameCreator.Features.GameScene
             {
                 state.Disable();
             }
+
             state = gameSceneState.Enable(this);
         }
     }

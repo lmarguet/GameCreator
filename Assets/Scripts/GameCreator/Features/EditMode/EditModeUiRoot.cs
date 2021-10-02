@@ -87,9 +87,14 @@ namespace GameCreator.Features.EditMode
 
         void ShowToolBar(ToolBarType toolBarType)
         {
-            var toolBarView = toolBarViews.First(x => x.Type == toolBarType);
+            var toolBarView = GetToolBarView(toolBarType);
             toolBarView.Show();
             ShowToolBarContainer();
+        }
+
+        AToolBarView GetToolBarView(ToolBarType toolBarType)
+        {
+            return toolBarViews.First(x => x.Type == toolBarType);
         }
 
         void ShowToolBarContainer()
@@ -116,6 +121,12 @@ namespace GameCreator.Features.EditMode
         {
             bottomMenu.alpha = 1;
             bottomMenu.gameObject.SetActive(true);
+        }
+
+        public void DeselectCharacters()
+        {
+            var charactersToolBar = (CharactersToolBar)GetToolBarView(ToolBarType.Charcters);
+            charactersToolBar.UnToggle();
         }
     }
 }

@@ -12,23 +12,23 @@ namespace GameCreator.Features.GameScene
         
         readonly List<CharacterView> characterViews = new List<CharacterView>();
 
-        string characterCreationTargetId;
         bool isCharacterPressed;
         bool isCharacterSelected;
 
-        public void SetCharacterCreationTarget(string characterId)
+        public void StartPlacingCharacter(string characterId)
         {
-            characterCreationTargetId = characterId;
+            SetState(editCharacterPlacementState);
+            editCharacterPlacementState.SetCharacterId(characterId);
         }
 
-        public void ClearCharacterCreationTarget()
+        public void StopCharacterPlacement()
         {
-            characterCreationTargetId = null;
+            SetState(editDefaultState);
         }
 
-        void AddCharacter(string character, Vector3 hitPoint)
+        public void AddCharacter(string character, Vector3 hitPoint)
         {
-            clearCharacterCreationSelection.Execute();
+            stopCharacterPlacementCommand.Execute();
 
             var config = charactersConfig.GetCharacterConfig(character);
 

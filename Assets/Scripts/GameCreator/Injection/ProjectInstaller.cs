@@ -30,8 +30,8 @@ namespace GameCreator.Injection
             Container.Bind<LoadSettingsPopupCommand>().AsSingle();
             Container.Bind<LoadPlayModeUiCommand>().AsSingle();
             
-            Container.Bind<SetCharacterCreationTarget>().AsSingle();
-            Container.Bind<ClearCharacterCreationSelection>().AsSingle();
+            Container.Bind<StartCharacterPlacementCommand>().AsSingle();
+            Container.Bind<StopCharacterPlacementCommand>().AsSingle();
             Container.Bind<SelectCharacterCommand>().AsSingle();
             Container.Bind<DeselectCharacterCommand>().AsSingle();
         }

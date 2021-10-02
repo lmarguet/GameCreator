@@ -11,11 +11,11 @@ namespace GameCreator.Features.PlayMode
     public class LoadPlayModeUiCommand : AAsyncCommand
     {
         [Inject] NavigationManager navigationManager;
-        [Inject] ClearCharacterCreationSelection clearCharacterCreationSelection;
+        [Inject] StopCharacterPlacementCommand stopCharacterPlacementCommand;
 
         protected override async Task DoRun()
         {
-            clearCharacterCreationSelection.Execute();
+            stopCharacterPlacementCommand.Execute();
             await navigationManager.OpenScene<PlayModeUiRoot>(SceneId.PlayModeUi, LoadSceneMode.Additive);
             
             var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
