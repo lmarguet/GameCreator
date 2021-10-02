@@ -1,6 +1,7 @@
 using GameCreator.Features.Characters;
 using GameCreator.Features.EditMode;
 using GameCreator.Features.GameScene;
+using GameCreator.Features.GameScene.States;
 using GameCreator.Features.PlayMode;
 using GameCreator.Features.SettingsPopup;
 using GameCreator.SceneManagement;
@@ -15,23 +16,32 @@ namespace GameCreator.Injection
         {
             Debug.Log("[ProjectInstaller] Installing bindings");
 
-            Container.Bind<SceneLoader>().AsSingle();
+            Container.Bind<SceneLoader>().AsSingle().WhenInjectedInto<NavigationManager>();
             Container.Bind<NavigationManager>().AsSingle();
 
             BindCommands();
+            BindGameSceneState();
         }
 
         void BindCommands()
         {
-            // Scenes command
             Container.Bind<LoadGameSceneCommand>().AsSingle();
             Container.Bind<LoadEditModeUiCommand>().AsSingle();
             Container.Bind<LoadSettingsPopupCommand>().AsSingle();
             Container.Bind<LoadPlayModeUiCommand>().AsSingle();
+            
             Container.Bind<SetCharacterCreationTarget>().AsSingle();
             Container.Bind<ClearCharacterCreationSelection>().AsSingle();
             Container.Bind<SelectCharacterCommand>().AsSingle();
             Container.Bind<DeselectCharacterCommand>().AsSingle();
+        }
+
+        void BindGameSceneState()
+        {
+            Container.Bind<EditDefaultState>().AsSingle();
+            Container.Bind<PlayDefaultState>().AsSingle();
+            Container.Bind<EditCharacterPlacementState>().AsSingle();
+            Container.Bind<EditCharacterSelectedState>().AsSingle();
         }
     }
 }

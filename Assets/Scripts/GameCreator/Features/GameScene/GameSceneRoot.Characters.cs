@@ -36,16 +36,16 @@ namespace GameCreator.Features.GameScene
             characterView.transform.parent = charactersContainer;
             characterViews.Add(characterView);
         }
-        
-        void StopAllCharactersAnimations()
+
+        public void StopAllCharactersAnimations()
         {
             foreach (var characterView in characterViews)
             {
                 characterView.StopAnimating();
             }
         }
-        
-        void StartAllCharactersAnimations()
+
+        public void StartAllCharactersAnimations()
         {
             foreach (var characterView in characterViews)
             {

@@ -1,5 +1,6 @@
 using GameCreator.Config;
 using GameCreator.Features.Characters;
+using GameCreator.Features.GameScene.States;
 using GameCreator.SceneManagement;
 using Lean.Touch;
 using UnityEngine;
@@ -11,6 +12,11 @@ namespace GameCreator.Features.GameScene
     {
         [Inject] CharactersConfig charactersConfig;
         [Inject] ClearCharacterCreationSelection clearCharacterCreationSelection;
+
+        [Inject] EditDefaultState editDefaultState;
+        [Inject] PlayDefaultState playDefaultState;
+        [Inject] EditCharacterPlacementState editCharacterPlacementState;
+        [Inject] EditCharacterSelectedState editCharacterSelectedState;
         
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
@@ -21,6 +27,7 @@ namespace GameCreator.Features.GameScene
         
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
+        IGameSceneState state;
 
         void Start()
         {
@@ -84,14 +91,22 @@ namespace GameCreator.Features.GameScene
         public void EnterEditMode()
         {
             currentMode = GameSceneMode.EditMode;
-            StopAllCharactersAnimations();
+            SetState(editDefaultState);
         }
 
         public void EnterPlayMode()
         {
             currentMode = GameSceneMode.PlayMode;
-            DeselectCharacter();
-            StartAllCharactersAnimations();
+            SetState(playDefaultState);
+        }
+
+        void SetState(IGameSceneState gameSceneState)
+        {
+            if (state != null)
+            {
+                state.Disable();
+            }
+            state = gameSceneState.Enable(this);
         }
     }
 }
