@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace GameCreator.Config
@@ -31,6 +32,11 @@ namespace GameCreator.Config
             }
 
             return characters[index];
+        }
+
+        public CharacterConfig GetCharacterConfig(string id)
+        {
+            return characters.First(x => x.Id == id);
         }
     }
 }
