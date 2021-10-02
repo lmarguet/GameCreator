@@ -516,6 +516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 1146473068}
   deleteButton: {fileID: 1253585829}
+  playerToggle: {fileID: 989049161}
+  npcToggle: {fileID: 1298351613}
 --- !u!114 &822683301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,7 +780,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 857136379}
   toggleTransition: 1
   graphic: {fileID: 737351548}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1147895238}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1544,11 +1546,11 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1401172847}
   toggleTransition: 1
   graphic: {fileID: 1001895824}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1147895238}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1401172845
 GameObject:
   m_ObjectHideFlags: 0

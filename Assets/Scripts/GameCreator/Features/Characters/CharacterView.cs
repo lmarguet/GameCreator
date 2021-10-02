@@ -7,6 +7,8 @@ namespace GameCreator.Features.Characters
     {
         Animator animator;
 
+        public CharacterType characterType { get; private set; }
+
         void Awake()
         {
             animator = GetComponent<Animator>();
@@ -21,6 +23,11 @@ namespace GameCreator.Features.Characters
         public void StartAnimating()
         {
             animator.enabled = true;
+        }
+
+        public void SetType(CharacterType type)
+        {
+            characterType = type;
         }
     }
 }

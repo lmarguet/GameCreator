@@ -24,7 +24,7 @@ namespace GameCreator.Features.GameScene
             OnCharacterPress.Dispatch(hitInfo);
             isCharacterPressed = true;
         }
-        
+
         public void StartPlacingCharacter(string characterId)
         {
             SetState(characterPlacementEditState);
@@ -37,6 +37,10 @@ namespace GameCreator.Features.GameScene
 
             var characterView = Instantiate(config.Prefab, hitPoint, CharacterInitRotation).GetComponent<CharacterView>();
             characterView.transform.parent = charactersContainer;
+
+            var characterType = characterViews.Count == 0 ? CharacterType.Player : CharacterType.NPC;
+            characterView.SetType(characterType);
+
             characterViews.Add(characterView);
         }
 
@@ -77,7 +81,26 @@ namespace GameCreator.Features.GameScene
             HideCharacterUi();
             characterViews.Remove(character);
             Destroy(character.gameObject);
+
+            if (characterViews.Count == 1)
+            {
+                characterViews[0].SetType(CharacterType.Player);
+            }
+
             SetState(editDefaultState);
+        }
+
+        public void SetCharacterType(CharacterView characterView, CharacterType characterType)
+        {
+            if (characterType == CharacterType.Player)
+            {
+                foreach (var view in characterViews)
+                {
+                    view.SetType(CharacterType.NPC);
+                }
+            }
+
+            characterView.SetType(characterType);
         }
     }
 }
