@@ -40,7 +40,7 @@ namespace GameCreator.Features.GameScene
             characterViews.Add(characterView);
         }
 
-        public void ShowCharacterUi(GameObject character)
+        public void ShowCharacterUi(CharacterView character)
         {
             characterWorldUi.Show(character, sceneCamera.transform);
         }
@@ -70,6 +70,14 @@ namespace GameCreator.Features.GameScene
         {
             SetState(characterSelectedEditState);
             characterSelectedEditState.Select(character);
+        }
+
+        public void DeleteCharacter(CharacterView character)
+        {
+            HideCharacterUi();
+            characterViews.Remove(character);
+            Destroy(character.gameObject);
+            SetState(editDefaultState);
         }
     }
 }

@@ -515,6 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 1146473068}
+  deleteButton: {fileID: 1253585829}
 --- !u!114 &822683301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,7 +1359,7 @@ GameObject:
   - component: {fileID: 1253585830}
   - component: {fileID: 1253585829}
   m_Layer: 5
-  m_Name: Button
+  m_Name: DeleteCharacterButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

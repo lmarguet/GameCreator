@@ -1,14 +1,15 @@
+using GameCreator.Features.Characters;
 using UnityEngine;
 
 namespace GameCreator.Features.GameScene.States
 {
     public class CharacterSelectedEditState : AGameSceneState
     {
-        GameObject selectedCharacter;
+        CharacterView selectedCharacter;
 
         public void Select(GameObject character)
         {
-            selectedCharacter = character;
+            selectedCharacter = character.GetComponent<CharacterView>();
             gameSceneRoot.ShowCharacterUi(selectedCharacter);
         }
 

@@ -6,15 +6,14 @@ using Zenject;
 
 namespace GameCreator.Features.Characters.EditPopup
 {
-    public class OpenEditCharacterPopupCommand : AAsyncCommand
+    public class OpenEditCharacterPopupCommand : AAsyncCommand<CharacterView>
     {
         [Inject] NavigationManager navigationManager;
         
-        protected override async Task DoRun()
+        protected override async Task DoRun(CharacterView character)
         {
             var editPopupRoot = await navigationManager.OpenScene<CharacterEditPopupRoot>(SceneId.CharacterEditPopup, LoadSceneMode.Additive);
-            
-            // TODO setup
+            editPopupRoot.SetCharacter(character);
         }
     }
 }

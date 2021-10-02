@@ -13,6 +13,7 @@ namespace GameCreator.Features.Characters.Ui
 
         Transform cameraTransform;
         bool isVisible;
+        CharacterView character;
 
         void Awake()
         {
@@ -21,11 +22,12 @@ namespace GameCreator.Features.Characters.Ui
 
         async void HandleOpenEditPopupClick()
         {
-            await openEditCharacterPopupCommand.Run();
+            await openEditCharacterPopupCommand.Run(character);
         }
 
-        public void Show(GameObject character, Transform cameraTransform)
+        public void Show(CharacterView character, Transform cameraTransform)
         {
+            this.character = character;
             this.cameraTransform = cameraTransform;
             transform.SetParent(character.transform, false);
             UpdateRotation();

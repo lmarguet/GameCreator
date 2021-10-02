@@ -37,6 +37,7 @@ namespace GameCreator.Injection
             Container.Bind<DeselectCharacterCommand>().AsSingle();
 
             Container.Bind<OpenEditCharacterPopupCommand>().AsSingle();
+            Container.Bind<DeleteCharacterCommand>().AsSingle();
         }
 
         void BindGameSceneState()
