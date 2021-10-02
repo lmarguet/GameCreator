@@ -286,7 +286,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   charactersContainer: {fileID: 628468863}
-  characterWolrdUi: {fileID: 1377921618302531401}
+  characterWorldUi: {fileID: 1377921618302531401}
 --- !u!114 &666100489
 MonoBehaviour:
   m_ObjectHideFlags: 0
