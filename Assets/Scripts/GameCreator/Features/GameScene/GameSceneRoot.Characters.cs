@@ -42,12 +42,12 @@ namespace GameCreator.Features.GameScene
 
         public void ShowCharacterUi(GameObject character)
         {
-            characterWolrdUi.Show(character, sceneCamera.transform);
+            characterWorldUi.Show(character, sceneCamera.transform);
         }
 
         public void HideCharacterUi()
         {
-            characterWolrdUi.Hide(charactersContainer);
+            characterWorldUi.Hide(charactersContainer);
         }
 
         public void StopAllCharactersAnimations()

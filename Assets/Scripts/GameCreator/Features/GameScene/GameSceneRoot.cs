@@ -21,13 +21,18 @@ namespace GameCreator.Features.GameScene
         [SerializeField] LayerMask terrainLayer;
         [SerializeField] LayerMask charactersLayer;
         [SerializeField] Transform charactersContainer;
-        [SerializeField] CharacterWolrdUi characterWolrdUi;
+        [SerializeField] CharacterWolrdUi characterWorldUi;
 
         static readonly Quaternion CharacterInitRotation = Quaternion.Euler(0, 180, 0);
 
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
         IGameSceneState state;
+
+        void Awake()
+        {
+            characterWorldUi.gameObject.SetActive(false);
+        }
 
         void Start()
         {
