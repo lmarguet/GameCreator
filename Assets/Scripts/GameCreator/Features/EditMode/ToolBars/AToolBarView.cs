@@ -12,7 +12,7 @@ namespace GameCreator.Features.EditMode.ToolBars
         [SerializeField] CanvasGroup canvasGroup;
 
         public abstract ToolBarType Type { get; }
-        
+
         void Awake()
         {
             closeButton.onClick.AddListener(Close);
@@ -32,8 +32,13 @@ namespace GameCreator.Features.EditMode.ToolBars
 
         protected void Close()
         {
+            DoCloseInternal();
             Hide();
             OnClose.Dispatch();
+        }
+
+        protected virtual void DoCloseInternal()
+        {
         }
     }
 }

@@ -7,6 +7,7 @@ namespace GameCreator.SceneManagement
         Game = 2,
         EditModeUi = 3,
         PlayModeUi = 4,
-        SettingsPopup= 5
+        SettingsPopup = 5,
+        CharacterEditPopup = 6
     }
 }

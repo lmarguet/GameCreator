@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 117837825}
   - component: {fileID: 117837824}
   - component: {fileID: 117837826}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ToolBarContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 123972265}
   - component: {fileID: 123972267}
   - component: {fileID: 123972266}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,10 +310,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 117837823}
     m_Modifications:
+    - target: {fileID: 1688871455, guid: 81a248d43c05943868a830b91416d464, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888105649, guid: 81a248d43c05943868a830b91416d464, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960942, guid: 81a248d43c05943868a830b91416d464,
         type: 3}
       propertyPath: m_Name
       value: LocationEditToolbar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706208040154960942, guid: 81a248d43c05943868a830b91416d464,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706208040154960942, guid: 81a248d43c05943868a830b91416d464,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960943, guid: 81a248d43c05943868a830b91416d464,
         type: 3}
@@ -454,7 +472,7 @@ GameObject:
   - component: {fileID: 452874449}
   - component: {fileID: 452874448}
   - component: {fileID: 452874450}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BottomMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +600,7 @@ GameObject:
   - component: {fileID: 571648533}
   - component: {fileID: 571648535}
   - component: {fileID: 571648534}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,8 +692,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1066761727}
   - {fileID: 1865444518}
+  - {fileID: 1066761727}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -745,7 +763,7 @@ GameObject:
   - component: {fileID: 850847025}
   - component: {fileID: 850847024}
   - component: {fileID: 850847023}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LocationButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 937428868}
   - component: {fileID: 937428870}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,7 +930,7 @@ GameObject:
   - component: {fileID: 1066761730}
   - component: {fileID: 1066761729}
   - component: {fileID: 1066761728}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +950,7 @@ RectTransform:
   m_Children:
   - {fileID: 937428868}
   m_Father: {fileID: 822683299}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1010,7 +1028,7 @@ GameObject:
   - component: {fileID: 1097934046}
   - component: {fileID: 1097934048}
   - component: {fileID: 1097934047}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1085,7 +1103,7 @@ GameObject:
   - component: {fileID: 1146473070}
   - component: {fileID: 1146473069}
   - component: {fileID: 1146473068}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1204,7 +1222,7 @@ GameObject:
   - component: {fileID: 1181467118}
   - component: {fileID: 1181467117}
   - component: {fileID: 1181467116}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TerraformingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1322,7 +1340,7 @@ GameObject:
   - component: {fileID: 1208771573}
   - component: {fileID: 1208771575}
   - component: {fileID: 1208771574}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1415,7 @@ GameObject:
   - component: {fileID: 1277490874}
   - component: {fileID: 1277490873}
   - component: {fileID: 1277490872}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CharactersButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1516,7 +1534,7 @@ GameObject:
   - component: {fileID: 1306314386}
   - component: {fileID: 1306314385}
   - component: {fileID: 1306314384}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1634,7 +1652,7 @@ GameObject:
   - component: {fileID: 1705385198}
   - component: {fileID: 1705385200}
   - component: {fileID: 1705385199}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1727,7 +1745,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 822683299}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1865444519
 MonoBehaviour:
@@ -1770,10 +1788,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 117837823}
     m_Modifications:
+    - target: {fileID: 1688871455, guid: 4a4f99c243cbe4cd28e9f9d69c433499, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888105649, guid: 4a4f99c243cbe4cd28e9f9d69c433499, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960942, guid: 4a4f99c243cbe4cd28e9f9d69c433499,
         type: 3}
       propertyPath: m_Name
       value: TerrainEditToolbar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706208040154960942, guid: 4a4f99c243cbe4cd28e9f9d69c433499,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706208040154960942, guid: 4a4f99c243cbe4cd28e9f9d69c433499,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960943, guid: 4a4f99c243cbe4cd28e9f9d69c433499,
         type: 3}
@@ -1907,6 +1943,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 117837823}
     m_Modifications:
+    - target: {fileID: 1688871455, guid: cb6f4c390a58d4f7d8d0d6b593e6482b, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888105649, guid: cb6f4c390a58d4f7d8d0d6b593e6482b, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 372183335778893988, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021405696028262709, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960942, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
         type: 3}
       propertyPath: m_Name
@@ -1914,8 +1968,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960942, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960943, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
         type: 3}
@@ -2021,6 +2075,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155717770539748230, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb6f4c390a58d4f7d8d0d6b593e6482b, type: 3}

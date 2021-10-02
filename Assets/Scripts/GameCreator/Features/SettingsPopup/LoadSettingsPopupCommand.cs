@@ -8,15 +8,11 @@ namespace GameCreator.Features.SettingsPopup
 {
     public class LoadSettingsPopupCommand : AAsyncCommand
     {
-        [Inject] LoadSceneCommand loadSceneCommand;
+        [Inject] NavigationManager navigationManager;
         
         protected override async Task DoRun()
         {
-            await loadSceneCommand.Run(new LoadSceneCommand.Data
-            {
-                SceneId = SceneId.SettingsPopup,
-                LoadMode = LoadSceneMode.Additive
-            });
+            await navigationManager.OpenScene<SettingsPopupRoot>(SceneId.SettingsPopup, LoadSceneMode.Additive);
         }
     }
 }

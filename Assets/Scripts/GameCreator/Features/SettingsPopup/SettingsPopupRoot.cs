@@ -7,15 +7,15 @@ namespace GameCreator.Features.SettingsPopup
 {
     public class SettingsPopupRoot : ASceneRoot
     {
-        [Inject] CloseSceneCommand closeSceneCommand;
-        
+        [Inject] NavigationManager navigationManager;
+
         [SerializeField] Button closeButton;
 
         void Awake()
         {
             closeButton.onClick.AddListener(HandleCloseClick);
         }
-        
+
         void Start()
         {
             Debug.Log("[SettingsPopupRoot] Start");
@@ -23,7 +23,7 @@ namespace GameCreator.Features.SettingsPopup
 
         void HandleCloseClick()
         {
-            closeSceneCommand.Execute(SceneId.SettingsPopup);
+            navigationManager.CloseScene(SceneId.SettingsPopup);
         }
     }
 }

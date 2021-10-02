@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using GameCreator.Features.EditMode.ToolBars;
 using GameCreator.Features.PlayMode;
@@ -14,21 +13,19 @@ namespace GameCreator.Features.EditMode
     {
         [Inject] LoadSettingsPopupCommand loadSettingsPopupCommand;
         [Inject] LoadPlayModeUiCommand loadPlayModeUiCommand;
-        [Inject] CloseSceneCommand closeSceneCommand;
+        [Inject] NavigationManager navigationManager;
 
         [SerializeField] Button settingsButton;
         [SerializeField] Button playModeButton;
 
         [Header("Bottom menu")]
         [SerializeField] CanvasGroup bottomMenu;
-
         [SerializeField] Button charactersButton;
         [SerializeField] Button terrainEdioButton;
         [SerializeField] Button locationEditButton;
 
         [Header("Toolbar")]
         [SerializeField] CanvasGroup toolbarContainer;
-
         [SerializeField] AToolBarView[] toolBarViews;
 
         void Awake()
@@ -51,7 +48,7 @@ namespace GameCreator.Features.EditMode
         async void HandlePlaysButtonClick()
         {
             await loadPlayModeUiCommand.Run();
-            closeSceneCommand.Execute(SceneId.EditModeUi);
+            navigationManager.CloseScene(SceneId.EditModeUi);
         }
 
         async void HandleSettingsButtonClick()
@@ -90,9 +87,14 @@ namespace GameCreator.Features.EditMode
 
         void ShowToolBar(ToolBarType toolBarType)
         {
-            var toolBarView = toolBarViews.First(x => x.Type == toolBarType);
+            var toolBarView = GetToolBarView(toolBarType);
             toolBarView.Show();
             ShowToolBarContainer();
+        }
+
+        AToolBarView GetToolBarView(ToolBarType toolBarType)
+        {
+            return toolBarViews.First(x => x.Type == toolBarType);
         }
 
         void ShowToolBarContainer()
@@ -119,6 +121,12 @@ namespace GameCreator.Features.EditMode
         {
             bottomMenu.alpha = 1;
             bottomMenu.gameObject.SetActive(true);
+        }
+
+        public void DeselectCharacters()
+        {
+            var charactersToolBar = (CharactersToolBar)GetToolBarView(ToolBarType.Charcters);
+            charactersToolBar.UnToggle();
         }
     }
 }

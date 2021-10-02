@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalConfig: {fileID: 11400000, guid: c1adae97221f2419696d8524b5a8b5b2, type: 2}
   scenesConfig: {fileID: 11400000, guid: cd7fbc94d6cc84d28bd3b62327cb0e1b, type: 2}
+  charactersConfig: {fileID: 11400000, guid: 0f22b8e78940a46baba36edab464b82f, type: 2}

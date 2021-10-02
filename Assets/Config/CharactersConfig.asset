@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de194b31d4b459ab5b882eb7fd02d85, type: 3}
+  m_Name: CharactersConfig
+  m_EditorClassIdentifier: 
+  characters:
+  - id: BuisnessMan
+    prefab: {fileID: 100000, guid: c14bb5ce28dbb7442a2f79d8b6a061ce, type: 3}
+    thumbNail: {fileID: 21300000, guid: f7d8a49fa39b44a0d8cbf88b012c777c, type: 3}
+  - id: FireFighter
+    prefab: {fileID: 100000, guid: c393539dfea106a45957b13acb445ae9, type: 3}
+    thumbNail: {fileID: 21300000, guid: ce293472aa9db4d379f0408f7f1d5b33, type: 3}
+  - id: PoliceOfficer
+    prefab: {fileID: 100066, guid: 4f2d47505ddfc604a9f702e0599aa2ed, type: 3}
+    thumbNail: {fileID: 21300000, guid: e39f69397a4984aed8dfde62e7c80260, type: 3}
+  - id: RoadWorker
+    prefab: {fileID: 100000, guid: 0703a1849c2c89b4db4568688faf0c5f, type: 3}
+    thumbNail: {fileID: 21300000, guid: 8a5ee6b01903b4d37a8331415705c45b, type: 3}
+  - id: Boxer
+    prefab: {fileID: 154718, guid: c29bfbc60d760fd45ba7c2ba73c776ea, type: 3}
+    thumbNail: {fileID: 21300000, guid: 09b99ca920fc64f4d89029e87c3242b4, type: 3}
+  - id: Stuntman
+    prefab: {fileID: 114468, guid: f3f5a93faa378c84cb5e30e882ba79ff, type: 3}
+    thumbNail: {fileID: 21300000, guid: a3573a8caff0e4727a034ee4a35ccaa9, type: 3}
+  - id: DiscoGuy
+    prefab: {fileID: 178146, guid: 55d08d977efaaec409b62d6a6edd8ab4, type: 3}
+    thumbNail: {fileID: 21300000, guid: a4a8118fccd2848f29a41093301220ee, type: 3}
