@@ -13,7 +13,7 @@ namespace GameCreator.Features.Characters
         public override void Execute()
         {
             var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
-            gameSceneRoot.StopCharacterPlacement();
+            gameSceneRoot.SetDefaultEditState();
 
             var editSceneRoot = navigationManager.GetScene<EditModeUiRoot>();
             editSceneRoot.DeselectCharacters();

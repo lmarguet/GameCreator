@@ -15,10 +15,6 @@ namespace GameCreator.Features.GameScene
             if (!isTerrainPressed)
             {
                 OnTerrainMouseDown.Dispatch(hitPoint);
-                if (isCharacterSelected)
-                {
-                    DeselectCharacter();
-                }
             }
 
             OnTerrainPress.Dispatch(hitPoint);

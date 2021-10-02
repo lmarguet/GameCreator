@@ -1,35 +1,38 @@
 using System.Collections.Generic;
 using GameCreator.Features.Characters;
+using Signals;
 using UnityEngine;
-using Zenject;
 
 namespace GameCreator.Features.GameScene
 {
     public partial class GameSceneRoot
     {
-        [Inject] SelectCharacterCommand selectCharacterCommand;
-        [Inject] DeselectCharacterCommand deselectCharacterCommand;
-        
+        public readonly Signal<RaycastHit> OnCharacterMouseDown = new Signal<RaycastHit>();
+        public readonly Signal<RaycastHit> OnCharacterPress = new Signal<RaycastHit>();
+
         readonly List<CharacterView> characterViews = new List<CharacterView>();
 
         bool isCharacterPressed;
-        bool isCharacterSelected;
 
+        void HandleCharacterPress(RaycastHit hitInfo)
+        {
+            if (!isCharacterPressed)
+            {
+                OnCharacterMouseDown.Dispatch(hitInfo);
+            }
+
+            OnCharacterPress.Dispatch(hitInfo);
+            isCharacterPressed = true;
+        }
+        
         public void StartPlacingCharacter(string characterId)
         {
             SetState(editCharacterPlacementState);
             editCharacterPlacementState.SetCharacterId(characterId);
         }
 
-        public void StopCharacterPlacement()
-        {
-            SetState(editDefaultState);
-        }
-
         public void AddCharacter(string character, Vector3 hitPoint)
         {
-            stopCharacterPlacementCommand.Execute();
-
             var config = charactersConfig.GetCharacterConfig(character);
 
             var characterView = Instantiate(config.Prefab, hitPoint, CharacterInitRotation).GetComponent<CharacterView>();
@@ -53,30 +56,15 @@ namespace GameCreator.Features.GameScene
             }
         }
 
-        void OnCharacterPress(RaycastHit hitInfo)
+        public void SetDefaultEditState()
         {
-            if (!isCharacterPressed)
-            {
-                OnCharacterMouseDown(hitInfo);
-            }
-
-            isCharacterPressed = true;
+            SetState(editDefaultState);
         }
 
-        void OnCharacterMouseDown(RaycastHit hitInfo)
+        public void SelectCharacter(GameObject character)
         {
-            if (isCharacterSelected)
-            {
-                DeselectCharacter();
-            }
-            isCharacterSelected = true;
-            selectCharacterCommand.Execute();
-        }
-
-        void DeselectCharacter()
-        {
-            isCharacterSelected = false;
-            deselectCharacterCommand.Execute();
+            SetState(editCharacterSelectedState);
+            editCharacterSelectedState.Init(character);
         }
     }
 }

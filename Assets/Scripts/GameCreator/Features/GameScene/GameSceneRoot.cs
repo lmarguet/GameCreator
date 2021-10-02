@@ -88,7 +88,7 @@ namespace GameCreator.Features.GameScene
                 }
                 else if (layerMask == charactersLayer)
                 {
-                    OnCharacterPress(hit);
+                    HandleCharacterPress(hit);
                 }
             }
         }
@@ -127,7 +127,8 @@ namespace GameCreator.Features.GameScene
             {
                 state.Disable();
             }
-
+            
+            Debug.Log($"{state} -> {gameSceneState}");
             state = gameSceneState.Enable(this);
         }
     }

@@ -18,6 +18,7 @@ namespace GameCreator.Features.EditMode.ToolBars
         [SerializeField] Sprite selectedSprite;
         [SerializeField] Sprite pressedSprite;
 
+        bool isSelected;
         string characterId;
         Toggle toggle;
 
@@ -37,7 +38,13 @@ namespace GameCreator.Features.EditMode.ToolBars
                 throw new Exception($"[{name}] {nameof(characterId)} is missing");
             }
 
-            if (selected)
+            if (selected == isSelected)
+            {
+                return;
+            }
+
+            isSelected = selected;
+            if (isSelected)
             {
                 backgroundImage.sprite = selectedSprite;
                 OnSelect.Dispatch(characterId);
