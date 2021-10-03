@@ -40,6 +40,7 @@ namespace GameCreator.Features.GameScene
         GameSceneMode currentMode = GameSceneMode.EditMode;
         IGameSceneState state;
         TerrainEditMode terrainEditMode;
+        int terrainBrushDiameter;
 
         void Awake()
         {

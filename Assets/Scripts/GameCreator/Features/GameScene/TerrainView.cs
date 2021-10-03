@@ -1,4 +1,3 @@
-using GameCreator.Features.TerrainEdit;
 using Lean.Touch;
 using Signals;
 using UnityEngine;
@@ -11,12 +10,6 @@ namespace GameCreator.Features.GameScene
         public readonly Signal MouseUp = new Signal();
         public readonly Signal MouseDown = new Signal();
         public readonly Signal MouseDrag = new Signal();
-
-        public int brushWidth;
-        public int brushHeight;
-
-        [Range(0.001f, 0.1f)]
-        [SerializeField] float strength;
 
         Terrain targetTerrain;
         float sampledHeight;
@@ -76,14 +69,14 @@ namespace GameCreator.Features.GameScene
             TerrainData.SetHeights(0, 0, heightMap);
         }
 
-        public void Raise(Vector3 position)
+        public void Raise(Vector3 position, int diameter, float strength)
         {
-            RaiseTerrain(position, strength, brushWidth, brushHeight);
+            RaiseTerrain(position, strength, diameter, diameter);
         }
 
-        public void Lower(Vector3 position)
+        public void Lower(Vector3 position, int diameter, float strength)
         {
-            LowerTerrain(position, strength, brushWidth, brushHeight);
+            LowerTerrain(position, strength, diameter, diameter);
         }
 
         public Vector3 WorldToTerrainPosition(Vector3 worldPosition)
@@ -91,7 +84,7 @@ namespace GameCreator.Features.GameScene
             var terrainPositionOffset = worldPosition - targetTerrain.GetPosition();
             var heightmapResolution = HeightMapResolution;
 
-            var terrainPositionX = terrainPositionOffset.x / TerrainSize.x  * heightmapResolution;
+            var terrainPositionX = terrainPositionOffset.x / TerrainSize.x * heightmapResolution;
             var terrainPositionZ = terrainPositionOffset.z / TerrainSize.z * heightmapResolution;
             return new Vector3(terrainPositionX, 0, terrainPositionZ);
         }
@@ -99,7 +92,7 @@ namespace GameCreator.Features.GameScene
         Vector2Int GetBrushPosition(Vector3 worldPosition, int brushWidth, int brushHeight)
         {
             var terrainPosition = WorldToTerrainPosition(worldPosition);
-            
+
             var width = brushWidth / 2.0f;
             var brushPositionX = (int)Mathf.Clamp(terrainPosition.x - width, 0.0f, HeightMapResolution);
 
@@ -146,7 +139,6 @@ namespace GameCreator.Features.GameScene
         {
             var brushPosition = GetBrushPosition(worldPosition, brushWidth, brushHeight);
             var brushSize = GetSafeBrushSize(brushPosition.x, brushPosition.y, brushWidth, brushHeight);
-            
 
             var heights = TerrainData.GetHeights(brushPosition.x, brushPosition.y, brushSize.x, brushSize.y);
 

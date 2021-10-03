@@ -6,7 +6,6 @@ namespace GameCreator.Features.GameScene
     public partial class GameSceneRoot
     {
         public TerrainView TerrainView => terrainView;
-        public TerrainEditMode TerrainEditMode => terrainEditMode;
 
         public bool DoTerrainMouseRaycast(out RaycastHit hit)
         {
@@ -28,17 +27,23 @@ namespace GameCreator.Features.GameScene
         {
             if (terrainEditMode == TerrainEditMode.Raise)
             {
-                terrainView.Raise(editPosition);
+                terrainView.Raise(editPosition, terrainBrushDiameter, terrainEditConfig.StrengthRange.x);
             }
             else
             {
-                terrainView.Lower(editPosition);
+                terrainView.Lower(editPosition, terrainBrushDiameter, terrainEditConfig.StrengthRange.x);
             }
         }
 
         public void SetTerranEditMode(TerrainEditMode mode)
         {
             terrainEditMode = mode;
+        }
+
+        public void SetTerrainBrushDiameter(float rangePercent)
+        {
+            var range = terrainEditConfig.DiameterRange.y - terrainEditConfig.DiameterRange.x;
+            terrainBrushDiameter = Mathf.RoundToInt(terrainEditConfig.DiameterRange.x + range * rangePercent);
         }
     }
 }

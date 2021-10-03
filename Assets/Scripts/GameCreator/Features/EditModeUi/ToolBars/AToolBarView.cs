@@ -22,6 +22,11 @@ namespace GameCreator.Features.EditModeUi.ToolBars
         {
             canvasGroup.alpha = 1;
             gameObject.SetActive(true);
+            OnShow();
+        }
+
+        protected virtual void OnShow()
+        {
         }
 
         public void Hide()
