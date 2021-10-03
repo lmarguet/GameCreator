@@ -1,7 +1,11 @@
+using UnityEngine;
+
 namespace GameCreator.Features.GameScene.States
 {
     public class TerrainEditState : AGameSceneState
     {
+        Vector3 editPosition;
+        
         protected override void OnEnable()
         {
             gameSceneRoot.TerrainView.MouseDrag.AddListener(HandleTerrainDrag);
@@ -16,7 +20,9 @@ namespace GameCreator.Features.GameScene.States
 
         void HandleTerrainDrag()
         {
-            gameSceneRoot.ModifyTerrain();
+            gameSceneRoot.DoTerrainMouseRaycast(out var hit);
+            editPosition = hit.point;
+            gameSceneRoot.ModifyTerrain(editPosition);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace GameCreator.Injection
         [SerializeField] GlobalConfig globalConfig;
         [SerializeField] ScenesConfig scenesConfig;
         [SerializeField] CharactersConfig charactersConfig;
+        [SerializeField] TerrainEditConfig terrainEditConfig;
 
         public override void InstallBindings()
         {
@@ -18,6 +19,7 @@ namespace GameCreator.Injection
             Container.BindInstance(globalConfig);
             Container.BindInstance(scenesConfig);
             Container.BindInstance(charactersConfig);
+            Container.BindInstance(terrainEditConfig);
         }
     }
 }

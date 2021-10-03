@@ -1788,28 +1788,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 117837823}
     m_Modifications:
-    - target: {fileID: 1688871455, guid: 4a4f99c243cbe4cd28e9f9d69c433499, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1888105649, guid: 4a4f99c243cbe4cd28e9f9d69c433499, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960942, guid: 4a4f99c243cbe4cd28e9f9d69c433499,
         type: 3}
       propertyPath: m_Name
       value: TerrainEditToolbar
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706208040154960942, guid: 4a4f99c243cbe4cd28e9f9d69c433499,
-        type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706208040154960942, guid: 4a4f99c243cbe4cd28e9f9d69c433499,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960943, guid: 4a4f99c243cbe4cd28e9f9d69c433499,
         type: 3}
@@ -1971,6 +1953,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1706208040154960942, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1706208040154960943, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2080,6 +2067,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187682841403154379, guid: cb6f4c390a58d4f7d8d0d6b593e6482b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.6999512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb6f4c390a58d4f7d8d0d6b593e6482b, type: 3}
