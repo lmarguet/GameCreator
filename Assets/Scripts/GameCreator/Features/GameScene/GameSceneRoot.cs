@@ -1,3 +1,4 @@
+using Exoa.Cameras;
 using Exoa.Designer;
 using GameCreator.Config;
 using GameCreator.Features.Characters.Ui;
@@ -5,6 +6,7 @@ using GameCreator.Features.GameScene.States;
 using GameCreator.SceneManagement;
 using Signals;
 using UnityEngine;
+using UnityStandardAssets.Cameras;
 using Zenject;
 
 namespace GameCreator.Features.GameScene
@@ -20,6 +22,7 @@ namespace GameCreator.Features.GameScene
         [Inject] CharacterPlacementEditState characterPlacementEditState;
         [Inject] CharacterSelectedEditState characterSelectedEditState;
         [Inject] CharacterDragEditState characterDragEditState;
+        [Inject] PlayGameplayState playGameplayState;
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
@@ -27,9 +30,9 @@ namespace GameCreator.Features.GameScene
         [SerializeField] Transform charactersContainer;
         [SerializeField] CharacterWolrdUi characterWorldUi;
         [SerializeField] Inputs cameraInputs;
+        [SerializeField] CameraBase cameraBase;
         [SerializeField] TerrainView terrainView;
-
-        static readonly Quaternion CharacterInitRotation = Quaternion.Euler(0, 180, 0);
+        [SerializeField] AutoCam playerCamera;
 
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
@@ -89,15 +92,17 @@ namespace GameCreator.Features.GameScene
         {
             currentMode = GameSceneMode.PlayMode;
             SetState(playDefaultState);
+            
+            if (HasPlayableCharacter(out var characterView))
+            {
+                playGameplayState.SetPlayerView(characterView);
+                SetState(playGameplayState);
+            }
         }
 
         void SetState(IGameSceneState gameSceneState)
         {
-            if (state != null)
-            {
-                state.Disable();
-            }
-
+            state?.Disable();
             Debug.Log($"State update: {state} -> {gameSceneState}");
             state = gameSceneState.Enable(this);
         }

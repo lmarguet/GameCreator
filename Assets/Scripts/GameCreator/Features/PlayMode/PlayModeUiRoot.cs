@@ -1,3 +1,4 @@
+using GameCreator.Features.Characters;
 using GameCreator.Features.EditMode;
 using GameCreator.SceneManagement;
 using UnityEngine;
@@ -12,10 +13,13 @@ namespace GameCreator.Features.PlayMode
         [Inject] NavigationManager navigationManager;
 
         [SerializeField] Button editModeButton;
+        [SerializeField] Joystick joystick;
+        bool showJoytsick;
 
         void Awake()
         {
             editModeButton.onClick.AddListener(HandlePlaysButtonClick);
+            joystick.gameObject.SetActive(false);
         }
 
         void Start()
@@ -27,6 +31,21 @@ namespace GameCreator.Features.PlayMode
         {
             await loadEditModeUiCommand.Run();
             navigationManager.CloseScene(SceneId.PlayModeUi);
+        }
+
+        void Update()
+        {
+            if (showJoytsick)
+            {
+                JoystickInput.Horizontal = joystick.Horizontal;
+                JoystickInput.Vertical = joystick.Vertical;   
+            }
+        }
+
+        public void ShowJoystick(bool show)
+        {
+            joystick.gameObject.SetActive(show);
+            showJoytsick = show;
         }
     }
 }

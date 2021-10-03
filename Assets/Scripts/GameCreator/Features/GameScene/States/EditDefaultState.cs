@@ -8,6 +8,7 @@ namespace GameCreator.Features.GameScene.States
         {
             gameSceneRoot.StopAllCharactersAnimations();
             gameSceneRoot.HideCharacterUi();
+            gameSceneRoot.ResetCamera();
             
             gameSceneRoot.OnCharacterMouseDown.AddListener(HandleCharacterMouseDown);
         }

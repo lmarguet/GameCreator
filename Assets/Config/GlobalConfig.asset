@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugMode: 1
   characterDragTreshold: 10
+  playerCameraPrefab: {fileID: 4370503133702230114, guid: 81f68dc2d321144b3b2d18eae5fc3a0f,
+    type: 3}

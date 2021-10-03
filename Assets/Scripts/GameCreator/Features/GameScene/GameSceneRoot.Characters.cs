@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using GameCreator.Features.Characters;
 using Signals;
 using UnityEngine;
@@ -23,8 +24,9 @@ namespace GameCreator.Features.GameScene
         {
             var config = charactersConfig.GetCharacterConfig(character);
 
-            var characterView = Instantiate(config.Prefab, hitPoint, CharacterInitRotation).GetComponent<CharacterView>();
+            var characterView = Instantiate(config.Prefab, hitPoint, Quaternion.identity).GetComponent<CharacterView>();
             characterView.transform.parent = charactersContainer;
+            characterView.DisableControls();
 
             var characterType = characterViews.Count == 0 ? CharacterType.Player : CharacterType.NPC;
             characterView.SetType(characterType);
@@ -118,6 +120,17 @@ namespace GameCreator.Features.GameScene
         {
             SetState(characterDragEditState);
             characterDragEditState.SetCharacter(character);
+        }
+
+        public bool HasPlayableCharacter()
+        {
+            return HasPlayableCharacter(out var characterView);
+        }
+
+        public bool HasPlayableCharacter(out CharacterView characterView)
+        {
+            characterView = characterViews.FirstOrDefault(x => x.CharacterType == CharacterType.Player);
+            return characterView != null;
         }
     }
 }
