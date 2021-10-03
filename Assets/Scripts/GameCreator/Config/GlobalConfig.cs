@@ -1,4 +1,3 @@
-using GameCreator.Features.Characters;
 using UnityEngine;
 
 namespace GameCreator.Config
@@ -8,7 +7,6 @@ namespace GameCreator.Config
     {
         [SerializeField] bool debugMode;
         [SerializeField] int characterDragTreshold;
-        [SerializeField] CharacterView characterContainerPrefab;
 
         public bool DebugMode => debugMode;
         public int CharacterDragTreshold => characterDragTreshold;

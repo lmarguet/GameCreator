@@ -20,6 +20,9 @@ namespace GameCreator.Features.PlayMode
             
             var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
             gameSceneRoot.EnterPlayMode();
+
+            var playModeUiRoot = navigationManager.GetScene<PlayModeUiRoot>();
+            playModeUiRoot.ShowJoystick(gameSceneRoot.HasPlayableCharacter());
         }
     }
 }

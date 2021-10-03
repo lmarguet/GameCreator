@@ -1,3 +1,4 @@
+using Exoa.Cameras;
 using Exoa.Designer;
 using GameCreator.Config;
 using GameCreator.Features.Characters.Ui;
@@ -5,6 +6,7 @@ using GameCreator.Features.GameScene.States;
 using GameCreator.SceneManagement;
 using Signals;
 using UnityEngine;
+using UnityStandardAssets.Cameras;
 using Zenject;
 
 namespace GameCreator.Features.GameScene
@@ -28,7 +30,9 @@ namespace GameCreator.Features.GameScene
         [SerializeField] Transform charactersContainer;
         [SerializeField] CharacterWolrdUi characterWorldUi;
         [SerializeField] Inputs cameraInputs;
+        [SerializeField] CameraBase cameraBase;
         [SerializeField] TerrainView terrainView;
+        [SerializeField] AutoCam playerCamera;
 
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;

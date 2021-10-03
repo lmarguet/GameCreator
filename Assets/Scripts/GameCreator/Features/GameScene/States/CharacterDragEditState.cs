@@ -11,7 +11,7 @@ namespace GameCreator.Features.GameScene.States
             gameSceneRoot.OnGlobalMouseUp.AddListener(HandleMouseUp);
             gameSceneRoot.OnCharacterDrag.AddListener(HandleCharacterDrag);
 
-            gameSceneRoot.SetCameraControllsEnabled(false);
+            gameSceneRoot.SetCameraControlsEnabled(false);
         }
 
         protected override void OnDisable()
@@ -30,7 +30,7 @@ namespace GameCreator.Features.GameScene.States
 
         void HandleMouseUp()
         {
-            gameSceneRoot.SetCameraControllsEnabled(true);
+            gameSceneRoot.SetCameraControlsEnabled(true);
             gameSceneRoot.SelectCharacter(selectedCharacter);
         }
 

@@ -12,8 +12,6 @@ namespace GameCreator.Features.GameScene
         public readonly Signal<CharacterView> OnCharacterMouseUp = new Signal<CharacterView>();
         public readonly Signal<CharacterView> OnCharacterDrag = new Signal<CharacterView>();
 
-        static readonly Quaternion CharacterInitRotation = Quaternion.Euler(0, 180, 0);
-        
         readonly List<CharacterView> characterViews = new List<CharacterView>();
 
         public void StartPlacingCharacter(string characterId)
@@ -26,10 +24,10 @@ namespace GameCreator.Features.GameScene
         {
             var config = charactersConfig.GetCharacterConfig(character);
 
-            var characterView = Instantiate(config.Prefab, hitPoint, CharacterInitRotation).GetComponent<CharacterView>();
+            var characterView = Instantiate(config.Prefab, hitPoint, Quaternion.identity).GetComponent<CharacterView>();
             characterView.transform.parent = charactersContainer;
             characterView.DisableControls();
-            
+
             var characterType = characterViews.Count == 0 ? CharacterType.Player : CharacterType.NPC;
             characterView.SetType(characterType);
             characterView.MouseDown.AddListener(HandleCharacterMouseDown);
@@ -124,7 +122,12 @@ namespace GameCreator.Features.GameScene
             characterDragEditState.SetCharacter(character);
         }
 
-        bool HasPlayableCharacter(out CharacterView characterView)
+        public bool HasPlayableCharacter()
+        {
+            return HasPlayableCharacter(out var characterView);
+        }
+
+        public bool HasPlayableCharacter(out CharacterView characterView)
         {
             characterView = characterViews.FirstOrDefault(x => x.CharacterType == CharacterType.Player);
             return characterView != null;

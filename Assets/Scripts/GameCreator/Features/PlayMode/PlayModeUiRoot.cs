@@ -14,10 +14,12 @@ namespace GameCreator.Features.PlayMode
 
         [SerializeField] Button editModeButton;
         [SerializeField] Joystick joystick;
+        bool showJoytsick;
 
         void Awake()
         {
             editModeButton.onClick.AddListener(HandlePlaysButtonClick);
+            joystick.gameObject.SetActive(false);
         }
 
         void Start()
@@ -33,8 +35,17 @@ namespace GameCreator.Features.PlayMode
 
         void Update()
         {
-            JoystickInput.Horizontal = joystick.Horizontal;
-            JoystickInput.Vertical = joystick.Vertical;
+            if (showJoytsick)
+            {
+                JoystickInput.Horizontal = joystick.Horizontal;
+                JoystickInput.Vertical = joystick.Vertical;   
+            }
+        }
+
+        public void ShowJoystick(bool show)
+        {
+            joystick.gameObject.SetActive(show);
+            showJoytsick = show;
         }
     }
 }
