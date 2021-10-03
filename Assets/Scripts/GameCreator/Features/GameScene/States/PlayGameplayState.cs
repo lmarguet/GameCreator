@@ -1,5 +1,4 @@
 using GameCreator.Features.Characters;
-using UnityEngine;
 
 namespace GameCreator.Features.GameScene.States
 {
