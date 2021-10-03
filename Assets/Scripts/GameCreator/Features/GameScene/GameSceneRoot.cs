@@ -29,7 +29,6 @@ namespace GameCreator.Features.GameScene
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
-        [SerializeField] LayerMask worldPlaneLayer;
         [SerializeField] Transform charactersContainer;
         [SerializeField] CharacterWolrdUi characterWorldUi;
         [SerializeField] Inputs cameraInputs;
