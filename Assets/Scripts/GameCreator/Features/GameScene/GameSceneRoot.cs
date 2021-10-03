@@ -20,6 +20,7 @@ namespace GameCreator.Features.GameScene
         [Inject] CharacterPlacementEditState characterPlacementEditState;
         [Inject] CharacterSelectedEditState characterSelectedEditState;
         [Inject] CharacterDragEditState characterDragEditState;
+        [Inject] PlayGameplayState playGameplayState;
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
@@ -89,15 +90,17 @@ namespace GameCreator.Features.GameScene
         {
             currentMode = GameSceneMode.PlayMode;
             SetState(playDefaultState);
+            
+            if (HasPlayableCharacter(out var characterView))
+            {
+                SetState(playGameplayState);
+                playGameplayState.SetPlayerView(characterView);
+            }
         }
 
         void SetState(IGameSceneState gameSceneState)
         {
-            if (state != null)
-            {
-                state.Disable();
-            }
-
+            state?.Disable();
             Debug.Log($"State update: {state} -> {gameSceneState}");
             state = gameSceneState.Enable(this);
         }

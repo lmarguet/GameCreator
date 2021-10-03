@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using GameCreator.Features.Characters;
 using Signals;
 using UnityEngine;
@@ -118,6 +119,12 @@ namespace GameCreator.Features.GameScene
         {
             SetState(characterDragEditState);
             characterDragEditState.SetCharacter(character);
+        }
+
+        bool HasPlayableCharacter(out CharacterView characterView)
+        {
+            characterView = characterViews.FirstOrDefault(x => x.CharacterType == CharacterType.Player);
+            return characterView != null;
         }
     }
 }
