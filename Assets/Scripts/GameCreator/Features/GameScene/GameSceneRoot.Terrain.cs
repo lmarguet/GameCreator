@@ -24,8 +24,7 @@ namespace GameCreator.Features.GameScene
         public void ModifyTerrain()
         {
             DoTerrainMouseRaycast(out var hit);
-            
-            Debug.Log(hit.point);
+            terrainView.Raise(hit);
         }
     }
 }
