@@ -1,24 +1,14 @@
-using Signals;
 using UnityEngine;
 
 namespace GameCreator.Features.GameScene
 {
     public partial class GameSceneRoot
     {
-        public readonly Signal<Vector3> OnTerrainMouseDown = new Signal<Vector3>();
-        public readonly Signal<Vector3> OnTerrainPress = new Signal<Vector3>();
-
-        bool isTerrainPressed;
-
-        void HandleTerrainPress(Vector3 hitPoint)
+        
+        public bool DoTerrainMouseRaycast(out RaycastHit hit)
         {
-            if (!isTerrainPressed)
-            {
-                OnTerrainMouseDown.Dispatch(hitPoint);
-            }
-
-            OnTerrainPress.Dispatch(hitPoint);
-            isTerrainPressed = true;
+            var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
+            return Physics.Raycast(ray, out hit, Mathf.Infinity, terrainLayer.value);  
         }
     }
 }

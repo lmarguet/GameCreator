@@ -33,8 +33,8 @@ namespace GameCreator.Features.Characters.EditPopup
         {
             this.character = character;
             
-            playerToggle.isOn = character.characterType == CharacterType.Player;
-            npcToggle.isOn = character.characterType == CharacterType.NPC;
+            playerToggle.isOn = character.CharacterType == CharacterType.Player;
+            npcToggle.isOn = character.CharacterType == CharacterType.NPC;
         }
 
         void HandlePlayerToggle(bool selected)

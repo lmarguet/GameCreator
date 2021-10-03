@@ -6,7 +6,9 @@ namespace GameCreator.Config
     public class GlobalConfig : ScriptableObject
     {
         [SerializeField] bool debugMode;
+        [SerializeField] int characterDragTreshold;
 
         public bool DebugMode => debugMode;
+        public int CharacterDragTreshold => characterDragTreshold;
     }
 }

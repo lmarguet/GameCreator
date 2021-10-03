@@ -7,23 +7,11 @@ namespace GameCreator.Features.GameScene
 {
     public partial class GameSceneRoot
     {
-        public readonly Signal<RaycastHit> OnCharacterMouseDown = new Signal<RaycastHit>();
-        public readonly Signal<RaycastHit> OnCharacterPress = new Signal<RaycastHit>();
+        public readonly Signal<CharacterView> OnCharacterMouseDown = new Signal<CharacterView>();
+        public readonly Signal<CharacterView> OnCharacterMouseUp = new Signal<CharacterView>();
+        public readonly Signal<CharacterView> OnCharacterDrag = new Signal<CharacterView>();
 
         readonly List<CharacterView> characterViews = new List<CharacterView>();
-
-        bool isCharacterPressed;
-
-        void HandleCharacterPress(RaycastHit hitInfo)
-        {
-            if (!isCharacterPressed)
-            {
-                OnCharacterMouseDown.Dispatch(hitInfo);
-            }
-
-            OnCharacterPress.Dispatch(hitInfo);
-            isCharacterPressed = true;
-        }
 
         public void StartPlacingCharacter(string characterId)
         {
@@ -40,8 +28,45 @@ namespace GameCreator.Features.GameScene
 
             var characterType = characterViews.Count == 0 ? CharacterType.Player : CharacterType.NPC;
             characterView.SetType(characterType);
+            characterView.MouseDown.AddListener(HandleCharacterMouseDown);
+            characterView.MouseUp.AddListener(HandleCharacterMouseUp);
+            characterView.MouseDrag.AddListener(HandleCharacterDrag);
 
             characterViews.Add(characterView);
+        }
+
+        public void DeleteCharacter(CharacterView character)
+        {
+            HideCharacterUi();
+            characterViews.Remove(character);
+
+            character.MouseDown.RemoveListener(HandleCharacterMouseDown);
+            character.MouseUp.RemoveListener(HandleCharacterMouseUp);
+            character.MouseDrag.RemoveListener(HandleCharacterDrag);
+
+            Destroy(character.gameObject);
+
+            if (characterViews.Count == 1)
+            {
+                characterViews[0].SetType(CharacterType.Player);
+            }
+
+            SetState(editDefaultState);
+        }
+
+        void HandleCharacterMouseDown(CharacterView character)
+        {
+            OnCharacterMouseDown.Dispatch(character);
+        }
+
+        void HandleCharacterMouseUp(CharacterView character)
+        {
+            OnCharacterMouseUp.Dispatch(character);
+        }
+
+        void HandleCharacterDrag(CharacterView character)
+        {
+            OnCharacterDrag.Dispatch(character);
         }
 
         public void ShowCharacterUi(CharacterView character)
@@ -70,24 +95,10 @@ namespace GameCreator.Features.GameScene
             }
         }
 
-        public void SelectCharacter(GameObject character)
+        public void SelectCharacter(CharacterView character)
         {
             SetState(characterSelectedEditState);
             characterSelectedEditState.Select(character);
-        }
-
-        public void DeleteCharacter(CharacterView character)
-        {
-            HideCharacterUi();
-            characterViews.Remove(character);
-            Destroy(character.gameObject);
-
-            if (characterViews.Count == 1)
-            {
-                characterViews[0].SetType(CharacterType.Player);
-            }
-
-            SetState(editDefaultState);
         }
 
         public void SetCharacterType(CharacterView characterView, CharacterType characterType)
@@ -101,6 +112,12 @@ namespace GameCreator.Features.GameScene
             }
 
             characterView.SetType(characterType);
+        }
+
+        public void StartDraggingCharacter(CharacterView character)
+        {
+            SetState(characterDragEditState);
+            characterDragEditState.SetCharacter(character);
         }
     }
 }

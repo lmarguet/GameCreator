@@ -1,8 +1,9 @@
+using Exoa.Designer;
 using GameCreator.Config;
 using GameCreator.Features.Characters.Ui;
 using GameCreator.Features.GameScene.States;
 using GameCreator.SceneManagement;
-using Lean.Touch;
+using Signals;
 using UnityEngine;
 using Zenject;
 
@@ -10,24 +11,31 @@ namespace GameCreator.Features.GameScene
 {
     public partial class GameSceneRoot : ASceneRoot
     {
+        public readonly Signal OnGlobalMouseUp = new Signal();
+
         [Inject] CharactersConfig charactersConfig;
 
         [Inject] EditDefaultState editDefaultState;
         [Inject] PlayDefaultState playDefaultState;
         [Inject] CharacterPlacementEditState characterPlacementEditState;
         [Inject] CharacterSelectedEditState characterSelectedEditState;
+        [Inject] CharacterDragEditState characterDragEditState;
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
         [SerializeField] LayerMask charactersLayer;
         [SerializeField] Transform charactersContainer;
         [SerializeField] CharacterWolrdUi characterWorldUi;
+        [SerializeField] Inputs cameraInputs;
+        [SerializeField] TerrainView terrainView;
 
         static readonly Quaternion CharacterInitRotation = Quaternion.Euler(0, 180, 0);
 
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
         IGameSceneState state;
+
+        public TerrainView TerrainView => terrainView;
 
         void Awake()
         {
@@ -58,60 +66,17 @@ namespace GameCreator.Features.GameScene
             {
                 if (isMousePressed)
                 {
-                    MouseUpRaycast();
+                    OnGlobalMouseUp.Dispatch();
                 }
 
                 isMousePressed = false;
             }
-
-            if (isMousePressed)
-            {
-                RaycastMouseDown();
-            }
-            else
-            {
-                isTerrainPressed = false;
-                isCharacterPressed = false;
-            }
         }
 
-        void RaycastMouseDown()
+        public bool DoMouseRaycast(out RaycastHit hit)
         {
-            if (LeanTouch.PointOverGui(Input.mousePosition))
-            {
-                return;
-            }
-
             var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out var hit))
-            {
-                var layerMask = 1 << hit.transform.gameObject.layer;
-
-                if (layerMask == terrainLayer.value)
-                {
-                    HandleTerrainPress(hit.point);
-                }
-                else if (layerMask == charactersLayer)
-                {
-                    HandleCharacterPress(hit);
-                }
-            }
-        }
-
-        void MouseUpRaycast()
-        {
-            if (LeanTouch.PointOverGui(Input.mousePosition))
-            {
-                return;
-            }
-
-            var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out var hit))
-            {
-                var layerMask = 1 << hit.transform.gameObject.layer;
-
-                // TODO
-            }
+            return Physics.Raycast(ray, out hit);
         }
 
         public void EnterEditMode()
@@ -132,8 +97,8 @@ namespace GameCreator.Features.GameScene
             {
                 state.Disable();
             }
-            
-            Debug.Log($"{state} -> {gameSceneState}");
+
+            Debug.Log($"State update: {state} -> {gameSceneState}");
             state = gameSceneState.Enable(this);
         }
 

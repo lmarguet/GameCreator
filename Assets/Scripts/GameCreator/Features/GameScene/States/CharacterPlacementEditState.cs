@@ -1,5 +1,4 @@
 using GameCreator.Features.Characters;
-using UnityEngine;
 using Zenject;
 
 namespace GameCreator.Features.GameScene.States
@@ -17,18 +16,20 @@ namespace GameCreator.Features.GameScene.States
         
         protected override void OnEnable()
         {
-            gameSceneRoot.OnTerrainMouseDown.AddListener(HandleTerrainMouseDown);
+            gameSceneRoot.TerrainView.MouseDown.AddListener(HandleTerrainMouseDown);
         }
 
-        void HandleTerrainMouseDown(Vector3 position)
+        void HandleTerrainMouseDown()
         {
-            gameSceneRoot.AddCharacter(characterId, position);
+            gameSceneRoot.DoMouseRaycast(out var hit);
+            
+            gameSceneRoot.AddCharacter(characterId, hit.point);
             stopCharacterPlacementCommand.Execute();
         }
 
         protected override void OnDisable()
         {
-            gameSceneRoot.OnTerrainMouseDown.RemoveListener(HandleTerrainMouseDown);
+            gameSceneRoot.TerrainView.MouseDown.RemoveListener(HandleTerrainMouseDown);
             characterId = null;
         }
     }

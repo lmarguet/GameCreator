@@ -1,45 +1,70 @@
+using GameCreator.Config;
 using GameCreator.Features.Characters;
 using UnityEngine;
+using Zenject;
 
 namespace GameCreator.Features.GameScene.States
 {
     public class CharacterSelectedEditState : AGameSceneState
     {
-        CharacterView selectedCharacter;
+        [Inject] GlobalConfig globalConfig;
 
-        public void Select(GameObject character)
+        CharacterView selectedCharacter;
+        Vector2 startDragPosition;
+
+        public void Select(CharacterView character)
         {
-            selectedCharacter = character.GetComponent<CharacterView>();
+            selectedCharacter = character;
             gameSceneRoot.ShowCharacterUi(selectedCharacter);
+            selectedCharacter.IsSelected = true;
+            startDragPosition = Input.mousePosition;
         }
 
         protected override void OnEnable()
         {
-            gameSceneRoot.OnTerrainMouseDown.AddListener(HandleTerrainMouseDown);
+            gameSceneRoot.TerrainView.MouseDown.AddListener(HandleTerrainMouseDown);
             gameSceneRoot.OnCharacterMouseDown.AddListener(HandleCharacterMouseDown);
+            gameSceneRoot.OnCharacterDrag.AddListener(HandleCharacterDrag);
+
+            gameSceneRoot.SetCameraControllsEnabled(false);
         }
 
         protected override void OnDisable()
         {
-            gameSceneRoot.OnTerrainMouseDown.RemoveListener(HandleTerrainMouseDown);
+            gameSceneRoot.TerrainView.MouseDown.RemoveListener(HandleTerrainMouseDown);
             gameSceneRoot.OnCharacterMouseDown.RemoveListener(HandleCharacterMouseDown);
+            gameSceneRoot.OnCharacterDrag.RemoveListener(HandleCharacterDrag);
+
+            selectedCharacter.IsSelected = false;
             selectedCharacter = null;
+            gameSceneRoot.SetCameraControllsEnabled(true);
         }
 
-        void HandleCharacterMouseDown(RaycastHit hit)
+        void HandleCharacterMouseDown(CharacterView characterView)
         {
-            var newSelectedCharacter = hit.transform.gameObject;
-            if (newSelectedCharacter.GetInstanceID() == selectedCharacter.GetInstanceID())
+            if (characterView == selectedCharacter)
             {
+                startDragPosition = Input.mousePosition;
                 return;
             }
 
-            gameSceneRoot.SelectCharacter(newSelectedCharacter);
+            gameSceneRoot.SelectCharacter(characterView);
         }
 
-        void HandleTerrainMouseDown(Vector3 position)
+        void HandleTerrainMouseDown()
         {
             gameSceneRoot.SetDefaultEditState();
+        }
+
+        void HandleCharacterDrag(CharacterView character)
+        {
+            var dragPosition = Input.mousePosition;
+            var dragDistance = Vector2.Distance(dragPosition, startDragPosition);
+
+            if (dragDistance >= globalConfig.CharacterDragTreshold)
+            {
+                gameSceneRoot.StartDraggingCharacter(character);
+            }
         }
     }
 }
