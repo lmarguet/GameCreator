@@ -210,9 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3911383520724e4f94b384bfa81daeb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushWidth: 10
-  brushHeight: 10
-  strength: 0.0463
+  brushWidth: 2
+  brushHeight: 2
+  strength: 0.0233
 --- !u!1 &628468862
 GameObject:
   m_ObjectHideFlags: 0

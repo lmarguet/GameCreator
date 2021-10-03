@@ -82,15 +82,14 @@ namespace GameCreator.Features.GameScene
             RaiseTerrain(hit.point, strength, brushWidth, brushHeight);
         }
 
-        Vector3 WorldToTerrainPosition(Vector3 worldPosition)
+        public Vector3 WorldToTerrainPosition(Vector3 worldPosition)
         {
-            var terrainPosition = worldPosition - targetTerrain.GetPosition();
-            var terrainSize = TerrainSize;
+            var terrainPositionOffset = worldPosition - targetTerrain.GetPosition();
+            var heightmapResolution = HeightMapResolution;
 
-            var positionX = terrainPosition.x / terrainSize.x;
-            var positionZ = terrainPosition.z / terrainSize.z;
-
-            return new Vector3(positionX * HeightMapResolution, 0, positionZ);
+            var terrainPositionX = terrainPositionOffset.x / TerrainSize.x  * heightmapResolution;
+            var terrainPositionZ = terrainPositionOffset.z / TerrainSize.z * heightmapResolution;
+            return new Vector3(terrainPositionX, 0, terrainPositionZ);
         }
 
         Vector2Int GetBrushPosition(Vector3 worldPosition, int brushWidth, int brushHeight)
@@ -124,12 +123,10 @@ namespace GameCreator.Features.GameScene
         public void RaiseTerrain(Vector3 worldPosition, float strength, int brushWidth, int brushHeight)
         {
             var brushPosition = GetBrushPosition(worldPosition, brushWidth, brushHeight);
-
             var brushSize = GetSafeBrushSize(brushPosition.x, brushPosition.y, brushWidth, brushHeight);
+            
 
-            var terrainData = TerrainData;
-
-            var heights = terrainData.GetHeights(brushPosition.x, brushPosition.y, brushSize.x, brushSize.y);
+            var heights = TerrainData.GetHeights(brushPosition.x, brushPosition.y, brushSize.x, brushSize.y);
 
             for (var i = 0; i < brushSize.y; i++)
             {
@@ -139,18 +136,16 @@ namespace GameCreator.Features.GameScene
                 }
             }
 
-            terrainData.SetHeights(brushPosition.x, brushPosition.y, heights);
+            TerrainData.SetHeights(brushPosition.x, brushPosition.y, heights);
         }
 
         public void LowerTerrain(Vector3 worldPosition, float strength, int brushWidth, int brushHeight)
         {
             var brushPosition = GetBrushPosition(worldPosition, brushWidth, brushHeight);
-
             var brushSize = GetSafeBrushSize(brushPosition.x, brushPosition.y, brushWidth, brushHeight);
+            
 
-            var terrainData = TerrainData;
-
-            var heights = terrainData.GetHeights(brushPosition.x, brushPosition.y, brushSize.x, brushSize.y);
+            var heights = TerrainData.GetHeights(brushPosition.x, brushPosition.y, brushSize.x, brushSize.y);
 
             for (var i = 0; i < brushSize.y; i++)
             {
@@ -160,7 +155,8 @@ namespace GameCreator.Features.GameScene
                 }
             }
 
-            terrainData.SetHeights(brushPosition.x, brushPosition.y, heights);
+            TerrainData.SetHeights(brushPosition.x, brushPosition.y, heights);
         }
+
     }
 }
