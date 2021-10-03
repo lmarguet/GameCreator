@@ -10,5 +10,15 @@ namespace GameCreator.Features.GameScene
             var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
             return Physics.Raycast(ray, out hit, Mathf.Infinity, terrainLayer.value);  
         }
+
+        public void StartEditingTerrain()
+        {
+            SetState(terrainEditState);
+        }
+        
+        public void StopEditingTerrain()
+        {
+            SetState(editDefaultState);
+        }
     }
 }

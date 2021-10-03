@@ -23,6 +23,7 @@ namespace GameCreator.Features.GameScene
         [Inject] CharacterSelectedEditState characterSelectedEditState;
         [Inject] CharacterDragEditState characterDragEditState;
         [Inject] PlayGameplayState playGameplayState;
+        [Inject] TerrainEditState terrainEditState;
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;

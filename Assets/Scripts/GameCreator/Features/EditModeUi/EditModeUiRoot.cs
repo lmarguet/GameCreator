@@ -2,6 +2,7 @@ using System.Linq;
 using GameCreator.Features.EditModeUi.ToolBars;
 using GameCreator.Features.PlayMode;
 using GameCreator.Features.SettingsPopup;
+using GameCreator.Features.TerrainEdit;
 using GameCreator.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ namespace GameCreator.Features.EditModeUi
         [Inject] LoadSettingsPopupCommand loadSettingsPopupCommand;
         [Inject] LoadPlayModeUiCommand loadPlayModeUiCommand;
         [Inject] NavigationManager navigationManager;
+        [Inject] EnterTerrainEditStateCommand enterTerrainEditStateCommand;
+        [Inject] ExitTerrainEditStateCommand exitTerrainEditStateCommand;
 
         [SerializeField] Button settingsButton;
         [SerializeField] Button playModeButton;
@@ -59,6 +62,7 @@ namespace GameCreator.Features.EditModeUi
         void HandleTerrainEditButtonClick()
         {
             ShowToolBar(ToolBarType.TerrainEdit);
+            enterTerrainEditStateCommand.Execute();
         }
 
         void HandleCharactersButtonClick()
@@ -76,11 +80,17 @@ namespace GameCreator.Features.EditModeUi
             foreach (var toolBarView in toolBarViews)
             {
                 toolBarView.Hide();
-                toolBarView.OnClose.AddListener(OnToolBarClose);
+                toolBarView.OnClose.AddListener(HandleToolbarClose);
             }
         }
 
-        void OnToolBarClose()
+        void HandleToolbarClose()
+        {
+            exitTerrainEditStateCommand.Execute();
+            CloseToolBar();
+        }
+
+        public void CloseToolBar()
         {
             HideToolBarContainer();
         }

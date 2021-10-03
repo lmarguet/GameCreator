@@ -5,6 +5,7 @@ using GameCreator.Features.GameScene;
 using GameCreator.Features.GameScene.States;
 using GameCreator.Features.PlayMode;
 using GameCreator.Features.SettingsPopup;
+using GameCreator.Features.TerrainEdit;
 using GameCreator.SceneManagement;
 using UnityEngine;
 using Zenject;
@@ -39,6 +40,8 @@ namespace GameCreator.Injection
             Container.Bind<OpenEditCharacterPopupCommand>().AsSingle();
             Container.Bind<DeleteCharacterCommand>().AsSingle();
             Container.Bind<SetCharacterTypeCommand>().AsSingle();
+            Container.Bind<EnterTerrainEditStateCommand>().AsSingle();
+            Container.Bind<ExitTerrainEditStateCommand>().AsSingle();
         }
 
         void BindGameSceneState()
@@ -49,6 +52,7 @@ namespace GameCreator.Injection
             Container.Bind<CharacterSelectedEditState>().AsSingle();
             Container.Bind<CharacterDragEditState>().AsSingle();
             Container.Bind<PlayGameplayState>().AsSingle();
+            Container.Bind<TerrainEditState>().AsSingle();
         }
     }
 }
