@@ -69,6 +69,16 @@ namespace GameCreator.Features.GameScene
             TerrainData.SetHeights(0, 0, heightMap);
         }
 
+        public void ResetHeightsToState(float[,] resetHeights)
+        {
+            TerrainData.SetHeights(0, 0, resetHeights);
+        }
+
+        public float[,] GetHeights()
+        {
+            return TerrainData.GetHeights(0, 0, TerrainData.heightmapResolution, TerrainData.heightmapResolution);
+        }
+
         public void Raise(Vector3 position, int diameter, float strength)
         {
             RaiseTerrain(position, strength, diameter, diameter);

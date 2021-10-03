@@ -44,6 +44,7 @@ namespace GameCreator.Injection
             Container.Bind<ExitTerrainEditStateCommand>().AsSingle();
             Container.Bind<SetTerrainEditModeCommand>().AsSingle();
             Container.Bind<SetTerrainBrushDiameterCommand>().AsSingle();
+            Container.Bind<ClearLatestTerrainModifications>().AsSingle();
         }
 
         void BindGameSceneState()

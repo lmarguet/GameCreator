@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af7c5970fa24f0495ebded1e50bd75d, type: 3}
   m_Name: TerrainEditConfig
   m_EditorClassIdentifier: 
-  diameterRange: {x: 3, y: 30}
+  diameterRange: {x: 1, y: 20}
   strengthRange: {x: 0.05, y: 0.15}

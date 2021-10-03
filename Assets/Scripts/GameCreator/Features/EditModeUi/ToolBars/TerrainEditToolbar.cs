@@ -11,21 +11,31 @@ namespace GameCreator.Features.EditModeUi.ToolBars
 
         [Inject] SetTerrainEditModeCommand setTerrainEditModeCommand;
         [Inject] SetTerrainBrushDiameterCommand setTerrainBrushDiameterCommand;
+        [Inject] ClearLatestTerrainModifications clearLatestTerrainModifications;
 
         [SerializeField] Toggle raiseToggle;
         [SerializeField] Toggle loweToggle;
         [SerializeField] Slider diameterSlider;
+        [SerializeField] Button clearButton;
+
+        void Start()
+        {
+            raiseToggle.onValueChanged.AddListener(HandleRaiseToggle);
+            loweToggle.onValueChanged.AddListener(HandleLowerToggle);
+            diameterSlider.onValueChanged.AddListener(HandleDiameterChange);
+            clearButton.onClick.AddListener(HandleClearClick);
+        }
+
+        void HandleClearClick()
+        {
+            clearLatestTerrainModifications.Execute();
+            Close();
+        }
 
         protected override void OnShow()
         {
-            raiseToggle.isOn = true;
-            setTerrainEditModeCommand.Execute(TerrainEditMode.Raise);
-
-            raiseToggle.onValueChanged.AddListener(HandleRaiseToggle);
-            loweToggle.onValueChanged.AddListener(HandleLowerToggle);
-
-            diameterSlider.onValueChanged.AddListener(HandleDiameterChange);
-            diameterSlider.value = 0.5f;
+            var editMode = raiseToggle.isOn ? TerrainEditMode.Raise : TerrainEditMode.Lower;
+            setTerrainEditModeCommand.Execute(editMode);
             setTerrainBrushDiameterCommand.Execute(diameterSlider.value);
         }
 
