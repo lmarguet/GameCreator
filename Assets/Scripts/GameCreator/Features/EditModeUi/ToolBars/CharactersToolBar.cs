@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace GameCreator.Features.EditMode.ToolBars
+namespace GameCreator.Features.EditModeUi.ToolBars
 {
     public class CharactersToolBar : AToolBarView
     {

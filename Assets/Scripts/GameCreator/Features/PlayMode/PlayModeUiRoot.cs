@@ -1,5 +1,5 @@
 using GameCreator.Features.Characters;
-using GameCreator.Features.EditMode;
+using GameCreator.Features.EditModeUi;
 using GameCreator.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;

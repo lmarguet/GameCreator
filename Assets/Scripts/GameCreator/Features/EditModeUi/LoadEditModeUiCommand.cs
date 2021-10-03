@@ -5,7 +5,7 @@ using GameCreator.SceneManagement;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace GameCreator.Features.EditMode
+namespace GameCreator.Features.EditModeUi
 {
     public class LoadEditModeUiCommand : AAsyncCommand
     {

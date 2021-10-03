@@ -2,7 +2,7 @@ using Signals;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GameCreator.Features.EditMode.ToolBars
+namespace GameCreator.Features.EditModeUi.ToolBars
 {
     public abstract class AToolBarView : MonoBehaviour
     {

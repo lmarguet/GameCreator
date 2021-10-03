@@ -1,6 +1,6 @@
 using GameCreator.Features.Characters;
 using GameCreator.Features.Characters.EditPopup;
-using GameCreator.Features.EditMode;
+using GameCreator.Features.EditModeUi;
 using GameCreator.Features.GameScene;
 using GameCreator.Features.GameScene.States;
 using GameCreator.Features.PlayMode;

@@ -1,5 +1,5 @@
 using System.Linq;
-using GameCreator.Features.EditMode.ToolBars;
+using GameCreator.Features.EditModeUi.ToolBars;
 using GameCreator.Features.PlayMode;
 using GameCreator.Features.SettingsPopup;
 using GameCreator.SceneManagement;
@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace GameCreator.Features.EditMode
+namespace GameCreator.Features.EditModeUi
 {
     public class EditModeUiRoot : ASceneRoot
     {

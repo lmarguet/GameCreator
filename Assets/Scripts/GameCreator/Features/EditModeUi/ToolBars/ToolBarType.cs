@@ -1,4 +1,4 @@
-namespace GameCreator.Features.EditMode.ToolBars
+namespace GameCreator.Features.EditModeUi.ToolBars
 {
     public enum ToolBarType
     {

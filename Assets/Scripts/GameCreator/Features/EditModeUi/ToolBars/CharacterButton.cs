@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace GameCreator.Features.EditMode.ToolBars
+namespace GameCreator.Features.EditModeUi.ToolBars
 {
     public class CharacterButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
