@@ -1,3 +1,4 @@
+using Lean.Touch;
 using Signals;
 using UnityEngine;
 
@@ -5,23 +6,31 @@ namespace GameCreator.Features.GameScene
 {
     public class TerrainView : MonoBehaviour
     {
-        readonly public Signal MouseUp = new Signal();
-        readonly public Signal MouseDown = new Signal();
-        readonly public Signal MouseDrag = new Signal();
-        
+        public readonly Signal MouseUp = new Signal();
+        public readonly Signal MouseDown = new Signal();
+        public readonly Signal MouseDrag = new Signal();
+
         void OnMouseUp()
         {
-            MouseUp.Dispatch();
+            ProcessEvent(MouseUp);
         }
-        
+
         void OnMouseDown()
         {
-            MouseDown.Dispatch();
+            ProcessEvent(MouseDown);
         }
-        
+
         void OnMouseDrag()
         {
-            MouseDrag.Dispatch();
+            ProcessEvent(MouseDrag);
+        }
+
+        void ProcessEvent(Signal signal)
+        {
+            if (!LeanTouch.PointOverGui(Input.mousePosition))
+            {
+                signal.Dispatch();
+            }
         }
     }
 }

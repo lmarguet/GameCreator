@@ -8,7 +8,7 @@ namespace GameCreator.Features.GameScene
     public partial class GameSceneRoot
     {
         public readonly Signal<CharacterView> OnCharacterMouseDown = new Signal<CharacterView>();
-        public readonly Signal<CharacterView> OnCharacterPress = new Signal<CharacterView>();
+        public readonly Signal<CharacterView> OnCharacterMouseUp = new Signal<CharacterView>();
         public readonly Signal<CharacterView> OnCharacterDrag = new Signal<CharacterView>();
 
         readonly List<CharacterView> characterViews = new List<CharacterView>();
@@ -28,11 +28,45 @@ namespace GameCreator.Features.GameScene
 
             var characterType = characterViews.Count == 0 ? CharacterType.Player : CharacterType.NPC;
             characterView.SetType(characterType);
-            characterView.MouseDown.AddListener(() => OnCharacterMouseDown.Dispatch(characterView));
-            characterView.MouseUp.AddListener(() => OnCharacterPress.Dispatch(characterView));
-            characterView.MouseDrag.AddListener(() => OnCharacterDrag.Dispatch(characterView));
+            characterView.MouseDown.AddListener(HandleCharacterMouseDown);
+            characterView.MouseUp.AddListener(HandleCharacterMouseUp);
+            characterView.MouseDrag.AddListener(HandleCharacterDrag);
 
             characterViews.Add(characterView);
+        }
+
+        public void DeleteCharacter(CharacterView character)
+        {
+            HideCharacterUi();
+            characterViews.Remove(character);
+
+            character.MouseDown.RemoveListener(HandleCharacterMouseDown);
+            character.MouseUp.RemoveListener(HandleCharacterMouseUp);
+            character.MouseDrag.RemoveListener(HandleCharacterDrag);
+
+            Destroy(character.gameObject);
+
+            if (characterViews.Count == 1)
+            {
+                characterViews[0].SetType(CharacterType.Player);
+            }
+
+            SetState(editDefaultState);
+        }
+
+        void HandleCharacterMouseDown(CharacterView character)
+        {
+            OnCharacterMouseDown.Dispatch(character);
+        }
+
+        void HandleCharacterMouseUp(CharacterView character)
+        {
+            OnCharacterMouseUp.Dispatch(character);
+        }
+
+        void HandleCharacterDrag(CharacterView character)
+        {
+            OnCharacterDrag.Dispatch(character);
         }
 
         public void ShowCharacterUi(CharacterView character)
@@ -65,25 +99,6 @@ namespace GameCreator.Features.GameScene
         {
             SetState(characterSelectedEditState);
             characterSelectedEditState.Select(character);
-        }
-
-        public void DeleteCharacter(CharacterView character)
-        {
-            HideCharacterUi();
-            characterViews.Remove(character);
-            
-            character.MouseDown.RemoveAllListeners();
-            character.MouseUp.RemoveAllListeners();
-            character.MouseDrag.RemoveAllListeners();
-            
-            Destroy(character.gameObject);
-
-            if (characterViews.Count == 1)
-            {
-                characterViews[0].SetType(CharacterType.Player);
-            }
-
-            SetState(editDefaultState);
         }
 
         public void SetCharacterType(CharacterView characterView, CharacterType characterType)

@@ -1,3 +1,5 @@
+using Exoa.Designer;
+using Lean.Touch;
 using Signals;
 using UnityEngine;
 
@@ -6,15 +8,15 @@ namespace GameCreator.Features.Characters
     [RequireComponent(typeof(Animator))]
     public class CharacterView : MonoBehaviour
     {
-        readonly public Signal MouseUp = new Signal();
-        readonly public Signal MouseDown = new Signal();
-        readonly public Signal MouseDrag = new Signal();
+        public readonly Signal<CharacterView> MouseUp = new Signal<CharacterView>();
+        public readonly Signal<CharacterView> MouseDown = new Signal<CharacterView>();
+        public readonly Signal<CharacterView> MouseDrag = new Signal<CharacterView>();
 
         Animator animator;
         Vector3 screenPoint;
         Vector3 offset;
 
-        public CharacterType characterType { get; private set; }
+        public CharacterType CharacterType { get; private set; }
 
         public bool IsSelected { get; set; }
 
@@ -36,22 +38,30 @@ namespace GameCreator.Features.Characters
 
         public void SetType(CharacterType type)
         {
-            characterType = type;
+            CharacterType = type;
         }
         
         void OnMouseUp()
         {
-            MouseUp.Dispatch();
+            ProcessEvent(MouseUp);
         }
-        
+
         void OnMouseDown()
         {
-            MouseDown.Dispatch();
+            ProcessEvent(MouseDown);
         }
         
         void OnMouseDrag()
+        {;
+            ProcessEvent(MouseDrag);
+        }
+
+        void ProcessEvent(Signal<CharacterView> signal)
         {
-            MouseDrag.Dispatch();
+            if (!LeanTouch.PointOverGui(Input.mousePosition))
+            {
+                signal.Dispatch(this);
+            }
         }
     }
 }
