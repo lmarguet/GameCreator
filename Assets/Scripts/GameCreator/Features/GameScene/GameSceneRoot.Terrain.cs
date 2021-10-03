@@ -20,5 +20,12 @@ namespace GameCreator.Features.GameScene
         {
             SetState(editDefaultState);
         }
+
+        public void ModifyTerrain()
+        {
+            DoTerrainMouseRaycast(out var hit);
+            
+            Debug.Log(hit.point);
+        }
     }
 }
