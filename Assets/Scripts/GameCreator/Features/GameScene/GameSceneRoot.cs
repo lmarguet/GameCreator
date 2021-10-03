@@ -30,8 +30,6 @@ namespace GameCreator.Features.GameScene
         [SerializeField] Inputs cameraInputs;
         [SerializeField] TerrainView terrainView;
 
-        static readonly Quaternion CharacterInitRotation = Quaternion.Euler(0, 180, 0);
-
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
         IGameSceneState state;
@@ -93,8 +91,8 @@ namespace GameCreator.Features.GameScene
             
             if (HasPlayableCharacter(out var characterView))
             {
-                SetState(playGameplayState);
                 playGameplayState.SetPlayerView(characterView);
+                SetState(playGameplayState);
             }
         }
 

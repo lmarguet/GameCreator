@@ -1,17 +1,18 @@
-using Exoa.Designer;
+using System;
 using Lean.Touch;
 using Signals;
 using UnityEngine;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace GameCreator.Features.Characters
 {
-    [RequireComponent(typeof(Animator))]
     public class CharacterView : MonoBehaviour
     {
         public readonly Signal<CharacterView> MouseUp = new Signal<CharacterView>();
         public readonly Signal<CharacterView> MouseDown = new Signal<CharacterView>();
         public readonly Signal<CharacterView> MouseDrag = new Signal<CharacterView>();
-
+        
+        ThirdPersonUserControl controls;
         Animator animator;
         Vector3 screenPoint;
         Vector3 offset;
@@ -23,9 +24,9 @@ namespace GameCreator.Features.Characters
         void Awake()
         {
             animator = GetComponent<Animator>();
-            StopAnimating();
+            controls = GetComponent<ThirdPersonUserControl>();
         }
-        
+
         public void StopAnimating()
         {
             animator.enabled = false;
@@ -36,11 +37,21 @@ namespace GameCreator.Features.Characters
             animator.enabled = true;
         }
 
+        public void DisableControls()
+        {
+            controls.enabled = false;
+        }
+
+        public void EnableControls()
+        {
+            controls.enabled = true;
+        }
+        
         public void SetType(CharacterType type)
         {
             CharacterType = type;
         }
-        
+
         void OnMouseUp()
         {
             ProcessEvent(MouseUp);
@@ -50,9 +61,9 @@ namespace GameCreator.Features.Characters
         {
             ProcessEvent(MouseDown);
         }
-        
+
         void OnMouseDrag()
-        {;
+        {
             ProcessEvent(MouseDrag);
         }
 

@@ -10,5 +10,15 @@ namespace GameCreator.Features.GameScene.States
         {
             playerView = characterView;
         }
+
+        protected override void OnEnable()
+        {
+            playerView.EnableControls();
+        }
+
+        protected override void OnDisable()
+        {
+            playerView.DisableControls();
+        }
     }
 }
