@@ -3,7 +3,6 @@ using GameCreator.Config;
 using GameCreator.Features.Characters.Ui;
 using GameCreator.Features.GameScene.States;
 using GameCreator.SceneManagement;
-using Lean.Touch;
 using Signals;
 using UnityEngine;
 using Zenject;
@@ -20,6 +19,7 @@ namespace GameCreator.Features.GameScene
         [Inject] PlayDefaultState playDefaultState;
         [Inject] CharacterPlacementEditState characterPlacementEditState;
         [Inject] CharacterSelectedEditState characterSelectedEditState;
+        [Inject] CharacterDragEditState characterDragEditState;
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;

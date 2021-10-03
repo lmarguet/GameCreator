@@ -113,5 +113,11 @@ namespace GameCreator.Features.GameScene
 
             characterView.SetType(characterType);
         }
+
+        public void StartDraggingCharacter(CharacterView character)
+        {
+            SetState(characterDragEditState);
+            characterDragEditState.SetCharacter(character);
+        }
     }
 }
