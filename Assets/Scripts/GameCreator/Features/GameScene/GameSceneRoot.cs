@@ -4,6 +4,7 @@ using GameCreator.Features.Characters.Ui;
 using GameCreator.Features.GameScene.States;
 using GameCreator.SceneManagement;
 using Lean.Touch;
+using Signals;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +12,8 @@ namespace GameCreator.Features.GameScene
 {
     public partial class GameSceneRoot : ASceneRoot
     {
+        public readonly Signal OnGlobalMouseUp = new Signal();
+
         [Inject] CharactersConfig charactersConfig;
 
         [Inject] EditDefaultState editDefaultState;
@@ -63,37 +66,10 @@ namespace GameCreator.Features.GameScene
             {
                 if (isMousePressed)
                 {
-                    RaycastMouseUp();
+                    OnGlobalMouseUp.Dispatch();
                 }
 
                 isMousePressed = false;
-            }
-
-            if (isMousePressed)
-            {
-                RaycastMouseDown();
-            }
-            else
-            {
-                isTerrainPressed = false;
-            }
-        }
-
-        void RaycastMouseDown()
-        {
-            if (LeanTouch.PointOverGui(Input.mousePosition))
-            {
-                return;
-            }
-
-            if (DoMouseRaycast(out var hit))
-            {
-                var layerMask = 1 << hit.transform.gameObject.layer;
-
-                if (layerMask == terrainLayer.value)
-                {
-                    HandleTerrainPress(hit.point);
-                }
             }
         }
 
@@ -101,22 +77,6 @@ namespace GameCreator.Features.GameScene
         {
             var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
             return Physics.Raycast(ray, out hit);
-        }
-
-        void RaycastMouseUp()
-        {
-            if (LeanTouch.PointOverGui(Input.mousePosition))
-            {
-                return;
-            }
-
-            var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out var hit))
-            {
-                var layerMask = 1 << hit.transform.gameObject.layer;
-
-                // TODO
-            }
         }
 
         public void EnterEditMode()
@@ -138,7 +98,7 @@ namespace GameCreator.Features.GameScene
                 state.Disable();
             }
 
-            Debug.Log($"{state} -> {gameSceneState}");
+            Debug.Log($"State update: {state} -> {gameSceneState}");
             state = gameSceneState.Enable(this);
         }
 
