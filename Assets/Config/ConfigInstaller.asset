@@ -15,3 +15,4 @@ MonoBehaviour:
   globalConfig: {fileID: 11400000, guid: c1adae97221f2419696d8524b5a8b5b2, type: 2}
   scenesConfig: {fileID: 11400000, guid: cd7fbc94d6cc84d28bd3b62327cb0e1b, type: 2}
   charactersConfig: {fileID: 11400000, guid: 0f22b8e78940a46baba36edab464b82f, type: 2}
+  terrainEditConfig: {fileID: 11400000, guid: df7b04895a9034aa8afdf7c69980b3d1, type: 2}

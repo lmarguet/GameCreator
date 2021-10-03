@@ -1,4 +1,4 @@
-using GameCreator.Features.EditMode;
+using GameCreator.Features.EditModeUi;
 using GameCreator.Features.GameScene;
 using GameCreator.Framework;
 using GameCreator.SceneManagement;

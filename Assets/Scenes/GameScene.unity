@@ -210,6 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3911383520724e4f94b384bfa81daeb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brushWidth: 2
+  brushHeight: 2
+  strength: 0.0572
 --- !u!1 &628468862
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,9 +299,9 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
-  charactersLayer:
+  worldPlaneLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 2048
   charactersContainer: {fileID: 628468863}
   characterWorldUi: {fileID: 1377921618302531401}
   cameraInputs: {fileID: 1748408742}

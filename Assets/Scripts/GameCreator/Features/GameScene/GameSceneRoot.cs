@@ -3,6 +3,7 @@ using Exoa.Designer;
 using GameCreator.Config;
 using GameCreator.Features.Characters.Ui;
 using GameCreator.Features.GameScene.States;
+using GameCreator.Features.TerrainEdit;
 using GameCreator.SceneManagement;
 using Signals;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace GameCreator.Features.GameScene
         public readonly Signal OnGlobalMouseUp = new Signal();
 
         [Inject] CharactersConfig charactersConfig;
+        [Inject] TerrainEditConfig terrainEditConfig;
 
         [Inject] EditDefaultState editDefaultState;
         [Inject] PlayDefaultState playDefaultState;
@@ -23,10 +25,10 @@ namespace GameCreator.Features.GameScene
         [Inject] CharacterSelectedEditState characterSelectedEditState;
         [Inject] CharacterDragEditState characterDragEditState;
         [Inject] PlayGameplayState playGameplayState;
+        [Inject] TerrainEditState terrainEditState;
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
-        [SerializeField] LayerMask charactersLayer;
         [SerializeField] Transform charactersContainer;
         [SerializeField] CharacterWolrdUi characterWorldUi;
         [SerializeField] Inputs cameraInputs;
@@ -37,8 +39,8 @@ namespace GameCreator.Features.GameScene
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
         IGameSceneState state;
-
-        public TerrainView TerrainView => terrainView;
+        TerrainEditMode terrainEditMode;
+        int terrainBrushDiameter;
 
         void Awake()
         {
