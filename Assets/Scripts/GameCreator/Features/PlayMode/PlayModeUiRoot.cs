@@ -1,3 +1,4 @@
+using GameCreator.Features.Characters;
 using GameCreator.Features.EditMode;
 using GameCreator.SceneManagement;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace GameCreator.Features.PlayMode
         [Inject] NavigationManager navigationManager;
 
         [SerializeField] Button editModeButton;
+        [SerializeField] Joystick joystick;
 
         void Awake()
         {
@@ -27,6 +29,12 @@ namespace GameCreator.Features.PlayMode
         {
             await loadEditModeUiCommand.Run();
             navigationManager.CloseScene(SceneId.PlayModeUi);
+        }
+
+        void Update()
+        {
+            JoystickInput.Horizontal = joystick.Horizontal;
+            JoystickInput.Vertical = joystick.Vertical;
         }
     }
 }

@@ -16,7 +16,10 @@ namespace GameCreator.Features.Characters
         Animator animator;
         Vector3 screenPoint;
         Vector3 offset;
+        ThirdPersonCharacter character; 
+        Vector3 move;
 
+        bool areControlsEnabled;
         public CharacterType CharacterType { get; private set; }
 
         public bool IsSelected { get; set; }
@@ -25,6 +28,7 @@ namespace GameCreator.Features.Characters
         {
             animator = GetComponent<Animator>();
             controls = GetComponent<ThirdPersonUserControl>();
+            character = GetComponent<ThirdPersonCharacter>();
         }
 
         public void StopAnimating()
@@ -40,11 +44,13 @@ namespace GameCreator.Features.Characters
         public void DisableControls()
         {
             controls.enabled = false;
+            areControlsEnabled = false;
         }
 
         public void EnableControls()
         {
-            controls.enabled = true;
+            // controls.enabled = false;
+            areControlsEnabled = true;
         }
         
         public void SetType(CharacterType type)
@@ -72,6 +78,22 @@ namespace GameCreator.Features.Characters
             if (!LeanTouch.PointOverGui(Input.mousePosition))
             {
                 signal.Dispatch(this);
+            }
+        }
+        void FixedUpdate()
+        {
+            if (areControlsEnabled)
+            {
+                var horizontal = JoystickInput.Horizontal != 0
+                    ? JoystickInput.Horizontal
+                    : Input.GetAxis("Horizontal");
+            
+                var vertical = JoystickInput.Vertical != 0
+                    ? JoystickInput.Vertical
+                    : Input.GetAxis("Vertical");
+
+                move = vertical * Vector3.forward + horizontal * Vector3.right;
+                character.Move(move, false, false);
             }
         }
     }
