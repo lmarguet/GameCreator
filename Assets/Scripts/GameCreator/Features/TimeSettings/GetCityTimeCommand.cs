@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using GameCreator.Framework;
-using UnityEngine;
 using Zenject;
 
 namespace GameCreator.Features.TimeSettings
@@ -10,7 +9,8 @@ namespace GameCreator.Features.TimeSettings
     {
         public struct Result
         {
-            public TimeOfDay TimeOfDay;
+            public TimeOfTheDay TimeOfTheDay;
+            public DateTime LocalTime { get; set; }
         }
         
         [Inject] WeatherApiService weatherApiService;
@@ -18,18 +18,18 @@ namespace GameCreator.Features.TimeSettings
         protected override async Task<Result> DoRun(string city)
         {
             var result = await weatherApiService.QueryCity(city);
-
-            //TODO FIX looks like the timestamp returns the time the data was last updated
-            var timestamp = long.Parse(result.data.getCityByName.weather.timestamp);
-            var time = DateTimeOffset.FromUnixTimeSeconds(timestamp).DateTime;
-            Debug.Log(time.TimeOfDay);
-            Debug.Log(time.ToUniversalTime().TimeOfDay);
+            var cityData = result.data.getCityByName;
             
+            var latitude = double.Parse(cityData.coord.lat);
+            var longitude = double.Parse(cityData.coord.lon);
             
+            var convertedTime = TimeUtil.GetTimeForCoordinates(latitude, longitude);
+            var timeOfTheDay = TimeUtil.GetTimeOfTheDay(convertedTime);
             
             return new Result
             {
-                TimeOfDay = TimeOfDay.Morning
+                TimeOfTheDay = timeOfTheDay,
+                LocalTime = convertedTime
             };
         }
     }

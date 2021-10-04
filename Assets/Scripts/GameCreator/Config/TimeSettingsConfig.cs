@@ -13,7 +13,7 @@ namespace GameCreator.Config
         [Serializable]
         public struct TimeRenderConfig
         {
-            public TimeOfDay TimeOfDay;
+            public TimeOfTheDay timeOfTheDay;
             public Material Skybox;
         }
         
@@ -27,9 +27,9 @@ namespace GameCreator.Config
         public string GetCityQueryName => getCityQueryName;
         public string[] Cities => cities;
 
-        public TimeRenderConfig GetTimeRenderConfig(TimeOfDay timeOfDay)
+        public TimeRenderConfig GetTimeRenderConfig(TimeOfTheDay timeOfTheDay)
         {
-            return timeRenderConfigs.Where(x => x.TimeOfDay == timeOfDay).ToList().RandomElement();
+            return timeRenderConfigs.Where(x => x.timeOfTheDay == timeOfTheDay).ToList().RandomElement();
         }
     }
 }

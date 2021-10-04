@@ -49,7 +49,7 @@ namespace GameCreator.Features.GameScene
 
         SceneTimeData sceneTimeData = new SceneTimeData
         {
-            Name = TimeOfDay.Day.ToString()
+            Name = TimeOfTheDay.Day.ToString()
         };
 
         void Awake()

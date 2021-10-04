@@ -1,4 +1,3 @@
-using System;
 using GameCreator.Config;
 using UnityEngine;
 using Zenject;
@@ -15,13 +14,15 @@ namespace GameCreator.Features.TimeSettings
             foreach (var city in timeSettingsConfig.Cities)
             {
                 var result = await weatherApiService.QueryCity(city);
-                
-                ;
 
-                var timestamp = long.Parse(result.data.getCityByName.weather.timestamp);
-                var time2 = DateTimeOffset.FromUnixTimeSeconds(timestamp).DateTime.ToUniversalTime();
+                var cityData = result.data.getCityByName;
+                var latitude = double.Parse(cityData.coord.lat);
+                var longitude = double.Parse(cityData.coord.lon);
+                var convertedTime = TimeUtil.GetTimeForCoordinates(latitude, longitude);
+
+                Debug.Log(cityData.name + " - " + convertedTime.TimeOfDay + " -  " + TimeUtil.GetTimeOfTheDay(convertedTime));
                 
-                Debug.Log(result.data.getCityByName.name + " - " + time2);
+                
             }
         }
     }

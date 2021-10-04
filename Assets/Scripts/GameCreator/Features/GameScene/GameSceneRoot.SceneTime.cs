@@ -31,15 +31,15 @@ namespace GameCreator.Features.GameScene
             ApplyTimeConfig(renderConfig);
         }
 
-        async Task<TimeOfDay> GetTimeOfTheDay()
+        async Task<TimeOfTheDay> GetTimeOfTheDay()
         {
             if (sceneTimeData.IsCity)
             {
                 var cityResult = await getCityTimeCommand.Run(sceneTimeData.Name);
-                return cityResult.TimeOfDay;
+                return cityResult.TimeOfTheDay;
             }
             
-            return (TimeOfDay)Enum.Parse(typeof(TimeOfDay), sceneTimeData.Name);
+            return (TimeOfTheDay)Enum.Parse(typeof(TimeOfTheDay), sceneTimeData.Name);
         }
 
         void ApplyTimeConfig(TimeSettingsConfig.TimeRenderConfig renderConfig)

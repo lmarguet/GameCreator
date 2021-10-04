@@ -20,6 +20,14 @@ namespace GameCreator.Features.TimeSettings
         public string id;
         public string name;
         public Weather weather;
+        public CityCoordinates coord;
+    }
+
+    [Serializable]
+    public class CityCoordinates
+    {
+        public string lon;
+        public string lat;
     }
 
     [Serializable]

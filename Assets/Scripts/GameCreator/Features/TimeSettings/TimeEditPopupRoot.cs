@@ -48,10 +48,10 @@ namespace GameCreator.Features.TimeSettings
         {
             var options = new List<TMP_Dropdown.OptionData>
             {
-                new TMP_Dropdown.OptionData { text = TimeOfDay.Day.ToString() },
-                new TMP_Dropdown.OptionData { text = TimeOfDay.Morning.ToString() },
-                new TMP_Dropdown.OptionData { text = TimeOfDay.Evening.ToString() },
-                new TMP_Dropdown.OptionData { text = TimeOfDay.Night.ToString() }
+                new TMP_Dropdown.OptionData { text = TimeOfTheDay.Day.ToString() },
+                new TMP_Dropdown.OptionData { text = TimeOfTheDay.Morning.ToString() },
+                new TMP_Dropdown.OptionData { text = TimeOfTheDay.Evening.ToString() },
+                new TMP_Dropdown.OptionData { text = TimeOfTheDay.Night.ToString() }
             };
 
             options.AddRange(timeSettingsConfig.Cities.Select(city => new TMP_Dropdown.OptionData { text = city }));
