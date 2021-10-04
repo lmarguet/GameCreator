@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0331211c89478080430d907ca06796, type: 3}
   m_Name: TimeSettingsConfig
   m_EditorClassIdentifier: 
-  weatherApiReference: {fileID: 0}
+  weatherApiReference: {fileID: 11400000, guid: f0740878fed5c4a4b805d5dcbcc9bbd6,
+    type: 2}
   getCityQueryName: GetCity
   cities:
   - Berlin

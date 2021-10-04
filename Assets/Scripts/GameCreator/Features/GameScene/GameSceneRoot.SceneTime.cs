@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using GameCreator.Config;
 using GameCreator.Features.TimeSettings;
 using UnityEngine;
@@ -22,21 +23,20 @@ namespace GameCreator.Features.GameScene
             RenderSceneTimeSettings();
         }
 
-        public void RenderSceneTimeSettings()
+        public async void RenderSceneTimeSettings()
         {
-            var timeOfTheDay = GetTimeOfTheDay();
+            var timeOfTheDay = await GetTimeOfTheDay();
 
             var renderConfig = timeRenderConfig.GetTimeRenderConfig(timeOfTheDay);
             ApplyTimeConfig(renderConfig);
         }
 
-        TimeOfDay GetTimeOfTheDay()
+        async Task<TimeOfDay> GetTimeOfTheDay()
         {
             if (sceneTimeData.IsCity)
             {
-                // TODO
-                Debug.Log("Not supported");
-                return TimeOfDay.Day;
+                var cityResult = await getCityTimeCommand.Run(sceneTimeData.Name);
+                return cityResult.TimeOfDay;
             }
             
             return (TimeOfDay)Enum.Parse(typeof(TimeOfDay), sceneTimeData.Name);
