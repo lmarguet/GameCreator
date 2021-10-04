@@ -4,6 +4,7 @@ using GameCreator.Features.EditModeUi;
 using GameCreator.Features.GameScene;
 using GameCreator.Features.GameScene.States;
 using GameCreator.Features.PlayMode;
+using GameCreator.Features.RealtimeLocation;
 using GameCreator.Features.SettingsPopup;
 using GameCreator.Features.TerrainEdit;
 using GameCreator.SceneManagement;
@@ -23,6 +24,7 @@ namespace GameCreator.Injection
 
             BindCommands();
             BindGameSceneState();
+            BindServices();
         }
 
         void BindCommands()
@@ -56,6 +58,11 @@ namespace GameCreator.Injection
             Container.Bind<CharacterDragEditState>().AsSingle();
             Container.Bind<PlayGameplayState>().AsSingle();
             Container.Bind<TerrainEditState>().AsSingle();
+        }
+
+        void BindServices()
+        {
+            Container.Bind<WeatherApiService>().AsSingle();
         }
     }
 }

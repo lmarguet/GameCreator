@@ -89,8 +89,8 @@ MonoBehaviour:
   mutations:
   - name: CreateNewUser
     type: 1
-    query: "mutation CreateNewUser{\n    insert_users(  objects :{ id :desc, name
-      :\"sdf\"} ){\n        returning{\n            id\n            name\n           
+    query: "mutation CreateNewUser{\n    insert_users(  objects :{ id :\"test\",
+      name :\"Lucas\"} ){\n        returning{\n            id\n            name\n           
       last_seen\n            created_at\n        }\n        affected_rows\n    }\n}"
     queryString: insert_users
     returnType: users_mutation_response

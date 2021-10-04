@@ -1,9 +1,21 @@
+using GameCreator.Config;
 using UnityEngine;
+using Zenject;
 
 namespace GameCreator.Features.RealtimeLocation
 {
     public class WeatheApiTestScene : MonoBehaviour
     {
-        
+        [Inject] WeatherApiService weatherApiService;
+        [Inject] WeatherApiConfig weatherApiConfig;
+
+        async void Start()
+        {
+            foreach (var city in weatherApiConfig.Cities)
+            {
+                var result = await weatherApiService.QueryCity(city);
+                Debug.Log(result);
+            }
+        }
     }
 }
