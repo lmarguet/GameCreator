@@ -3,7 +3,7 @@ using GameCreator.Config;
 using GraphQlClient.Core;
 using Zenject;
 
-namespace GameCreator.Features.RealtimeLocation
+namespace GameCreator.Features.DayTime
 {
     public class WeatherApiService
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace GameCreator.Features.RealtimeLocation
+namespace GameCreator.Features.DayTime
 {
     [Serializable]
     public class WeatherRequestResult

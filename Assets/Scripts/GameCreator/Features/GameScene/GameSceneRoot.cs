@@ -43,6 +43,7 @@ namespace GameCreator.Features.GameScene
         IGameSceneState state;
         TerrainEditMode terrainEditMode;
         int terrainBrushDiameter;
+        SceneTimeData sceneTimeData;
 
         void Awake()
         {

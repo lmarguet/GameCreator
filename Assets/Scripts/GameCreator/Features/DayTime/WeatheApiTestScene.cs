@@ -2,7 +2,7 @@ using GameCreator.Config;
 using UnityEngine;
 using Zenject;
 
-namespace GameCreator.Features.RealtimeLocation
+namespace GameCreator.Features.DayTime
 {
     public class WeatheApiTestScene : MonoBehaviour
     {

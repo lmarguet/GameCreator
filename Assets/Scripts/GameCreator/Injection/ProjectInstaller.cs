@@ -1,10 +1,10 @@
 using GameCreator.Features.Characters;
 using GameCreator.Features.Characters.EditPopup;
+using GameCreator.Features.DayTime;
 using GameCreator.Features.EditModeUi;
 using GameCreator.Features.GameScene;
 using GameCreator.Features.GameScene.States;
 using GameCreator.Features.PlayMode;
-using GameCreator.Features.RealtimeLocation;
 using GameCreator.Features.SettingsPopup;
 using GameCreator.Features.TerrainEdit;
 using GameCreator.SceneManagement;
@@ -47,7 +47,8 @@ namespace GameCreator.Injection
             Container.Bind<SetTerrainEditModeCommand>().AsSingle();
             Container.Bind<SetTerrainBrushDiameterCommand>().AsSingle();
             Container.Bind<ClearLatestTerrainModifications>().AsSingle();
-            Container.Bind<OpenLocationEditPopupCommand>().AsSingle();
+            Container.Bind<OpenTimeEditPopupCommand>().AsSingle();
+            Container.Bind<SetSceneTimeDataCommand>().AsSingle();
         }
 
         void BindGameSceneState()

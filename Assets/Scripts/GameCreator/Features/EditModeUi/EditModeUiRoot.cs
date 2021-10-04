@@ -1,7 +1,7 @@
 using System.Linq;
+using GameCreator.Features.DayTime;
 using GameCreator.Features.EditModeUi.ToolBars;
 using GameCreator.Features.PlayMode;
-using GameCreator.Features.RealtimeLocation;
 using GameCreator.Features.SettingsPopup;
 using GameCreator.Features.TerrainEdit;
 using GameCreator.SceneManagement;
@@ -18,7 +18,7 @@ namespace GameCreator.Features.EditModeUi
         [Inject] NavigationManager navigationManager;
         [Inject] EnterTerrainEditStateCommand enterTerrainEditStateCommand;
         [Inject] ExitTerrainEditStateCommand exitTerrainEditStateCommand;
-        [Inject] OpenLocationEditPopupCommand openLocationEditPopupCommand;
+        [Inject] OpenTimeEditPopupCommand openTimeEditPopupCommand;
 
         [SerializeField] Button settingsButton;
         [SerializeField] Button playModeButton;
@@ -74,7 +74,7 @@ namespace GameCreator.Features.EditModeUi
 
         async void HandleLocationButtonClick()
         {
-            await openLocationEditPopupCommand.Run();
+            await openTimeEditPopupCommand.Run();
         }
 
         void InitToolBars()
