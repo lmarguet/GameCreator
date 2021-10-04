@@ -27,6 +27,7 @@ namespace GameCreator.Features.GameScene
 
         public void ModifyTerrain(Vector3 editPosition)
         {
+            charactersContainer.gameObject.SetActive(false);
             if (terrainEditMode == TerrainEditMode.Raise)
             {
                 terrainView.Raise(editPosition, terrainBrushDiameter, terrainEditConfig.StrengthRange.x);
@@ -35,6 +36,7 @@ namespace GameCreator.Features.GameScene
             {
                 terrainView.Lower(editPosition, terrainBrushDiameter, terrainEditConfig.StrengthRange.x);
             }
+            charactersContainer.gameObject.SetActive(true);
         }
 
         public void SetTerranEditMode(TerrainEditMode mode)
