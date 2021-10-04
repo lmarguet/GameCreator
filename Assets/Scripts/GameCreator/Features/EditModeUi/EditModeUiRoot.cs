@@ -67,7 +67,7 @@ namespace GameCreator.Features.EditModeUi
 
         void HandleCharactersButtonClick()
         {
-            ShowToolBar(ToolBarType.Charcters);
+            ShowToolBar(ToolBarType.Characters);
         }
 
         void HandleLocationButtonClick()
@@ -135,7 +135,7 @@ namespace GameCreator.Features.EditModeUi
 
         public void DeselectCharacters()
         {
-            var charactersToolBar = (CharactersToolBar)GetToolBarView(ToolBarType.Charcters);
+            var charactersToolBar = (CharactersToolBar)GetToolBarView(ToolBarType.Characters);
             charactersToolBar.UnToggle();
         }
     }

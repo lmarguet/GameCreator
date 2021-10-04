@@ -16,7 +16,7 @@ namespace GameCreator.Features.EditModeUi.ToolBars
         [SerializeField] ToggleGroup toggleGroup;
         [SerializeField] CharacterButton characterButtonPrefab; 
 
-        public override ToolBarType Type => ToolBarType.Charcters;
+        public override ToolBarType Type => ToolBarType.Characters;
         
         void Start()
         {
