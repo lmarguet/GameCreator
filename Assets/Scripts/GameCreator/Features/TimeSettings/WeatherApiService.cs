@@ -3,15 +3,15 @@ using GameCreator.Config;
 using GraphQlClient.Core;
 using Zenject;
 
-namespace GameCreator.Features.DayTime
+namespace GameCreator.Features.TimeSettings
 {
     public class WeatherApiService
     {
-        [Inject] WeatherApiConfig apiConfig;
+        [Inject] TimeSettingsConfig apiConfig;
 
         public async Task<string> QueryCity(string city)
         {
-            var apiReference = apiConfig.ApiReference;
+            var apiReference = apiConfig.WeatherApiReference;
             
             var getCityQuery = apiReference.GetQueryByName(apiConfig.GetCityQueryName, GraphApi.Query.Type.Query);
             getCityQuery.SetArgs(new { name = city });

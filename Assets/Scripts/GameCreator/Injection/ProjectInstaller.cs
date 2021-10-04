@@ -1,12 +1,12 @@
 using GameCreator.Features.Characters;
 using GameCreator.Features.Characters.EditPopup;
-using GameCreator.Features.DayTime;
 using GameCreator.Features.EditModeUi;
 using GameCreator.Features.GameScene;
 using GameCreator.Features.GameScene.States;
 using GameCreator.Features.PlayMode;
 using GameCreator.Features.SettingsPopup;
 using GameCreator.Features.TerrainEdit;
+using GameCreator.Features.TimeSettings;
 using GameCreator.SceneManagement;
 using UnityEngine;
 using Zenject;

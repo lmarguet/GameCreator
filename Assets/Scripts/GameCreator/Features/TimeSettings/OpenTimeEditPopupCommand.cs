@@ -5,7 +5,7 @@ using GameCreator.SceneManagement;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace GameCreator.Features.DayTime
+namespace GameCreator.Features.TimeSettings
 {
     public class OpenTimeEditPopupCommand : AAsyncCommand
     {

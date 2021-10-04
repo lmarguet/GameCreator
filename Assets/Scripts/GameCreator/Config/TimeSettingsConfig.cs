@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace GameCreator.Config
 {
-    [CreateAssetMenu(fileName = "WeatherApiConfig", menuName = "Config/WeatherApiConfig")]
-    public class WeatherApiConfig : ScriptableObject
+    [CreateAssetMenu(fileName = "TimeSettingsConfig", menuName = "Config/TimeSettingsConfig")]
+    public class TimeSettingsConfig : ScriptableObject
     {
 
-        [SerializeField] GraphApi apiReference;
+        [SerializeField] GraphApi weatherApiReference;
         [SerializeField] string getCityQueryName;
         [SerializeField] string[] cities;
 
-        public GraphApi ApiReference => apiReference;
+        public GraphApi WeatherApiReference => weatherApiReference;
         public string GetCityQueryName => getCityQueryName;
         public string[] Cities => cities;
     }

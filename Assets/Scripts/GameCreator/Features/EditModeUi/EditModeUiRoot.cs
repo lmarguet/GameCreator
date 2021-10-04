@@ -1,9 +1,9 @@
 using System.Linq;
-using GameCreator.Features.DayTime;
 using GameCreator.Features.EditModeUi.ToolBars;
 using GameCreator.Features.PlayMode;
 using GameCreator.Features.SettingsPopup;
 using GameCreator.Features.TerrainEdit;
+using GameCreator.Features.TimeSettings;
 using GameCreator.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;

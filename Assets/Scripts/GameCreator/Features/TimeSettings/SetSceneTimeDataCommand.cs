@@ -3,7 +3,7 @@ using GameCreator.Framework;
 using GameCreator.SceneManagement;
 using Zenject;
 
-namespace GameCreator.Features.DayTime
+namespace GameCreator.Features.TimeSettings
 {
     public class SetSceneTimeDataCommand : ACommand<GameSceneRoot.SceneTimeData>
     {

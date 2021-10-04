@@ -11,7 +11,7 @@ namespace GameCreator.Injection
         [SerializeField] ScenesConfig scenesConfig;
         [SerializeField] CharactersConfig charactersConfig;
         [SerializeField] TerrainEditConfig terrainEditConfig;
-        [SerializeField] WeatherApiConfig weatherApiConfig;
+        [SerializeField] TimeSettingsConfig timeSettingsConfig;
 
         public override void InstallBindings()
         {
@@ -21,7 +21,7 @@ namespace GameCreator.Injection
             Container.BindInstance(scenesConfig);
             Container.BindInstance(charactersConfig);
             Container.BindInstance(terrainEditConfig);
-            Container.BindInstance(weatherApiConfig);
+            Container.BindInstance(timeSettingsConfig);
         }
     }
 }

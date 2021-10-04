@@ -16,4 +16,4 @@ MonoBehaviour:
   scenesConfig: {fileID: 11400000, guid: cd7fbc94d6cc84d28bd3b62327cb0e1b, type: 2}
   charactersConfig: {fileID: 11400000, guid: 0f22b8e78940a46baba36edab464b82f, type: 2}
   terrainEditConfig: {fileID: 11400000, guid: df7b04895a9034aa8afdf7c69980b3d1, type: 2}
-  weatherApiConfig: {fileID: 11400000, guid: a1f432051b7a442ada1eadda5b0c68b8, type: 2}
+  timeSettingsConfig: {fileID: 11400000, guid: a1f432051b7a442ada1eadda5b0c68b8, type: 2}

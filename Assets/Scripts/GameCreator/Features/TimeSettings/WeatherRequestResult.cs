@@ -1,6 +1,6 @@
 using System;
 
-namespace GameCreator.Features.DayTime
+namespace GameCreator.Features.TimeSettings
 {
     [Serializable]
     public class WeatherRequestResult

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using GameCreator.Config;
@@ -9,12 +8,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace GameCreator.Features.DayTime
+namespace GameCreator.Features.TimeSettings
 {
     public class TimeEditPopupRoot : ASceneRoot
     {
         [Inject] NavigationManager navigationManager;
-        [Inject] WeatherApiConfig weatherApiConfig;
+        [Inject] TimeSettingsConfig timeSettingsConfig;
         [Inject] SetSceneTimeDataCommand setSceneTimeDataCommand;
 
         [SerializeField] Button closeButton;
@@ -55,7 +54,7 @@ namespace GameCreator.Features.DayTime
                 new TMP_Dropdown.OptionData { text = "Night" }
             };
 
-            options.AddRange(weatherApiConfig.Cities.Select(city => new TMP_Dropdown.OptionData { text = city }));
+            options.AddRange(timeSettingsConfig.Cities.Select(city => new TMP_Dropdown.OptionData { text = city }));
 
             return options;
         }
@@ -64,7 +63,7 @@ namespace GameCreator.Features.DayTime
         {
             var selectedIndex = dropdown.value;
             var optionText = optionsList[selectedIndex].text;
-            var isCity = weatherApiConfig.Cities.Contains(optionText);
+            var isCity = timeSettingsConfig.Cities.Contains(optionText);
 
             setSceneTimeDataCommand.Execute(new GameSceneRoot.SceneTimeData
             {
