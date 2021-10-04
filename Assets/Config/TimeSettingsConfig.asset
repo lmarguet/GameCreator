@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0331211c89478080430d907ca06796, type: 3}
   m_Name: TimeSettingsConfig
   m_EditorClassIdentifier: 
-  apiReference: {fileID: 11400000, guid: f0740878fed5c4a4b805d5dcbcc9bbd6, type: 2}
+  weatherApiReference: {fileID: 0}
   getCityQueryName: GetCity
   cities:
   - Berlin
@@ -20,3 +20,12 @@ MonoBehaviour:
   - London
   - Tokyo
   - New York
+  timeRenderConfigs:
+  - TimeOfDay: 0
+    Skybox: {fileID: 2100000, guid: 7a55134c0bdd95f45ac36d63fc4e2b89, type: 2}
+  - TimeOfDay: 1
+    Skybox: {fileID: 2100000, guid: 1474982501a6ef743a225abaa1258796, type: 2}
+  - TimeOfDay: 2
+    Skybox: {fileID: 2100000, guid: 91b89776b1d1b444e8f2b27983fdd118, type: 2}
+  - TimeOfDay: 3
+    Skybox: {fileID: 2100000, guid: e8ed1d86db2826b4f80d008c7b03d053, type: 2}

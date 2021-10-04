@@ -18,6 +18,7 @@ namespace GameCreator.Features.GameScene
 
         [Inject] CharactersConfig charactersConfig;
         [Inject] TerrainEditConfig terrainEditConfig;
+        [Inject] TimeSettingsConfig timeRenderConfig;
 
         [Inject] EditDefaultState editDefaultState;
         [Inject] PlayDefaultState playDefaultState;
