@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Config;
 using GameCreator.Features.TimeSettings;
 using UnityEngine;
 
@@ -18,21 +19,32 @@ namespace GameCreator.Features.GameScene
         {
             sceneTimeData = data;
 
-            RenderSceneTimeSettimgs();
+            RenderSceneTimeSettings();
         }
 
-        void RenderSceneTimeSettimgs()
+        public void RenderSceneTimeSettings()
+        {
+            var timeOfTheDay = GetTimeOfTheDay();
+
+            var renderConfig = timeRenderConfig.GetTimeRenderConfig(timeOfTheDay);
+            ApplyTimeConfig(renderConfig);
+        }
+
+        TimeOfDay GetTimeOfTheDay()
         {
             if (sceneTimeData.IsCity)
             {
                 // TODO
                 Debug.Log("Not supported");
+                return TimeOfDay.Day;
             }
-            else
-            {
-                var timeOfDay = (TimeOfDay)Enum.Parse(typeof(TimeOfDay), sceneTimeData.Name);
-                Debug.Log(timeOfDay);
-            }
+            
+            return (TimeOfDay)Enum.Parse(typeof(TimeOfDay), sceneTimeData.Name);
+        }
+
+        void ApplyTimeConfig(TimeSettingsConfig.TimeRenderConfig renderConfig)
+        {
+            RenderSettings.skybox = renderConfig.Skybox;
         }
     }
 }
