@@ -4,6 +4,7 @@ using GameCreator.Config;
 using GameCreator.Features.Characters.Ui;
 using GameCreator.Features.GameScene.States;
 using GameCreator.Features.TerrainEdit;
+using GameCreator.Features.TimeSettings;
 using GameCreator.SceneManagement;
 using Signals;
 using UnityEngine;
@@ -37,14 +38,18 @@ namespace GameCreator.Features.GameScene
         [SerializeField] CameraBase cameraBase;
         [SerializeField] TerrainView terrainView;
         [SerializeField] AutoCam playerCamera;
-        [SerializeField] ProjectorForLWRP.ProjectorForLWRP terrainProjector; 
+        [SerializeField] ProjectorForLWRP.ProjectorForLWRP terrainProjector;
 
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
         IGameSceneState state;
         TerrainEditMode terrainEditMode;
         int terrainBrushDiameter;
-        SceneTimeData sceneTimeData;
+
+        SceneTimeData sceneTimeData = new SceneTimeData
+        {
+            Name = TimeOfDay.Day.ToString()
+        };
 
         void Awake()
         {
@@ -104,7 +109,7 @@ namespace GameCreator.Features.GameScene
         {
             currentMode = GameSceneMode.PlayMode;
             SetState(playDefaultState);
-            
+
             if (HasPlayableCharacter(out var characterView))
             {
                 playGameplayState.SetPlayerView(characterView);
