@@ -12,10 +12,10 @@ namespace GameCreator.Features.GameScene.States
         }
 
         protected override void OnEnable()
-        {
-            playerView.EnableControls();
+        {;
             gameSceneRoot.SetCameraControlsEnabled(false);
-            gameSceneRoot.SetupPlayerCamera(playerView.gameObject);
+            var camera = gameSceneRoot.SetupPlayerCamera(playerView.gameObject);
+            playerView.EnableControls(camera.transform);
         }
 
         protected override void OnDisable()

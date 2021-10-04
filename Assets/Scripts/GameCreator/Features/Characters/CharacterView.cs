@@ -47,9 +47,10 @@ namespace GameCreator.Features.Characters
             areControlsEnabled = false;
         }
 
-        public void EnableControls()
+        public void EnableControls(Transform cameraTransform)
         {
-            // controls.enabled = false;
+            controls.SetCamTransform(cameraTransform);
+            controls.enabled = true;
             areControlsEnabled = true;
         }
         
@@ -91,6 +92,9 @@ namespace GameCreator.Features.Characters
                 var vertical = JoystickInput.Vertical != 0
                     ? JoystickInput.Vertical
                     : Input.GetAxis("Vertical");
+                
+                Debug.Log(horizontal);
+                Debug.Log(vertical);
 
                 move = vertical * Vector3.forward + horizontal * Vector3.right;
                 character.Move(move, false, false);

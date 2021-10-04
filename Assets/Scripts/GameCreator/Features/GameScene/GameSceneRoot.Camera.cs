@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityStandardAssets.Cameras;
 
 namespace GameCreator.Features.GameScene
 {
@@ -9,11 +10,12 @@ namespace GameCreator.Features.GameScene
             cameraInputs.enabled = controlsEnabled;
         }
 
-        public void SetupPlayerCamera(GameObject player)
+        public AutoCam SetupPlayerCamera(GameObject player)
         {
             cameraBase.gameObject.SetActive(false);
             playerCamera.gameObject.SetActive(true);
             playerCamera.SetTarget(player.transform);
+            return playerCamera;
         }
 
         public void ResetCamera()

@@ -178,7 +178,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9ba1f27bd89c12046b4d0212fc77bd17, type: 2}
+  - {fileID: 2100000, guid: 4d33b805c63e84f8f922b1403d5b921a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -313,6 +313,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1172556009 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4370503133702230117, guid: 81f68dc2d321144b3b2d18eae5fc3a0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 612046478478214256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1604174458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,6 +326,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3490574247677806053, guid: f3f5a93faa378c84cb5e30e882ba79ff,
+        type: 3}
+      propertyPath: m_Cam
+      value: 
+      objectReference: {fileID: 1172556009}
     - target: {fileID: 114468, guid: f3f5a93faa378c84cb5e30e882ba79ff, type: 3}
       propertyPath: m_Name
       value: SP2_Character_DareDevil
@@ -382,6 +393,21 @@ PrefabInstance:
       propertyPath: m_Target
       value: 
       objectReference: {fileID: 56924440}
+    - target: {fileID: 612046480259040906, guid: 81f68dc2d321144b3b2d18eae5fc3a0f,
+        type: 3}
+      propertyPath: m_TurnSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 612046480259040906, guid: 81f68dc2d321144b3b2d18eae5fc3a0f,
+        type: 3}
+      propertyPath: m_FollowVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 612046480259040906, guid: 81f68dc2d321144b3b2d18eae5fc3a0f,
+        type: 3}
+      propertyPath: m_AutoTargetPlayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4370503133702230112, guid: 81f68dc2d321144b3b2d18eae5fc3a0f,
         type: 3}
       propertyPath: m_Name

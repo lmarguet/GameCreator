@@ -14,6 +14,7 @@ namespace GameCreator.Features.PlayMode
 
         [SerializeField] Button editModeButton;
         [SerializeField] Joystick joystick;
+        [SerializeField] float joystickValueMultiplier = 1;
         bool showJoytsick;
 
         void Awake()
@@ -37,8 +38,8 @@ namespace GameCreator.Features.PlayMode
         {
             if (showJoytsick)
             {
-                JoystickInput.Horizontal = joystick.Horizontal;
-                JoystickInput.Vertical = joystick.Vertical;   
+                JoystickInput.Horizontal = joystick.Horizontal * joystickValueMultiplier;
+                JoystickInput.Vertical = joystick.Vertical * joystickValueMultiplier;
             }
         }
 

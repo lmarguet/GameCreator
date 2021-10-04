@@ -242,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   editModeButton: {fileID: 1146473068}
   joystick: {fileID: 842710212}
+  joystickValueMultiplier: 2
 --- !u!114 &822683301
 MonoBehaviour:
   m_ObjectHideFlags: 0
