@@ -29,12 +29,14 @@ namespace GameCreator.Features.GameScene
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
+        [SerializeField] LayerMask worldPlaneLayer;
         [SerializeField] Transform charactersContainer;
         [SerializeField] CharacterWolrdUi characterWorldUi;
         [SerializeField] Inputs cameraInputs;
         [SerializeField] CameraBase cameraBase;
         [SerializeField] TerrainView terrainView;
         [SerializeField] AutoCam playerCamera;
+        [SerializeField] ProjectorForLWRP.ProjectorForLWRP terrainProjector; 
 
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
@@ -82,6 +84,12 @@ namespace GameCreator.Features.GameScene
         {
             var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
             return Physics.Raycast(ray, out hit);
+        }
+
+        public object DoWorldRaycast(out RaycastHit hit)
+        {
+            var ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
+            return Physics.Raycast(ray, out hit, worldPlaneLayer.value);
         }
 
         public void EnterEditMode()

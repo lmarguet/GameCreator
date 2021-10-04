@@ -27,6 +27,7 @@ namespace GameCreator.Features.GameScene
 
         public void ModifyTerrain(Vector3 editPosition)
         {
+            charactersContainer.gameObject.SetActive(false);
             if (terrainEditMode == TerrainEditMode.Raise)
             {
                 terrainView.Raise(editPosition, terrainBrushDiameter, terrainEditConfig.StrengthRange.x);
@@ -35,6 +36,7 @@ namespace GameCreator.Features.GameScene
             {
                 terrainView.Lower(editPosition, terrainBrushDiameter, terrainEditConfig.StrengthRange.x);
             }
+            charactersContainer.gameObject.SetActive(true);
         }
 
         public void SetTerranEditMode(TerrainEditMode mode)
@@ -51,6 +53,18 @@ namespace GameCreator.Features.GameScene
         public void ClearLatestTerrainModifications()
         {
             terrainView.ResetHeightsToState(previousTerrainHeights);
+        }
+
+        public void HideTerrainProjector()
+        {
+            terrainProjector.gameObject.SetActive(false);
+        }
+
+        public void ShowTerrainProjector(float positionX, float positionZ)
+        {
+            terrainProjector.gameObject.SetActive(true);
+            var positionY = terrainProjector.transform.position.y;
+            terrainProjector.transform.position = new Vector3(positionX, positionY, positionZ);
         }
     }
 }

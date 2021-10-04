@@ -2,7 +2,7 @@ namespace GameCreator.Features.EditModeUi.ToolBars
 {
     public enum ToolBarType
     {
-        Charcters = 0,
+        Characters = 0,
         TerrainEdit = 1,
         LocationEdit = 2
     }

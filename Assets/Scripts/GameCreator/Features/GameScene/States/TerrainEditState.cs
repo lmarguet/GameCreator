@@ -23,6 +23,9 @@ namespace GameCreator.Features.GameScene.States
             gameSceneRoot.DoTerrainMouseRaycast(out var hit);
             editPosition = hit.point;
             gameSceneRoot.ModifyTerrain(editPosition);
+
+            gameSceneRoot.DoWorldRaycast(out var worldHit);
+            gameSceneRoot.ShowTerrainProjector(worldHit.point.x, worldHit.point.z);
         }
     }
 }
