@@ -1,6 +1,8 @@
+using UnityEngine;
+
 namespace GameCreator.Features.RealtimeLocation
 {
-    public class WeatheApiTestScene
+    public class WeatheApiTestScene : MonoBehaviour
     {
         
     }
