@@ -52,5 +52,17 @@ namespace GameCreator.Features.GameScene
         {
             terrainView.ResetHeightsToState(previousTerrainHeights);
         }
+
+        public void HideTerrainProjector()
+        {
+            terrainProjector.gameObject.SetActive(false);
+        }
+
+        public void ShowTerrainProjector(float positionX, float positionZ)
+        {
+            terrainProjector.gameObject.SetActive(true);
+            var positionY = terrainProjector.transform.position.y;
+            terrainProjector.transform.position = new Vector3(positionX, positionY, positionZ);
+        }
     }
 }
