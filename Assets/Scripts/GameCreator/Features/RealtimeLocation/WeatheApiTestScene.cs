@@ -15,7 +15,10 @@ namespace GameCreator.Features.RealtimeLocation
             {
                 var result = await weatherApiService.QueryCity(city);
                 Debug.Log(result);
+                var json = JsonUtility.FromJson<WeatherRequestResult>(result);
+                Debug.Log(json);
             }
         }
     }
+
 }
