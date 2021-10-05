@@ -30,11 +30,11 @@ namespace GameCreator.Features.GameScene
             charactersContainer.gameObject.SetActive(false);
             if (terrainEditMode == TerrainEditMode.Raise)
             {
-                terrainView.Raise(editPosition, terrainBrushDiameter, terrainEditConfig.StrengthRange.x);
+                terrainView.Raise(editPosition, terrainBrushDiameter, terrainEditConfig.BrushStrengh);
             }
             else
             {
-                terrainView.Lower(editPosition, terrainBrushDiameter, terrainEditConfig.StrengthRange.x);
+                terrainView.Lower(editPosition, terrainBrushDiameter, terrainEditConfig.BrushStrengh);
             }
             charactersContainer.gameObject.SetActive(true);
         }
@@ -48,6 +48,8 @@ namespace GameCreator.Features.GameScene
         {
             var range = terrainEditConfig.DiameterRange.y - terrainEditConfig.DiameterRange.x;
             terrainBrushDiameter = Mathf.RoundToInt(terrainEditConfig.DiameterRange.x + range * rangePercent);
+            
+            terrainProjector.SetBrushScale(rangePercent);
         }
 
         public void ClearLatestTerrainModifications()

@@ -41,7 +41,7 @@ namespace GameCreator.Features.EditModeUi.ToolBars
 
         void HandleDiameterChange(float value)
         {
-            value = Mathf.Max(value, 0.05f);
+            value = Mathf.Max(value, 0.02f);
             setTerrainBrushDiameterCommand.Execute(value);
         }
 

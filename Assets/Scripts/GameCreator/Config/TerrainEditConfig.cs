@@ -7,9 +7,9 @@ namespace GameCreator.Config
     {
 
         [SerializeField] Vector2 diameterRange = new Vector2(1, 100);
-        [SerializeField] Vector2 strengthRange = new Vector2(0.1f, 1);
+        [SerializeField] float brushStrengh  = 0.05f;
 
         public Vector2 DiameterRange => diameterRange;
-        public Vector2 StrengthRange => strengthRange;
+        public float BrushStrengh => brushStrengh;
     }
 }
