@@ -29,10 +29,12 @@ namespace GameCreator.Config
         [SerializeField] string getCityQueryName;
         [SerializeField] CityConfig[] cities;
         [SerializeField] TimeRenderConfig[] timeRenderConfigs;
+        [SerializeField] int realTimeRenderIntervalSeconds;
 
         public GraphApi WeatherApiReference => weatherApiReference;
         public string GetCityQueryName => getCityQueryName;
         public IEnumerable<CityConfig> Cities => cities;
+        public int RealTimeRenderIntervalSeconds => realTimeRenderIntervalSeconds;
 
         public TimeRenderConfig GetTimeRenderConfig(TimeOfTheDay timeOfTheDay)
         {

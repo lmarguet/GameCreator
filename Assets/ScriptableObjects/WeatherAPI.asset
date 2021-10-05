@@ -16,10 +16,11 @@ MonoBehaviour:
   queries:
   - name: GetCity
     type: 0
-    query: "query {\n    getCityByName{\n        id\n        name\n        country\n       
-      coord{\n            lon\n            lat\n        }\n        weather{\n           
-      summary{\n                title\n                title\n                description\n       
-      }\n            summary\n            clouds{\n                all\n        }\n           
+    query: "query GetCity{\n    getCityByName(  name :\"Berlin\" ){\n        id\n       
+      name\n        country\n        coord{\n            lon\n            lat\n       
+      }\n        weather{\n            summary{\n                title\n               
+      description\n                icon\n        }\n            temperature{\n               
+      actual\n        }\n            clouds{\n                all\n        }\n           
       timestamp\n        }\n    }\n}"
     queryString: getCityByName
     returnType: City
@@ -164,19 +165,6 @@ MonoBehaviour:
       - name: icon
         type: String
       hasChanged: 0
-    - index: 0
-      name: title
-      type: String
-      parentIndexes: 0600000007000000
-      hasSubField: 0
-      possibleFields:
-      - name: title
-        type: String
-      - name: description
-        type: String
-      - name: icon
-        type: String
-      hasChanged: 0
     - index: 1
       name: description
       type: String
@@ -190,9 +178,22 @@ MonoBehaviour:
       - name: icon
         type: String
       hasChanged: 0
-    - index: 0
-      name: summary
-      type: Summary
+    - index: 2
+      name: icon
+      type: String
+      parentIndexes: 0600000007000000
+      hasSubField: 0
+      possibleFields:
+      - name: title
+        type: String
+      - name: description
+        type: String
+      - name: icon
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: temperature
+      type: Temperature
       parentIndexes: 06000000
       hasSubField: 1
       possibleFields:
@@ -206,6 +207,21 @@ MonoBehaviour:
         type: Clouds
       - name: timestamp
         type: Int
+      hasChanged: 0
+    - index: 0
+      name: actual
+      type: Float
+      parentIndexes: 060000000b000000
+      hasSubField: 0
+      possibleFields:
+      - name: actual
+        type: Float
+      - name: feelsLike
+        type: Float
+      - name: min
+        type: Float
+      - name: max
+        type: Float
       hasChanged: 0
     - index: 3
       name: clouds
@@ -227,7 +243,7 @@ MonoBehaviour:
     - index: 0
       name: all
       type: Int
-      parentIndexes: 060000000c000000
+      parentIndexes: 060000000d000000
       hasSubField: 0
       possibleFields:
       - name: all

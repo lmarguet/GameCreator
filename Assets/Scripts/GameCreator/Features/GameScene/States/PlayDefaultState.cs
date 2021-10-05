@@ -5,7 +5,12 @@ namespace GameCreator.Features.GameScene.States
         protected override void OnEnable()
         {
             gameSceneRoot.StartAllCharactersAnimations();
-            gameSceneRoot.UpdateTimeAndWeather();
+            gameSceneRoot.StartRealTimeUpdate();
+        }
+
+        protected override void OnDisable()
+        {
+            gameSceneRoot.StopRealTimeUpdate();
         }
     }
 }

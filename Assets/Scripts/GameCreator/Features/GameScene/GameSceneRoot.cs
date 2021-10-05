@@ -111,12 +111,15 @@ namespace GameCreator.Features.GameScene
         public void EnterPlayMode()
         {
             currentMode = GameSceneMode.PlayMode;
-            SetState(playDefaultState);
 
             if (HasPlayableCharacter(out var characterView))
             {
                 playGameplayState.SetPlayerView(characterView);
                 SetState(playGameplayState);
+            }
+            else
+            {
+                SetState(playDefaultState);
             }
         }
 

@@ -35,3 +35,4 @@ MonoBehaviour:
     Skybox: {fileID: 2100000, guid: 91b89776b1d1b444e8f2b27983fdd118, type: 2}
   - timeOfTheDay: 3
     Skybox: {fileID: 2100000, guid: e8ed1d86db2826b4f80d008c7b03d053, type: 2}
+  realTimeRenderIntervalSeconds: 1
