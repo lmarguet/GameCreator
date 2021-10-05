@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cinemachine;
 using Exoa.Cameras;
 using Exoa.Designer;
 using GameCreator.Config;
@@ -10,8 +11,6 @@ using GameCreator.Features.TimeSettings;
 using GameCreator.SceneManagement;
 using Signals;
 using UnityEngine;
-using UnityStandardAssets.Cameras;
-using UnityStandardAssets.Utility;
 using Zenject;
 
 namespace GameCreator.Features.GameScene
@@ -41,7 +40,7 @@ namespace GameCreator.Features.GameScene
         [SerializeField] Inputs cameraInputs;
         [SerializeField] CameraBase cameraBase;
         [SerializeField] TerrainView terrainView;
-        [SerializeField] FollowTarget playerCamera;
+        [SerializeField] CinemachineVirtualCamera playerCamera;
         [SerializeField] ProjectorForLWRP.ProjectorForLWRP terrainProjector;
         [SerializeField] Transform lightContainer;
 
