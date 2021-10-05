@@ -4,6 +4,7 @@ using GameCreator.Config;
 using GameCreator.Features.Characters.Ui;
 using GameCreator.Features.GameScene.States;
 using GameCreator.Features.TerrainEdit;
+using GameCreator.Features.TimeSettings;
 using GameCreator.SceneManagement;
 using Signals;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace GameCreator.Features.GameScene
 
         [Inject] CharactersConfig charactersConfig;
         [Inject] TerrainEditConfig terrainEditConfig;
+        [Inject] TimeSettingsConfig timeRenderConfig;
 
         [Inject] EditDefaultState editDefaultState;
         [Inject] PlayDefaultState playDefaultState;
@@ -26,6 +28,7 @@ namespace GameCreator.Features.GameScene
         [Inject] CharacterDragEditState characterDragEditState;
         [Inject] PlayGameplayState playGameplayState;
         [Inject] TerrainEditState terrainEditState;
+        [Inject] UpdateTimeAndWeatherCommand updateTimeAndWeatherCommand;
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
@@ -36,7 +39,8 @@ namespace GameCreator.Features.GameScene
         [SerializeField] CameraBase cameraBase;
         [SerializeField] TerrainView terrainView;
         [SerializeField] AutoCam playerCamera;
-        [SerializeField] ProjectorForLWRP.ProjectorForLWRP terrainProjector; 
+        [SerializeField] ProjectorForLWRP.ProjectorForLWRP terrainProjector;
+        [SerializeField] Transform lightContainer;
 
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
@@ -44,9 +48,17 @@ namespace GameCreator.Features.GameScene
         TerrainEditMode terrainEditMode;
         int terrainBrushDiameter;
 
+        public GameSceneMode CurrentMode => currentMode;
+        public SceneTimeData SceneTime { get; private set; }
+
         void Awake()
         {
             characterWorldUi.gameObject.SetActive(false);
+            SceneTime = new SceneTimeData
+            {
+                Name = TimeOfTheDay.Day.ToString()
+            };
+            currentTimeOfTheDay = TimeOfTheDay.Day;
         }
 
         void Start()
@@ -101,12 +113,15 @@ namespace GameCreator.Features.GameScene
         public void EnterPlayMode()
         {
             currentMode = GameSceneMode.PlayMode;
-            SetState(playDefaultState);
-            
+
             if (HasPlayableCharacter(out var characterView))
             {
                 playGameplayState.SetPlayerView(characterView);
                 SetState(playGameplayState);
+            }
+            else
+            {
+                SetState(playDefaultState);
             }
         }
 
