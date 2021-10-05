@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TerrainEditConfig
   m_EditorClassIdentifier: 
   diameterRange: {x: 1, y: 20}
-  strengthRange: {x: 0.05, y: 0.15}
+  brushStrengh: 0.1

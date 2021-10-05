@@ -41,7 +41,7 @@ namespace GameCreator.Features.GameScene
         [SerializeField] CameraBase cameraBase;
         [SerializeField] TerrainView terrainView;
         [SerializeField] CinemachineVirtualCamera playerCamera;
-        [SerializeField] ProjectorForLWRP.ProjectorForLWRP terrainProjector;
+        [SerializeField] TerrainProjector terrainProjector;
         [SerializeField] Transform lightContainer;
 
         bool isMousePressed;
