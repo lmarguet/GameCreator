@@ -320,6 +320,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8045484406069073189, guid: f3f5a93faa378c84cb5e30e882ba79ff,
+        type: 3}
+      propertyPath: areControlsEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114468, guid: f3f5a93faa378c84cb5e30e882ba79ff, type: 3}
       propertyPath: m_Name
       value: SP2_Character_DareDevil
@@ -346,15 +351,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419226, guid: f3f5a93faa378c84cb5e30e882ba79ff, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 419226, guid: f3f5a93faa378c84cb5e30e882ba79ff, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 419226, guid: f3f5a93faa378c84cb5e30e882ba79ff, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 419226, guid: f3f5a93faa378c84cb5e30e882ba79ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -377,9 +382,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 612046480259040906, guid: 81f68dc2d321144b3b2d18eae5fc3a0f,
-        type: 3}
-      propertyPath: m_Target
+    - target: {fileID: 1133105353, guid: 81f68dc2d321144b3b2d18eae5fc3a0f, type: 3}
+      propertyPath: target
       value: 
       objectReference: {fileID: 56924440}
     - target: {fileID: 4370503133702230112, guid: 81f68dc2d321144b3b2d18eae5fc3a0f,

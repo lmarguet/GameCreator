@@ -1065,7 +1065,6 @@ GameObject:
   - component: {fileID: 446212}
   - component: {fileID: 9561062}
   - component: {fileID: -4843298198268354822}
-  - component: {fileID: 27619994307526640}
   - component: {fileID: 2574465507414709899}
   - component: {fileID: -3294440182588781271}
   - component: {fileID: 6514778826664240676}
@@ -1134,24 +1133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
---- !u!114 &27619994307526640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 154718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &2574465507414709899
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1194,6 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ffac12d7c044169b666259214fd3db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areControlsEnabled: 0
 --- !u!1 &158124
 GameObject:
   m_ObjectHideFlags: 0
