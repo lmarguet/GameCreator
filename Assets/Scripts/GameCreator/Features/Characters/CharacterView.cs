@@ -1,4 +1,3 @@
-using System;
 using Lean.Touch;
 using Signals;
 using UnityEngine;
@@ -6,7 +5,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace GameCreator.Features.Characters
 {
-    public class CharacterView : MonoBehaviour
+    public class CharacterView : SavableView
     {
         public readonly Signal<CharacterView> MouseUp = new Signal<CharacterView>();
         public readonly Signal<CharacterView> MouseDown = new Signal<CharacterView>();

@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using Exoa.Cameras;
 using Exoa.Designer;
 using GameCreator.Config;
+using GameCreator.Features.Characters;
 using GameCreator.Features.Characters.Ui;
 using GameCreator.Features.GameScene.States;
 using GameCreator.Features.TerrainEdit;
@@ -47,6 +49,8 @@ namespace GameCreator.Features.GameScene
         IGameSceneState state;
         TerrainEditMode terrainEditMode;
         int terrainBrushDiameter;
+
+        Dictionary<int, SavableView.SaveData> objectsSaveData;
 
         public GameSceneMode CurrentMode => currentMode;
         public SceneTimeData SceneTime { get; private set; }
@@ -113,7 +117,7 @@ namespace GameCreator.Features.GameScene
         public void EnterPlayMode()
         {
             currentMode = GameSceneMode.PlayMode;
-
+            
             if (HasPlayableCharacter(out var characterView))
             {
                 playGameplayState.SetPlayerView(characterView);

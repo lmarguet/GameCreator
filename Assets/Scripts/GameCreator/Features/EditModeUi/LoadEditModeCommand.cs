@@ -7,7 +7,7 @@ using Zenject;
 
 namespace GameCreator.Features.EditModeUi
 {
-    public class LoadEditModeUiCommand : AAsyncCommand
+    public class LoadEditModeCommand : AAsyncCommand
     {
         [Inject] NavigationManager navigationManager;
 
@@ -17,6 +17,7 @@ namespace GameCreator.Features.EditModeUi
 
             var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
             gameSceneRoot.EnterEditMode();
+            gameSceneRoot.ResetObjectStates();
         }
     }
 }

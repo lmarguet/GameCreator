@@ -8,7 +8,7 @@ using Zenject;
 
 namespace GameCreator.Features.PlayMode
 {
-    public class LoadPlayModeUiCommand : AAsyncCommand
+    public class LoadPlayModeCommand : AAsyncCommand
     {
         [Inject] NavigationManager navigationManager;
         [Inject] StopCharacterPlacementCommand stopCharacterPlacementCommand;
@@ -19,6 +19,7 @@ namespace GameCreator.Features.PlayMode
             var playModeUiRoot = await navigationManager.OpenScene<PlayModeUiRoot>(SceneId.PlayModeUi, LoadSceneMode.Additive);
 
             var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
+            gameSceneRoot.SaveObjectStates();
             gameSceneRoot.EnterPlayMode();
 
             playModeUiRoot.ShowJoystick(gameSceneRoot.HasPlayableCharacter());
