@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CharactersConfig
   m_EditorClassIdentifier: 
   characters:
-  - id: BuisnessMan
-    prefab: {fileID: 100000, guid: c14bb5ce28dbb7442a2f79d8b6a061ce, type: 3}
-    thumbNail: {fileID: 21300000, guid: f7d8a49fa39b44a0d8cbf88b012c777c, type: 3}
+  - id: Stuntman
+    prefab: {fileID: 114468, guid: f3f5a93faa378c84cb5e30e882ba79ff, type: 3}
+    thumbNail: {fileID: 21300000, guid: a3573a8caff0e4727a034ee4a35ccaa9, type: 3}
   - id: FireFighter
     prefab: {fileID: 100000, guid: c393539dfea106a45957b13acb445ae9, type: 3}
     thumbNail: {fileID: 21300000, guid: ce293472aa9db4d379f0408f7f1d5b33, type: 3}
@@ -28,9 +28,9 @@ MonoBehaviour:
   - id: Boxer
     prefab: {fileID: 154718, guid: c29bfbc60d760fd45ba7c2ba73c776ea, type: 3}
     thumbNail: {fileID: 21300000, guid: 09b99ca920fc64f4d89029e87c3242b4, type: 3}
-  - id: Stuntman
-    prefab: {fileID: 114468, guid: f3f5a93faa378c84cb5e30e882ba79ff, type: 3}
-    thumbNail: {fileID: 21300000, guid: a3573a8caff0e4727a034ee4a35ccaa9, type: 3}
   - id: DiscoGuy
     prefab: {fileID: 178146, guid: 55d08d977efaaec409b62d6a6edd8ab4, type: 3}
     thumbNail: {fileID: 21300000, guid: a4a8118fccd2848f29a41093301220ee, type: 3}
+  - id: BuisnessMan
+    prefab: {fileID: 100000, guid: c14bb5ce28dbb7442a2f79d8b6a061ce, type: 3}
+    thumbNail: {fileID: 21300000, guid: f7d8a49fa39b44a0d8cbf88b012c777c, type: 3}
