@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using GameCreator.Features.Characters;
 using GameCreator.Features.GameScene;
-using GameCreator.Features.TimeSettings;
 using GameCreator.Framework;
 using GameCreator.SceneManagement;
 using UnityEngine.SceneManagement;
@@ -13,7 +12,6 @@ namespace GameCreator.Features.PlayMode
     {
         [Inject] NavigationManager navigationManager;
         [Inject] StopCharacterPlacementCommand stopCharacterPlacementCommand;
-        [Inject] UpdateTimeAndWeatherCommand updateTimeAndWeatherCommand;
 
         protected override async Task DoRun()
         {
@@ -24,8 +22,6 @@ namespace GameCreator.Features.PlayMode
             gameSceneRoot.EnterPlayMode();
 
             playModeUiRoot.ShowJoystick(gameSceneRoot.HasPlayableCharacter());
-
-            await updateTimeAndWeatherCommand.Run(gameSceneRoot.SceneTime);
         }
     }
 }
