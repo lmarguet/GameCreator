@@ -33,10 +33,6 @@ MonoBehaviour:
     scene:
       sceneAsset: {fileID: 102900000, guid: 6e95f8e9fe5a34af189b698c204a062a, type: 3}
       scenePath: Assets/Scenes/PlayModeUI.unity
-  - sceneIdID: 5
-    scene:
-      sceneAsset: {fileID: 102900000, guid: e79b6e7eb0923402884538545a51d1ce, type: 3}
-      scenePath: Assets/Scenes/SettingsPopup.unity
   - sceneIdID: 6
     scene:
       sceneAsset: {fileID: 102900000, guid: 4df55887c1d7d4f589d36e49deac2158, type: 3}
@@ -44,4 +40,4 @@ MonoBehaviour:
   - sceneIdID: 7
     scene:
       sceneAsset: {fileID: 102900000, guid: b26f133ef40e04588b9c7f7de74feb5a, type: 3}
-      scenePath: Assets/Scenes/LocationEditPopup.unity
+      scenePath: Assets/Scenes/TimeEditPopup.unity

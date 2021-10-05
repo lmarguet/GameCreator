@@ -4,7 +4,6 @@ using GameCreator.Features.EditModeUi;
 using GameCreator.Features.GameScene;
 using GameCreator.Features.GameScene.States;
 using GameCreator.Features.PlayMode;
-using GameCreator.Features.SettingsPopup;
 using GameCreator.Features.TerrainEdit;
 using GameCreator.Features.TimeSettings;
 using GameCreator.SceneManagement;
@@ -31,7 +30,6 @@ namespace GameCreator.Injection
         {
             Container.Bind<LoadGameSceneCommand>().AsSingle();
             Container.Bind<LoadEditModeCommand>().AsSingle();
-            Container.Bind<LoadSettingsPopupCommand>().AsSingle();
             Container.Bind<LoadPlayModeCommand>().AsSingle();
 
             Container.Bind<StartCharacterPlacementCommand>().AsSingle();
