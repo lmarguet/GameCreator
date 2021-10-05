@@ -12,6 +12,7 @@ namespace GameCreator.Features.Characters
         public readonly Signal<CharacterView> MouseDrag = new Signal<CharacterView>();
 
         [SerializeField] bool areControlsEnabled;
+        [SerializeField] GameObject playerMarker;
 
         Animator animator;
         Vector3 screenPoint;
@@ -27,6 +28,7 @@ namespace GameCreator.Features.Characters
         {
             animator = GetComponent<Animator>();
             character = GetComponent<ThirdPersonCharacter>();
+            playerMarker.SetActive(false);
         }
 
         public void StopAnimating()
@@ -42,16 +44,24 @@ namespace GameCreator.Features.Characters
         public void DisableControls()
         {
             areControlsEnabled = false;
+            UpdatePlayerMarkerVisibility();
+        }
+
+        void UpdatePlayerMarkerVisibility()
+        {
+            playerMarker.SetActive(CharacterType == CharacterType.Player);
         }
 
         public void EnableControls()
         {
             areControlsEnabled = true;
+            playerMarker.SetActive(false);
         }
 
         public void SetType(CharacterType type)
         {
             CharacterType = type;
+            UpdatePlayerMarkerVisibility();
         }
 
         void OnMouseUp()
