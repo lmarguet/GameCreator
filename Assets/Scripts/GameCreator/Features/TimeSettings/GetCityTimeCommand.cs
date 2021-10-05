@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using GameCreator.Config;
 using GameCreator.Framework;
 using Zenject;
 
@@ -12,24 +13,24 @@ namespace GameCreator.Features.TimeSettings
             public TimeOfTheDay TimeOfTheDay;
             public DateTime LocalTime { get; set; }
         }
-        
+
         [Inject] WeatherApiService weatherApiService;
-        
+        [Inject] TimeSettingsConfig timeSettingsConfig;
+
         protected override async Task<Result> DoRun(string city)
         {
             var result = await weatherApiService.QueryCity(city);
             var cityData = result.data.getCityByName;
-            
-            var latitude = double.Parse(cityData.coord.lat);
-            var longitude = double.Parse(cityData.coord.lon);
-            
-            var convertedTime = TimeUtil.GetTimeForCoordinates(latitude, longitude);
-            var timeOfTheDay = TimeUtil.GetTimeOfTheDay(convertedTime);
-            
+
+            var cityConfig = timeSettingsConfig.GetCity(city);
+
+            var cityLocalTime = TimeUtil.GetCurrentTimeWithGmtOffset(cityConfig.GmtOffset);
+            var timeOfTheDay = TimeUtil.GetTimeOfTheDay(cityLocalTime);
+
             return new Result
             {
                 TimeOfTheDay = timeOfTheDay,
-                LocalTime = convertedTime
+                LocalTime = cityLocalTime
             };
         }
     }

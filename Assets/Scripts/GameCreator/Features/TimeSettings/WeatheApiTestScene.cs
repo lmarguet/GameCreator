@@ -13,16 +13,18 @@ namespace GameCreator.Features.TimeSettings
         {
             foreach (var city in timeSettingsConfig.Cities)
             {
-                var result = await weatherApiService.QueryCity(city);
+                var result = await weatherApiService.QueryCity(city.Name);
 
                 var cityData = result.data.getCityByName;
                 var latitude = double.Parse(cityData.coord.lat);
                 var longitude = double.Parse(cityData.coord.lon);
+      
                 var convertedTime = TimeUtil.GetTimeForCoordinates(latitude, longitude);
 
                 Debug.Log(cityData.name + " - " + convertedTime.TimeOfDay + " -  " + TimeUtil.GetTimeOfTheDay(convertedTime));
-                
-                
+
+                var cityTime = TimeUtil.GetCurrentTimeWithGmtOffset(city.GmtOffset);
+                Debug.Log(cityTime);
             }
         }
     }

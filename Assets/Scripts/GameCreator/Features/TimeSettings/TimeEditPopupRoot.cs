@@ -54,7 +54,7 @@ namespace GameCreator.Features.TimeSettings
                 new TMP_Dropdown.OptionData { text = TimeOfTheDay.Night.ToString() }
             };
 
-            options.AddRange(timeSettingsConfig.Cities.Select(city => new TMP_Dropdown.OptionData { text = city }));
+            options.AddRange(timeSettingsConfig.Cities.Select(city => new TMP_Dropdown.OptionData { text = city.Name }));
 
             return options;
         }
@@ -63,7 +63,7 @@ namespace GameCreator.Features.TimeSettings
         {
             var selectedIndex = dropdown.value;
             var optionText = optionsList[selectedIndex].text;
-            var isCity = timeSettingsConfig.Cities.Contains(optionText);
+            var isCity = timeSettingsConfig.Cities.Any(x => x.Name == optionText);
 
             setSceneTimeDataCommand.Execute(new GameSceneRoot.SceneTimeData
             {

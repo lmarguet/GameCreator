@@ -13,6 +13,11 @@ namespace GameCreator.Features.TimeSettings
             return TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, timeZoneInfo).DateTime;
         }
 
+        public static DateTime GetCurrentTimeWithGmtOffset(double gmtOffset)
+        {
+            return DateTime.Now.ToUniversalTime().AddHours(gmtOffset);
+        }
+
         const int MorningStart = 6;
         const int DayStart = 11;
         const int EveningStart = 18;

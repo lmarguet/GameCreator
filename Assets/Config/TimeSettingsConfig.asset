@@ -16,11 +16,16 @@ MonoBehaviour:
     type: 2}
   getCityQueryName: GetCity
   cities:
-  - Berlin
-  - Paris
-  - London
-  - Tokyo
-  - New York
+  - Name: Berlin
+    GmtOffset: 2
+  - Name: Paris
+    GmtOffset: 2
+  - Name: London
+    GmtOffset: 1
+  - Name: New York
+    GmtOffset: -4
+  - Name: Tokyo
+    GmtOffset: 9
   timeRenderConfigs:
   - timeOfTheDay: 0
     Skybox: {fileID: 2100000, guid: 7a55134c0bdd95f45ac36d63fc4e2b89, type: 2}
