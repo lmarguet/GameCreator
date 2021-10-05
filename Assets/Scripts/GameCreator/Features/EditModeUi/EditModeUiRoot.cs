@@ -1,7 +1,6 @@
 using System.Linq;
 using GameCreator.Features.EditModeUi.ToolBars;
 using GameCreator.Features.PlayMode;
-using GameCreator.Features.SettingsPopup;
 using GameCreator.Features.TerrainEdit;
 using GameCreator.Features.TimeSettings;
 using GameCreator.SceneManagement;
@@ -13,14 +12,12 @@ namespace GameCreator.Features.EditModeUi
 {
     public class EditModeUiRoot : ASceneRoot
     {
-        [Inject] LoadSettingsPopupCommand loadSettingsPopupCommand;
         [Inject] LoadPlayModeCommand loadPlayModeCommand;
         [Inject] NavigationManager navigationManager;
         [Inject] EnterTerrainEditStateCommand enterTerrainEditStateCommand;
         [Inject] ExitTerrainEditStateCommand exitTerrainEditStateCommand;
         [Inject] OpenTimeEditPopupCommand openTimeEditPopupCommand;
 
-        [SerializeField] Button settingsButton;
         [SerializeField] Button playModeButton;
 
         [Header("Bottom menu")]
@@ -35,7 +32,6 @@ namespace GameCreator.Features.EditModeUi
 
         void Awake()
         {
-            settingsButton.onClick.AddListener(HandleSettingsButtonClick);
             playModeButton.onClick.AddListener(HandlePlaysButtonClick);
             charactersButton.onClick.AddListener(HandleCharactersButtonClick);
             terrainEdioButton.onClick.AddListener(HandleTerrainEditButtonClick);
@@ -54,11 +50,6 @@ namespace GameCreator.Features.EditModeUi
         {
             await loadPlayModeCommand.Run();
             navigationManager.CloseScene(SceneId.EditModeUi);
-        }
-
-        async void HandleSettingsButtonClick()
-        {
-            await loadSettingsPopupCommand.Run();
         }
 
         void HandleTerrainEditButtonClick()
