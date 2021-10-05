@@ -11,6 +11,7 @@ using GameCreator.SceneManagement;
 using Signals;
 using UnityEngine;
 using UnityStandardAssets.Cameras;
+using UnityStandardAssets.Utility;
 using Zenject;
 
 namespace GameCreator.Features.GameScene
@@ -40,7 +41,7 @@ namespace GameCreator.Features.GameScene
         [SerializeField] Inputs cameraInputs;
         [SerializeField] CameraBase cameraBase;
         [SerializeField] TerrainView terrainView;
-        [SerializeField] AutoCam playerCamera;
+        [SerializeField] FollowTarget playerCamera;
         [SerializeField] ProjectorForLWRP.ProjectorForLWRP terrainProjector;
         [SerializeField] Transform lightContainer;
 

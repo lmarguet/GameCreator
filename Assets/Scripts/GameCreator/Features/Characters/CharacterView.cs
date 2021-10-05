@@ -10,15 +10,15 @@ namespace GameCreator.Features.Characters
         public readonly Signal<CharacterView> MouseUp = new Signal<CharacterView>();
         public readonly Signal<CharacterView> MouseDown = new Signal<CharacterView>();
         public readonly Signal<CharacterView> MouseDrag = new Signal<CharacterView>();
-        
-        ThirdPersonUserControl controls;
+
+        [SerializeField] bool areControlsEnabled;
+
         Animator animator;
         Vector3 screenPoint;
         Vector3 offset;
-        ThirdPersonCharacter character; 
+        ThirdPersonCharacter character;
         Vector3 move;
 
-        bool areControlsEnabled;
         public CharacterType CharacterType { get; private set; }
 
         public bool IsSelected { get; set; }
@@ -26,7 +26,6 @@ namespace GameCreator.Features.Characters
         void Awake()
         {
             animator = GetComponent<Animator>();
-            controls = GetComponent<ThirdPersonUserControl>();
             character = GetComponent<ThirdPersonCharacter>();
         }
 
@@ -42,16 +41,14 @@ namespace GameCreator.Features.Characters
 
         public void DisableControls()
         {
-            controls.enabled = false;
             areControlsEnabled = false;
         }
 
         public void EnableControls()
         {
-            // controls.enabled = false;
             areControlsEnabled = true;
         }
-        
+
         public void SetType(CharacterType type)
         {
             CharacterType = type;
@@ -79,6 +76,7 @@ namespace GameCreator.Features.Characters
                 signal.Dispatch(this);
             }
         }
+
         void FixedUpdate()
         {
             if (areControlsEnabled)
@@ -86,7 +84,7 @@ namespace GameCreator.Features.Characters
                 var horizontal = JoystickInput.Horizontal != 0
                     ? JoystickInput.Horizontal
                     : Input.GetAxis("Horizontal");
-            
+
                 var vertical = JoystickInput.Vertical != 0
                     ? JoystickInput.Vertical
                     : Input.GetAxis("Vertical");
