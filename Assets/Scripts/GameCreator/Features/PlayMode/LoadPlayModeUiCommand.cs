@@ -16,12 +16,11 @@ namespace GameCreator.Features.PlayMode
         protected override async Task DoRun()
         {
             stopCharacterPlacementCommand.Execute();
-            await navigationManager.OpenScene<PlayModeUiRoot>(SceneId.PlayModeUi, LoadSceneMode.Additive);
-            
+            var playModeUiRoot = await navigationManager.OpenScene<PlayModeUiRoot>(SceneId.PlayModeUi, LoadSceneMode.Additive);
+
             var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
             gameSceneRoot.EnterPlayMode();
 
-            var playModeUiRoot = navigationManager.GetScene<PlayModeUiRoot>();
             playModeUiRoot.ShowJoystick(gameSceneRoot.HasPlayableCharacter());
         }
     }

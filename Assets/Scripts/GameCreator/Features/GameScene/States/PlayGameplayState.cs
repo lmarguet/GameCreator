@@ -12,10 +12,12 @@ namespace GameCreator.Features.GameScene.States
         }
 
         protected override void OnEnable()
-        {;
+        {
+            gameSceneRoot.StartAllCharactersAnimations();
+            playerView.EnableControls();
             gameSceneRoot.SetCameraControlsEnabled(false);
-            var camera = gameSceneRoot.SetupPlayerCamera(playerView.gameObject);
-            playerView.EnableControls(camera.transform);
+            gameSceneRoot.SetupPlayerCamera(playerView.gameObject);
+            gameSceneRoot.StartRealTimeUpdate();
         }
 
         protected override void OnDisable()
@@ -23,6 +25,7 @@ namespace GameCreator.Features.GameScene.States
             playerView.DisableControls();
             gameSceneRoot.SetCameraControlsEnabled(true);
             gameSceneRoot.ResetCamera();
+            gameSceneRoot.StopRealTimeUpdate();
         }
     }
 }

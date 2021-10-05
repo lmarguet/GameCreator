@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TimeZoneConverter.Posix</name>
+    </assembly>
+    <members>
+        <member name="T:TimeZoneConverter.Posix.PosixTimeZone">
+            <summary>
+            Provides methods to generate POSIX time zone strings.
+            </summary>
+        </member>
+        <member name="M:TimeZoneConverter.Posix.PosixTimeZone.FromTimeZoneInfo(System.TimeZoneInfo)">
+            <summary>
+            Generates a POSIX time zone string from a <see cref="T:System.TimeZoneInfo"/> object, for the current year.
+            Note - only uses only the <see cref="P:System.TimeZoneInfo.Id"/> property from the object.
+            </summary>
+            <param name="timeZoneInfo">The <see cref="T:System.TimeZoneInfo"/> object.</param>
+            <returns>A POSIX time zone string.</returns>
+        </member>
+        <member name="M:TimeZoneConverter.Posix.PosixTimeZone.FromTimeZoneInfo(System.TimeZoneInfo,System.Int32)">
+            <summary>
+            Generates a POSIX time zone string from a <see cref="T:System.TimeZoneInfo"/> object, for the given year.
+            Note - only uses only the <see cref="P:System.TimeZoneInfo.Id"/> property from the object.
+            </summary>
+            <param name="timeZoneInfo">The <see cref="T:System.TimeZoneInfo"/> object.</param>
+            <param name="year">The reference year.</param>
+            <returns>A POSIX time zone string.</returns>
+        </member>
+        <member name="M:TimeZoneConverter.Posix.PosixTimeZone.FromWindowsTimeZoneId(System.String)">
+            <summary>
+            Generates a POSIX time zone string from a Windows time zone ID, for the current year.
+            </summary>
+            <param name="timeZoneId">The Windows time zone ID.</param>
+            <returns>A POSIX time zone string.</returns>
+        </member>
+        <member name="M:TimeZoneConverter.Posix.PosixTimeZone.FromWindowsTimeZoneId(System.String,System.Int32)">
+            <summary>
+            Generates a POSIX time zone string from a Windows time zone ID, for the given year.
+            </summary>
+            <param name="timeZoneId">The Windows time zone ID.</param>
+            <param name="year">The reference year.</param>
+            <returns>A POSIX time zone string.</returns>
+        </member>
+        <member name="M:TimeZoneConverter.Posix.PosixTimeZone.FromIanaTimeZoneName(System.String)">
+            <summary>
+            Generates a POSIX time zone string from an IANA time zone name, for the current year.
+            </summary>
+            <param name="timeZoneName">The IANA time zone name.</param>
+            <returns>A POSIX time zone string.</returns>
+        </member>
+        <member name="M:TimeZoneConverter.Posix.PosixTimeZone.FromIanaTimeZoneName(System.String,System.Int32)">
+            <summary>
+            Generates a POSIX time zone string from an IANA time zone name, for the given year.
+            </summary>
+            <param name="timeZoneName">The IANA time zone name.</param>
+            <param name="year">The reference year.</param>
+            <returns>A POSIX time zone string.</returns>
+        </member>
+    </members>
+</doc>

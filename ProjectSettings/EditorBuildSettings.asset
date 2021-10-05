@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterEditPopup.unity
     guid: 4df55887c1d7d4f589d36e49deac2158
+  - enabled: 1
+    path: Assets/Scenes/TimeEditPopup.unity
+    guid: b26f133ef40e04588b9c7f7de74feb5a
   m_configObjects: {}
