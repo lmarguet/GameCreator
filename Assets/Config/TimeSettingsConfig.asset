@@ -31,10 +31,18 @@ MonoBehaviour:
   timeRenderConfigs:
   - timeOfTheDay: 0
     Skybox: {fileID: 2100000, guid: 7a55134c0bdd95f45ac36d63fc4e2b89, type: 2}
+    LightPrefab: {fileID: 2855337980964941573, guid: d84dcfe1ece2f4a21815785a972f1341,
+      type: 3}
   - timeOfTheDay: 1
     Skybox: {fileID: 2100000, guid: 1474982501a6ef743a225abaa1258796, type: 2}
+    LightPrefab: {fileID: 5909555908899260037, guid: 180cb469baf7a48b98ba9bcd18fdcb23,
+      type: 3}
   - timeOfTheDay: 2
     Skybox: {fileID: 2100000, guid: 91b89776b1d1b444e8f2b27983fdd118, type: 2}
+    LightPrefab: {fileID: 5280888755358227851, guid: 5df65fb98f8164d33a60374e652b521f,
+      type: 3}
   - timeOfTheDay: 3
     Skybox: {fileID: 2100000, guid: e8ed1d86db2826b4f80d008c7b03d053, type: 2}
+    LightPrefab: {fileID: 7667626250797049431, guid: 308e03215dd3e401da81cf54d9e0222a,
+      type: 3}
   realTimeRenderIntervalSeconds: 60

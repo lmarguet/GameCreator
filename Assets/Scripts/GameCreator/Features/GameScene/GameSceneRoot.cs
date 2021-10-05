@@ -40,6 +40,7 @@ namespace GameCreator.Features.GameScene
         [SerializeField] TerrainView terrainView;
         [SerializeField] AutoCam playerCamera;
         [SerializeField] ProjectorForLWRP.ProjectorForLWRP terrainProjector;
+        [SerializeField] Transform lightContainer;
 
         bool isMousePressed;
         GameSceneMode currentMode = GameSceneMode.EditMode;
@@ -47,16 +48,17 @@ namespace GameCreator.Features.GameScene
         TerrainEditMode terrainEditMode;
         int terrainBrushDiameter;
 
-        SceneTimeData sceneTimeData = new SceneTimeData
-        {
-            Name = TimeOfTheDay.Day.ToString()
-        };
-
         public GameSceneMode CurrentMode => currentMode;
+        public SceneTimeData SceneTime { get; private set; }
 
         void Awake()
         {
             characterWorldUi.gameObject.SetActive(false);
+            SceneTime = new SceneTimeData
+            {
+                Name = TimeOfTheDay.Day.ToString()
+            };
+            currentTimeOfTheDay = TimeOfTheDay.Day;
         }
 
         void Start()

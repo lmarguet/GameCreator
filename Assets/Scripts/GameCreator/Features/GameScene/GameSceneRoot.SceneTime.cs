@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using GameCreator.Config;
+using GameCreator.Extensions;
 using GameCreator.Features.TimeSettings;
 using UnityEngine;
 
@@ -18,31 +19,36 @@ namespace GameCreator.Features.GameScene
             public string City;
         }
 
-        public SceneTimeData SceneTime => sceneTimeData;
+        TimeOfTheDay currentTimeOfTheDay = TimeOfTheDay.Day;
 
         public async void SetSceneTime(SceneTimeData data)
         {
-            sceneTimeData = data;
+            SceneTime = data;
             await UpdateTimeAndWeather();
+        }
+
+        async Task UpdateTimeAndWeather()
+        {
+            await updateTimeAndWeatherCommand.Run(SceneTime);
         }
 
         public void SetTimeOfTheDay(TimeOfTheDay timeOfTheDay)
         {
-            var renderConfig = timeRenderConfig.GetTimeRenderConfig(timeOfTheDay);
-            ApplyTimeConfig(renderConfig);
+            if (timeOfTheDay != currentTimeOfTheDay)
+            {
+                var renderConfig = timeRenderConfig.GetTimeRenderConfig(timeOfTheDay);
+                ApplyTimeConfig(renderConfig);
+            }
+
+            currentTimeOfTheDay = timeOfTheDay;
         }
 
         void ApplyTimeConfig(TimeSettingsConfig.TimeRenderConfig renderConfig)
         {
-            if (RenderSettings.skybox != renderConfig.Skybox)
-            {
-                RenderSettings.skybox = renderConfig.Skybox;   
-            }
-        }
+            lightContainer.Clear();
+            Instantiate(renderConfig.LightPrefab, lightContainer);
 
-        public async Task UpdateTimeAndWeather()
-        {
-            await updateTimeAndWeatherCommand.Run(SceneTime);
+            RenderSettings.skybox = renderConfig.Skybox;
         }
 
         public async void StartRealTimeUpdate()

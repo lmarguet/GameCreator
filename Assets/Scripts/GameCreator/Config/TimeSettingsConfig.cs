@@ -16,6 +16,7 @@ namespace GameCreator.Config
         {
             public TimeOfTheDay timeOfTheDay;
             public Material Skybox;
+            public GameObject LightPrefab;
         }
 
         [Serializable]
