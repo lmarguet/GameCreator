@@ -12,7 +12,8 @@ namespace GameCreator.Features.GameScene
         public void SetupPlayerCamera(GameObject player)
         {
             cameraBase.gameObject.SetActive(false);
-            playerCamera.target = player.transform;
+            playerCamera.Follow = player.transform;
+            playerCamera.LookAt = player.transform;
             playerCamera.gameObject.SetActive(true);
         }
 
