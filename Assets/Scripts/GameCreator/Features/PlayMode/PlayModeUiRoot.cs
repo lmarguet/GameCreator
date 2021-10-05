@@ -64,7 +64,7 @@ namespace GameCreator.Features.PlayMode
 
             var cityWeatherData = cityData.Weather;
             var temperature = GetTemperature(cityWeatherData);
-            cityWeatherLabel.text = $"{temperature} - {cityWeatherData.summary.description}";
+            cityWeatherLabel.text = $"{temperature}°C - {cityWeatherData.summary.description}";
             
             
             cityWidget.SetActive(true);
