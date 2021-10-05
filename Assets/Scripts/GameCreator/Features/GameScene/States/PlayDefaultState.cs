@@ -5,7 +5,7 @@ namespace GameCreator.Features.GameScene.States
         protected override void OnEnable()
         {
             gameSceneRoot.StartAllCharactersAnimations();
-            gameSceneRoot.RenderSceneTimeSettings();
+            gameSceneRoot.UpdateTimeAndWeather();
         }
     }
 }

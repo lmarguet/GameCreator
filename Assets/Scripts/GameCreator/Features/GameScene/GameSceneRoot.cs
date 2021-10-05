@@ -28,7 +28,7 @@ namespace GameCreator.Features.GameScene
         [Inject] CharacterDragEditState characterDragEditState;
         [Inject] PlayGameplayState playGameplayState;
         [Inject] TerrainEditState terrainEditState;
-        [Inject] GetCityTimeCommand getCityTimeCommand;
+        [Inject] UpdateTimeAndWeatherCommand updateTimeAndWeatherCommand;
 
         [SerializeField] Camera sceneCamera;
         [SerializeField] LayerMask terrainLayer;
@@ -51,6 +51,8 @@ namespace GameCreator.Features.GameScene
         {
             Name = TimeOfTheDay.Day.ToString()
         };
+
+        public GameSceneMode CurrentMode => currentMode;
 
         void Awake()
         {

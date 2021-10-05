@@ -64,11 +64,13 @@ namespace GameCreator.Features.TimeSettings
             var selectedIndex = dropdown.value;
             var optionText = optionsList[selectedIndex].text;
             var isCity = timeSettingsConfig.Cities.Any(x => x.Name == optionText);
+            var cityName = isCity ? timeSettingsConfig.GetCity(optionText).Name : null;
 
             setSceneTimeDataCommand.Execute(new GameSceneRoot.SceneTimeData
             {
                 Name = optionText,
-                IsCity = isCity
+                IsCity = isCity,
+                City = cityName
             });
 
             navigationManager.CloseScene<TimeEditPopupRoot>();

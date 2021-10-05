@@ -34,5 +34,28 @@ namespace GameCreator.Features.TimeSettings
     public class Weather
     {
         public string timestamp;
+        public Temperature temperature;
+        public Clouds clouds;
+        public WeatherSummary summary;
+    }
+
+    [Serializable]
+    public class WeatherSummary
+    {
+        public string title;
+        public string description;
+        public string icon;
+    }
+
+    [Serializable]
+    public class Clouds
+    {
+        public string all;
+    }
+
+    [Serializable]
+    public class Temperature
+    {
+        public string actual;
     }
 }

@@ -16,11 +16,11 @@ MonoBehaviour:
   queries:
   - name: GetCity
     type: 0
-    query: "query GetCity{\n    getCityByName(  name :\"New York\" ){\n        id\n       
-      name\n        weather{\n            summary{\n                title\n               
-      title\n                icon\n        }\n            temperature{\n               
-      actual\n        }\n            timestamp\n        }\n        coord{\n           
-      lon\n            lat\n        }\n    }\n}"
+    query: "query {\n    getCityByName{\n        id\n        name\n        country\n       
+      coord{\n            lon\n            lat\n        }\n        weather{\n           
+      summary{\n                title\n                title\n                description\n       
+      }\n            summary\n            clouds{\n                all\n        }\n           
+      timestamp\n        }\n    }\n}"
     queryString: getCityByName
     returnType: City
     queryOptions:
@@ -61,11 +61,11 @@ MonoBehaviour:
       - name: weather
         type: Weather
       hasChanged: 0
-    - index: 4
-      name: weather
-      type: Weather
+    - index: 2
+      name: country
+      type: String
       parentIndexes: 
-      hasSubField: 1
+      hasSubField: 0
       possibleFields:
       - name: id
         type: ID
@@ -77,111 +77,6 @@ MonoBehaviour:
         type: Coordinates
       - name: weather
         type: Weather
-      hasChanged: 0
-    - index: 0
-      name: summary
-      type: Summary
-      parentIndexes: 02000000
-      hasSubField: 1
-      possibleFields:
-      - name: summary
-        type: Summary
-      - name: temperature
-        type: Temperature
-      - name: wind
-        type: Wind
-      - name: clouds
-        type: Clouds
-      - name: timestamp
-        type: Int
-      hasChanged: 0
-    - index: 0
-      name: title
-      type: String
-      parentIndexes: 0200000003000000
-      hasSubField: 0
-      possibleFields:
-      - name: title
-        type: String
-      - name: description
-        type: String
-      - name: icon
-        type: String
-      hasChanged: 0
-    - index: 0
-      name: title
-      type: String
-      parentIndexes: 0200000003000000
-      hasSubField: 0
-      possibleFields:
-      - name: title
-        type: String
-      - name: description
-        type: String
-      - name: icon
-        type: String
-      hasChanged: 0
-    - index: 2
-      name: icon
-      type: String
-      parentIndexes: 0200000003000000
-      hasSubField: 0
-      possibleFields:
-      - name: title
-        type: String
-      - name: description
-        type: String
-      - name: icon
-        type: String
-      hasChanged: 0
-    - index: 1
-      name: temperature
-      type: Temperature
-      parentIndexes: 02000000
-      hasSubField: 1
-      possibleFields:
-      - name: summary
-        type: Summary
-      - name: temperature
-        type: Temperature
-      - name: wind
-        type: Wind
-      - name: clouds
-        type: Clouds
-      - name: timestamp
-        type: Int
-      hasChanged: 0
-    - index: 0
-      name: actual
-      type: Float
-      parentIndexes: 0200000007000000
-      hasSubField: 0
-      possibleFields:
-      - name: actual
-        type: Float
-      - name: feelsLike
-        type: Float
-      - name: min
-        type: Float
-      - name: max
-        type: Float
-      hasChanged: 0
-    - index: 4
-      name: timestamp
-      type: Int
-      parentIndexes: 02000000
-      hasSubField: 0
-      possibleFields:
-      - name: summary
-        type: Summary
-      - name: temperature
-        type: Temperature
-      - name: wind
-        type: Wind
-      - name: clouds
-        type: Clouds
-      - name: timestamp
-        type: Int
       hasChanged: 0
     - index: 3
       name: coord
@@ -203,7 +98,7 @@ MonoBehaviour:
     - index: 0
       name: lon
       type: Float
-      parentIndexes: 0a000000
+      parentIndexes: 03000000
       hasSubField: 0
       possibleFields:
       - name: lon
@@ -214,13 +109,150 @@ MonoBehaviour:
     - index: 1
       name: lat
       type: Float
-      parentIndexes: 0a000000
+      parentIndexes: 03000000
       hasSubField: 0
       possibleFields:
       - name: lon
         type: Float
       - name: lat
         type: Float
+      hasChanged: 0
+    - index: 4
+      name: weather
+      type: Weather
+      parentIndexes: 
+      hasSubField: 1
+      possibleFields:
+      - name: id
+        type: ID
+      - name: name
+        type: String
+      - name: country
+        type: String
+      - name: coord
+        type: Coordinates
+      - name: weather
+        type: Weather
+      hasChanged: 0
+    - index: 0
+      name: summary
+      type: Summary
+      parentIndexes: 06000000
+      hasSubField: 1
+      possibleFields:
+      - name: summary
+        type: Summary
+      - name: temperature
+        type: Temperature
+      - name: wind
+        type: Wind
+      - name: clouds
+        type: Clouds
+      - name: timestamp
+        type: Int
+      hasChanged: 0
+    - index: 0
+      name: title
+      type: String
+      parentIndexes: 0600000007000000
+      hasSubField: 0
+      possibleFields:
+      - name: title
+        type: String
+      - name: description
+        type: String
+      - name: icon
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: title
+      type: String
+      parentIndexes: 0600000007000000
+      hasSubField: 0
+      possibleFields:
+      - name: title
+        type: String
+      - name: description
+        type: String
+      - name: icon
+        type: String
+      hasChanged: 0
+    - index: 1
+      name: description
+      type: String
+      parentIndexes: 0600000007000000
+      hasSubField: 0
+      possibleFields:
+      - name: title
+        type: String
+      - name: description
+        type: String
+      - name: icon
+        type: String
+      hasChanged: 0
+    - index: 0
+      name: summary
+      type: Summary
+      parentIndexes: 06000000
+      hasSubField: 1
+      possibleFields:
+      - name: summary
+        type: Summary
+      - name: temperature
+        type: Temperature
+      - name: wind
+        type: Wind
+      - name: clouds
+        type: Clouds
+      - name: timestamp
+        type: Int
+      hasChanged: 0
+    - index: 3
+      name: clouds
+      type: Clouds
+      parentIndexes: 06000000
+      hasSubField: 1
+      possibleFields:
+      - name: summary
+        type: Summary
+      - name: temperature
+        type: Temperature
+      - name: wind
+        type: Wind
+      - name: clouds
+        type: Clouds
+      - name: timestamp
+        type: Int
+      hasChanged: 0
+    - index: 0
+      name: all
+      type: Int
+      parentIndexes: 060000000c000000
+      hasSubField: 0
+      possibleFields:
+      - name: all
+        type: Int
+      - name: visibility
+        type: Int
+      - name: humidity
+        type: Int
+      hasChanged: 0
+    - index: 4
+      name: timestamp
+      type: Int
+      parentIndexes: 06000000
+      hasSubField: 0
+      possibleFields:
+      - name: summary
+        type: Summary
+      - name: temperature
+        type: Temperature
+      - name: wind
+        type: Wind
+      - name: clouds
+        type: Clouds
+      - name: timestamp
+        type: Int
       hasChanged: 0
     isComplete: 1
   mutations: []

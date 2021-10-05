@@ -49,7 +49,8 @@ namespace GameCreator.Injection
             Container.Bind<ClearLatestTerrainModifications>().AsSingle();
             Container.Bind<OpenTimeEditPopupCommand>().AsSingle();
             Container.Bind<SetSceneTimeDataCommand>().AsSingle();
-            Container.Bind<GetCityTimeCommand>().AsSingle();
+            Container.Bind<GetCityDataCommand>().AsSingle();
+            Container.Bind<UpdateTimeAndWeatherCommand>().AsSingle();
         }
 
         void BindGameSceneState()
