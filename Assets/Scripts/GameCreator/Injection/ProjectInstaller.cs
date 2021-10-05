@@ -30,9 +30,9 @@ namespace GameCreator.Injection
         void BindCommands()
         {
             Container.Bind<LoadGameSceneCommand>().AsSingle();
-            Container.Bind<LoadEditModeUiCommand>().AsSingle();
+            Container.Bind<LoadEditModeCommand>().AsSingle();
             Container.Bind<LoadSettingsPopupCommand>().AsSingle();
-            Container.Bind<LoadPlayModeUiCommand>().AsSingle();
+            Container.Bind<LoadPlayModeCommand>().AsSingle();
 
             Container.Bind<StartCharacterPlacementCommand>().AsSingle();
             Container.Bind<StopCharacterPlacementCommand>().AsSingle();

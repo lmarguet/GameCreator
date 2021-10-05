@@ -10,7 +10,7 @@ namespace GameCreator.Features.StartScreen
     public class StartScreenRoot : ASceneRoot
     {
         [Inject] LoadGameSceneCommand loadGameSceneCommand;
-        [Inject] LoadEditModeUiCommand loadEditModeUiCommand;
+        [Inject] LoadEditModeCommand loadEditModeCommand;
 
         [SerializeField] Button newGameButton;
 
@@ -27,7 +27,7 @@ namespace GameCreator.Features.StartScreen
         async void HandleNewGameClicked()
         {
             await loadGameSceneCommand.Run();
-            await loadEditModeUiCommand.Run();
+            await loadEditModeCommand.Run();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace GameCreator.Features.EditModeUi
     public class EditModeUiRoot : ASceneRoot
     {
         [Inject] LoadSettingsPopupCommand loadSettingsPopupCommand;
-        [Inject] LoadPlayModeUiCommand loadPlayModeUiCommand;
+        [Inject] LoadPlayModeCommand loadPlayModeCommand;
         [Inject] NavigationManager navigationManager;
         [Inject] EnterTerrainEditStateCommand enterTerrainEditStateCommand;
         [Inject] ExitTerrainEditStateCommand exitTerrainEditStateCommand;
@@ -52,7 +52,7 @@ namespace GameCreator.Features.EditModeUi
 
         async void HandlePlaysButtonClick()
         {
-            await loadPlayModeUiCommand.Run();
+            await loadPlayModeCommand.Run();
             navigationManager.CloseScene(SceneId.EditModeUi);
         }
 

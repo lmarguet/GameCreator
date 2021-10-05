@@ -11,7 +11,7 @@ namespace GameCreator.Features.PlayMode
 {
     public class PlayModeUiRoot : ASceneRoot
     {
-        [Inject] LoadEditModeUiCommand loadEditModeUiCommand;
+        [Inject] LoadEditModeCommand loadEditModeCommand;
         [Inject] NavigationManager navigationManager;
         [Inject] GetCityDataCommand getCityDataCommand;
 
@@ -38,7 +38,7 @@ namespace GameCreator.Features.PlayMode
 
         async void HandlePlaysButtonClick()
         {
-            await loadEditModeUiCommand.Run();
+            await loadEditModeCommand.Run();
             navigationManager.CloseScene(SceneId.PlayModeUi);
         }
 
