@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using GameCreator.SceneManagement;
 using UnityEngine;
+
 namespace GameCreator.Config
 {
     [Serializable]
