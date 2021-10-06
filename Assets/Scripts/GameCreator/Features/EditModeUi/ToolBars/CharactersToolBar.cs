@@ -1,7 +1,7 @@
+using System.Linq;
 using GameCreator.Config;
 using GameCreator.Features.Characters;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace GameCreator.Features.EditModeUi.ToolBars
@@ -13,11 +13,12 @@ namespace GameCreator.Features.EditModeUi.ToolBars
         [Inject] StopCharacterPlacementCommand stopCharacterPlacementCommand;
 
         [SerializeField] Transform buttonsContainer;
-        [SerializeField] ToggleGroup toggleGroup;
-        [SerializeField] CharacterButton characterButtonPrefab; 
+        [SerializeField] CharacterButton characterButtonPrefab;
+
+        CharacterButton[] buttons;
 
         public override ToolBarType Type => ToolBarType.Characters;
-        
+
         void Start()
         {
             InitButtons();
@@ -25,35 +26,56 @@ namespace GameCreator.Features.EditModeUi.ToolBars
 
         void InitButtons()
         {
+            buttons = new CharacterButton[charactersConfig.NumCharacters];
+
             for (var i = 0; i < charactersConfig.NumCharacters; i++)
             {
                 var characterConfig = charactersConfig.GetCharacterConfig(i);
                 var characterButton = Instantiate(characterButtonPrefab, buttonsContainer);
-                characterButton.SetToggleGroup(toggleGroup);
                 characterButton.SetCharacter(characterConfig);
                 characterButton.OnSelect.AddListener(HandleCharacterSelect);
                 characterButton.OnDesselect.AddListener(HandleCharacterDeselect);
+                buttons[i] = characterButton;
             }
         }
-        
+
         void HandleCharacterSelect(string characterId)
         {
+            DeselectAllBut(characterId);
             startCharacterPlacementCommand.Execute(characterId);
         }
 
         void HandleCharacterDeselect(string characterId)
         {
-            stopCharacterPlacementCommand.Execute();
+            if(!buttons.Any(x => x.Toggle.isOn))
+            {
+                stopCharacterPlacementCommand.Execute();
+            }
+            
         }
 
         protected override void DoCloseInternal()
         {
-            UnToggle();
+            DeselectAll();
         }
 
-        public void UnToggle()
+        void DeselectAllBut(string characterId)
         {
-            toggleGroup.SetAllTogglesOff();
+            foreach (var button in buttons)
+            {
+                if (button.CharacterId != characterId)
+                {
+                    button.Toggle.isOn = false;
+                }
+            }
+        }
+
+        public void DeselectAll()
+        {
+            foreach (var button in buttons)
+            {
+                button.Toggle.isOn = false;
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ namespace GameCreator.Features.GameScene.States
         protected override void OnEnable()
         {
             gameSceneRoot.TerrainView.MouseDown.AddListener(HandleTerrainMouseDown);
+            gameSceneRoot.OnCharacterPlacementSelected.AddListener(HandleCharacterPlacementSelect);
         }
 
         void HandleTerrainMouseDown()
@@ -30,7 +31,13 @@ namespace GameCreator.Features.GameScene.States
         protected override void OnDisable()
         {
             gameSceneRoot.TerrainView.MouseDown.RemoveListener(HandleTerrainMouseDown);
+            gameSceneRoot.OnCharacterPlacementSelected.RemoveListener(HandleCharacterPlacementSelect);
             characterId = null;
+        }
+
+        void HandleCharacterPlacementSelect(string character)
+        {
+            SetCharacterId(character);
         }
     }
 }

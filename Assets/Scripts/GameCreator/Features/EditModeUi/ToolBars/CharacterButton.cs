@@ -2,33 +2,27 @@ using System;
 using GameCreator.Config;
 using Signals;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace GameCreator.Features.EditModeUi.ToolBars
 {
-    public class CharacterButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class CharacterButton : MonoBehaviour
     {
         public readonly Signal<string> OnSelect = new Signal<string>();
         public readonly Signal<string> OnDesselect = new Signal<string>();
 
         [SerializeField] Image icon;
-        [SerializeField] Image backgroundImage;
-        [SerializeField] Sprite normalSprite;
-        [SerializeField] Sprite selectedSprite;
-        [SerializeField] Sprite pressedSprite;
 
         bool isSelected;
         string characterId;
         Toggle toggle;
 
-        Toggle Toggle => toggle ? toggle : toggle = GetComponent<Toggle>();
+        public Toggle Toggle => toggle ? toggle : toggle = GetComponent<Toggle>();
+        public string CharacterId => characterId;
 
         void Awake()
         {
             Toggle.onValueChanged.AddListener(OnToggleValueChanged);
-
-            ShowNormalState();
         }
 
         void OnToggleValueChanged(bool selected)
@@ -46,40 +40,18 @@ namespace GameCreator.Features.EditModeUi.ToolBars
             isSelected = selected;
             if (isSelected)
             {
-                backgroundImage.sprite = selectedSprite;
                 OnSelect.Dispatch(characterId);
             }
             else
             {
-                ShowNormalState();
                 OnDesselect.Dispatch(characterId);
             }
-        }
-
-        void ShowNormalState()
-        {
-            backgroundImage.sprite = normalSprite;
-        }
-
-        public void SetToggleGroup(ToggleGroup toggleGroup)
-        {
-            Toggle.group = toggleGroup;
         }
 
         public void SetCharacter(CharactersConfig.CharacterConfig characterConfig)
         {
             characterId = characterConfig.Id;
             icon.sprite = characterConfig.ThumbNail;
-        }
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            backgroundImage.sprite = pressedSprite;
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            ShowNormalState();
         }
     }
 }

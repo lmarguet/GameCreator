@@ -11,15 +11,21 @@ namespace GameCreator.Features.GameScene
         public readonly Signal<CharacterView> OnCharacterMouseDown = new Signal<CharacterView>();
         public readonly Signal<CharacterView> OnCharacterMouseUp = new Signal<CharacterView>();
         public readonly Signal<CharacterView> OnCharacterDrag = new Signal<CharacterView>();
+        public readonly Signal<string> OnCharacterPlacementSelected = new Signal<string>();
 
         readonly List<CharacterView> characterViews = new List<CharacterView>();
 
-        public void StartPlacingCharacter(string characterId)
+        public void SetCharacterToPlace(string characterId)
+        {
+            OnCharacterPlacementSelected.Dispatch(characterId);
+        }
+
+        public void StartCharacterPlacement(string characterId)
         {
             SetState(characterPlacementEditState);
             characterPlacementEditState.SetCharacterId(characterId);
         }
-
+        
         public void AddCharacter(string character, Vector3 hitPoint)
         {
             var config = charactersConfig.GetCharacterConfig(character);

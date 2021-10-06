@@ -129,7 +129,7 @@ namespace GameCreator.Features.EditModeUi
         public void DeselectCharacters()
         {
             var charactersToolBar = (CharactersToolBar)GetToolBarView(ToolBarType.Characters);
-            charactersToolBar.UnToggle();
+            charactersToolBar.DeselectAll();
         }
     }
 }

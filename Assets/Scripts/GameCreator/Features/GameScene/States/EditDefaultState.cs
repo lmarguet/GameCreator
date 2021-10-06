@@ -10,13 +10,20 @@ namespace GameCreator.Features.GameScene.States
             gameSceneRoot.HideCharacterUi();
             gameSceneRoot.ResetCamera();
             gameSceneRoot.HideTerrainProjector();
-            
+
             gameSceneRoot.OnCharacterMouseDown.AddListener(HandleCharacterMouseDown);
+            gameSceneRoot.OnCharacterPlacementSelected.AddListener(HandleStartPlacingCharacter);
+        }
+
+        void HandleStartPlacingCharacter(string character)
+        {
+            gameSceneRoot.StartCharacterPlacement(character);
         }
 
         protected override void OnDisable()
         {
             gameSceneRoot.OnCharacterMouseDown.RemoveListener(HandleCharacterMouseDown);
+            gameSceneRoot.OnCharacterPlacementSelected.RemoveListener(HandleStartPlacingCharacter);
         }
 
         void HandleCharacterMouseDown(CharacterView characterView)

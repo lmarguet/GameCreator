@@ -12,7 +12,7 @@ namespace GameCreator.Features.Characters
         public override void Execute(string characterId)
         {
             var gameSceneRoot = navigationManager.GetScene<GameSceneRoot>();
-            gameSceneRoot.StartPlacingCharacter(characterId);
+            gameSceneRoot.SetCharacterToPlace(characterId);
         }
     }
 }

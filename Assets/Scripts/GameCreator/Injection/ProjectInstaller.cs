@@ -34,8 +34,6 @@ namespace GameCreator.Injection
 
             Container.Bind<StartCharacterPlacementCommand>().AsSingle();
             Container.Bind<StopCharacterPlacementCommand>().AsSingle();
-            Container.Bind<SelectCharacterCommand>().AsSingle();
-            Container.Bind<DeselectCharacterCommand>().AsSingle();
 
             Container.Bind<OpenEditCharacterPopupCommand>().AsSingle();
             Container.Bind<DeleteCharacterCommand>().AsSingle();

@@ -25,6 +25,7 @@ namespace GameCreator.Features.GameScene.States
             gameSceneRoot.TerrainView.MouseDown.AddListener(HandleTerrainMouseDown);
             gameSceneRoot.OnCharacterMouseDown.AddListener(HandleCharacterMouseDown);
             gameSceneRoot.OnCharacterDrag.AddListener(HandleCharacterDrag);
+            gameSceneRoot.OnCharacterPlacementSelected.AddListener(HandleCharacterPlacementSelected);
 
             gameSceneRoot.SetCameraControlsEnabled(false);
         }
@@ -34,6 +35,7 @@ namespace GameCreator.Features.GameScene.States
             gameSceneRoot.TerrainView.MouseDown.RemoveListener(HandleTerrainMouseDown);
             gameSceneRoot.OnCharacterMouseDown.RemoveListener(HandleCharacterMouseDown);
             gameSceneRoot.OnCharacterDrag.RemoveListener(HandleCharacterDrag);
+            gameSceneRoot.OnCharacterPlacementSelected.RemoveListener(HandleCharacterPlacementSelected);
 
             selectedCharacter.IsSelected = false;
             selectedCharacter = null;
@@ -65,6 +67,12 @@ namespace GameCreator.Features.GameScene.States
             {
                 gameSceneRoot.StartDraggingCharacter(character);
             }
+        }
+
+        void HandleCharacterPlacementSelected(string character)
+        {;
+            gameSceneRoot.HideCharacterUi();
+            gameSceneRoot.StartCharacterPlacement(character);
         }
     }
 }
