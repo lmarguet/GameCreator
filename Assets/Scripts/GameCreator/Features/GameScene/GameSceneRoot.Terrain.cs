@@ -55,6 +55,10 @@ namespace GameCreator.Features.GameScene
         public void ClearLatestTerrainModifications()
         {
             terrainView.ResetHeightsToState(previousTerrainHeights);
+            
+            // force refresh of chracters physics
+            charactersContainer.gameObject.SetActive(false);
+            charactersContainer.gameObject.SetActive(true);
         }
 
         public void HideTerrainProjector()
