@@ -16,11 +16,13 @@ namespace GameCreator.Features.EditModeUi.ToolBars
         [SerializeField] CharacterButton characterButtonPrefab;
 
         CharacterButton[] buttons;
+        bool isInitialized;
 
         public override ToolBarType Type => ToolBarType.Characters;
 
         void Start()
         {
+            isInitialized = true;
             InitButtons();
         }
 
@@ -47,11 +49,10 @@ namespace GameCreator.Features.EditModeUi.ToolBars
 
         void HandleCharacterDeselect(string characterId)
         {
-            if(!buttons.Any(x => x.Toggle.isOn))
+            if (!buttons.Any(x => x.Toggle.isOn))
             {
                 stopCharacterPlacementCommand.Execute();
             }
-            
         }
 
         protected override void DoCloseInternal()
@@ -72,9 +73,12 @@ namespace GameCreator.Features.EditModeUi.ToolBars
 
         public void DeselectAll()
         {
-            foreach (var button in buttons)
+            if (isInitialized)
             {
-                button.Toggle.isOn = false;
+                foreach (var button in buttons)
+                {
+                    button.Toggle.isOn = false;
+                }
             }
         }
     }
